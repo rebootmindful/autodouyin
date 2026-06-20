@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autodouyin.local/schemas/brief.schema.json",
+  "$comment": "[INPUT]: user brief; [OUTPUT]: normalized brief object; [POS]: schemas input contract; [PROTOCOL]: update this contract, then check CLAUDE.md",
+  "title": "Brief",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "goal",
+    "platform",
+    "mode",
+    "duration_seconds",
+    "aspect_ratio"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "platform": {
+      "type": "string",
+      "enum": ["douyin"]
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["plan-only", "generate-only", "publish-only", "end-to-end"]
+    },
+    "duration_seconds": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "aspect_ratio": {
+      "type": "string",
+      "enum": ["9:16", "16:9", "1:1", "4:3", "3:4", "21:9"]
+    },
+    "topic": {
+      "type": "string"
+    },
+    "audience": {
+      "type": "string"
+    },
+    "style": {
+      "type": "string"
+    },
+    "tone": {
+      "type": "string"
+    },
+    "source_materials": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_material_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "role", "path"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["character", "scene", "prop", "reference"]
+          },
+          "label": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "must_include": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "must_avoid": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "execution_preference": {
+      "type": "string"
+    },
+    "aesthetic_preset": {
+      "type": "string",
+      "enum": ["apple-cupertino", "microsoft-fluent", "bauhaus-zen", "vercel-dark"]
+    },
+    "video_type": {
+      "type": "string"
+    }
+  }
+}

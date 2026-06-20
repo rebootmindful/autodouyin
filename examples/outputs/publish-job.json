@@ -1,0 +1,13 @@
+{
+  "id": "publish-job-local-001",
+  "platform": "douyin",
+  "video_path": "artifacts/output-video.mp4",
+  "title": "做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自",
+  "description": "围绕“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”生成一条可编排、可执行、可发布的视频方案。 #AI视频 #抖音自动化 #Seedance",
+  "hashtags": [
+    "AI视频",
+    "抖音自动化",
+    "Seedance"
+  ],
+  "visibility": "public"
+}

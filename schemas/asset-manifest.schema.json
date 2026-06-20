@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autodouyin.local/schemas/asset-manifest.schema.json",
+  "$comment": "[INPUT]: storyboard needs; [OUTPUT]: normalized asset inventory; [POS]: schemas asset contract; [PROTOCOL]: update this contract, then check CLAUDE.md",
+  "title": "AssetManifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "storyboard_id", "items"],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "storyboard_id": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["asset_id", "type", "name", "description", "prompt", "required"],
+        "properties": {
+          "asset_id": {
+            "type": "string",
+            "pattern": "^(C|S|P)\\d{2}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["character", "scene", "prop", "reference"]
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "source_label": {
+            "type": "string"
+          },
+          "resolved_path": {
+            "type": "string"
+          },
+          "identity_lock": {
+            "type": "object"
+          },
+          "continuity_priority": {
+            "type": "string",
+            "enum": ["low", "medium", "high"]
+          },
+          "required": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

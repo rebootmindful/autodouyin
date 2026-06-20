@@ -1,0 +1,36 @@
+{
+  "id": "storyboard-local-001",
+  "script_id": "script-local-001",
+  "shots": [
+    {
+      "shot_id": "shot-01",
+      "scene_id": "scene-01",
+      "segment_mode": "single-sequence",
+      "purpose": "setup",
+      "start_second": 0,
+      "end_second": 6,
+      "visual": "竖屏中央，年轻运营人自信站立，周围环绕半透明 acrylic 数据卡片显示订单量、转化率等核心指标。背景 blue-purple-pink 渐变网格，层叠深度感。镜头稳定后，现代电商运营工作台全貌展开：主屏实时数据仪表盘，左侧 layered cards 商品列表，右侧 translucent panel 用户画像，Microsoft blue 主色调，信息层级清晰。",
+      "camera": "先快速推近锁定人物活力感，再稳定推进展示工作台全貌，镜头编码 Z5 Y4 X2，50mm，medium 景深。",
+      "camera_codec": {"z": "Z5", "y": "Y4", "x": "X2", "focal_length_mm": 50, "depth": "medium"},
+      "action": "数据卡片以 spring-physics 弹性动画从四周滑入就位，数据面板以 reveal-from-behind 动画展开，人物保持自信微笑。",
+      "audio": "清脆 reveal 音效叠加轻量电子节拍，过渡到平稳数据流声，节奏平稳专业。",
+      "assets": ["C01", "S01", "P01"],
+      "continuity_note": "结尾工作台全貌稳定呈现，下一镜头从同一屏幕聚焦到团队协作场景。"
+    },
+    {
+      "shot_id": "shot-02",
+      "scene_id": "scene-02",
+      "segment_mode": "single-sequence",
+      "purpose": "payoff",
+      "start_second": 6,
+      "end_second": 15,
+      "visual": "运营人站在中央分析数据，三张 layered cards 从两侧滑入展示团队成员，卡片间 colorful gradient 连线，信息流光点流动。随后全屏增长曲线以 gradient mesh blue-purple-pink 动画向上飙升，曲线留有 colorful glow 尾迹，前景运营人与团队成员击掌庆祝，背景数据面板全部绿色上升箭头。最后画面过渡到温暖渐变背景，品牌标识居中，招聘文案以 Fluent 排版呈现，团队剪影在背景 translucent panel 隐约可见，留白充足。",
+      "camera": "轻微横移配合连线展开，再由中景推到近景聚焦增长曲线与庆祝，最后缓慢拉远回到中远景收束，85mm shallow -> 50mm medium。",
+      "camera_codec": {"z": "Z3", "y": "Y4", "x": "X2", "focal_length_mm": 85, "depth": "shallow"},
+      "action": "团队卡片 spring-physics 就位，增长曲线加速上升，击掌有力，最后品牌标识与招聘文案稳定呈现，团队剪影微微挥手。",
+      "audio": "节奏加快的协作反馈音叠加轻快鼓点，增长曲线到达最高点时确认击中音与欢呼，最后配乐回稳留下温暖尾音。",
+      "assets": ["C01", "S01", "P01"],
+      "continuity_note": "全片结束，最终帧为品牌招聘定格画面。"
+    }
+  ]
+}

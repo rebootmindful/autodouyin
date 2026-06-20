@@ -1,0 +1,145 @@
+{
+  "presets": {
+    "apple-cupertino": {
+      "id": "apple-cupertino",
+      "display_name": "Apple Cupertino",
+      "tagline": "Frosted glass, titanium depth",
+      "visual_keywords": [
+        "frosted glass blur",
+        "titanium edge highlights",
+        "precision machined surfaces",
+        "clean white space",
+        "product hero lighting",
+        "soft gradient backgrounds",
+        "micro-texture detail"
+      ],
+      "color_palette": [
+        "warm white",
+        "space gray",
+        "titanium silver",
+        "subtle blue accent"
+      ],
+      "material_texture": [
+        "brushed titanium",
+        "frosted glass",
+        "matte aluminum",
+        "micro-texture surfaces"
+      ],
+      "lighting_style": "soft diffused key light, subtle rim light, product photography style",
+      "motion_character": "precise, restrained, smooth ease-in-ease-out, mechanical precision",
+      "seedance_style_anchor": "frosted glass UI aesthetic, titanium metallic surfaces, clean Apple keynotestyle lighting, precision motion, premium commercial feel",
+      "seedance_negative_additions": [
+        "禁止粗糙纹理",
+        "禁止高饱和色彩",
+        "禁止夸张形变"
+      ],
+      "best_for": ["product-demo", "workflow-explainer"],
+      "brief_keywords": ["旗舰", "高端", "apple", "苹果", "钛", "premium", "旗舰产品"]
+    },
+    "microsoft-fluent": {
+      "id": "microsoft-fluent",
+      "display_name": "Microsoft Fluent",
+      "tagline": "Acrylic layers, colorful gradients",
+      "visual_keywords": [
+        "acrylic material blur",
+        "layered depth",
+        "colorful gradient meshes",
+        "reveal animations",
+        "light-driven hierarchy",
+        "translucent panels"
+      ],
+      "color_palette": [
+        "Microsoft blue",
+        "gradient mesh blue-purple-pink",
+        "warm neutrals",
+        "Fluent accent colors"
+      ],
+      "material_texture": [
+        "acrylic blur layers",
+        "layered cards",
+        "depth shadows",
+        "gradient mesh backgrounds"
+      ],
+      "lighting_style": "ambient colorful glow, layered light sources, depth-based illumination",
+      "motion_character": "spring-physics easing, layered parallax, reveal-from-behind transitions",
+      "seedance_style_anchor": "Fluent Design acrylic layers, colorful gradient mesh backgrounds, layered depth cards, spring-physics motion, modern productivity aesthetic",
+      "seedance_negative_additions": [
+        "禁止纯黑背景",
+        "禁止单色平面",
+        "禁止生硬切割"
+      ],
+      "best_for": ["workflow-explainer", "product-demo"],
+      "brief_keywords": ["生产力", "办公", "microsoft", "微软", "协作", "SaaS", "效率"]
+    },
+    "bauhaus-zen": {
+      "id": "bauhaus-zen",
+      "display_name": "Bauhaus Zen",
+      "tagline": "Matte zen, minimal whitespace",
+      "visual_keywords": [
+        "geometric simplicity",
+        "matte surfaces",
+        "generous whitespace",
+        "primary color accents",
+        "functional beauty",
+        "reduced form"
+      ],
+      "color_palette": [
+        "warm white background",
+        "matte black",
+        "primary red-blue-yellow accents",
+        "natural wood tones"
+      ],
+      "material_texture": [
+        "matte paper",
+        "unglazed ceramic",
+        "natural wood",
+        "flat color fields"
+      ],
+      "lighting_style": "even diffused light, minimal shadows, clean and calm",
+      "motion_character": "purposeful, slow, geometric transitions, no decoration",
+      "seedance_style_anchor": "Bauhaus minimalism meets zen emptiness, matte surfaces, geometric clarity, primary color accents, generous whitespace, functional beauty",
+      "seedance_negative_additions": [
+        "禁止过度装饰",
+        "禁止渐变滥用",
+        "禁止无意义动效"
+      ],
+      "best_for": ["workflow-explainer", "space-tour"],
+      "brief_keywords": ["极简", "禅", "bauhaus", "包豪斯", "留白", "功能", "通用"]
+    },
+    "vercel-dark": {
+      "id": "vercel-dark",
+      "display_name": "Vercel Dark",
+      "tagline": "Void black, neon accent lines",
+      "visual_keywords": [
+        "deep black void",
+        "neon edge lines",
+        "code-inspired geometry",
+        "terminal glow",
+        "high contrast",
+        "developer aesthetic"
+      ],
+      "color_palette": [
+        "void black",
+        "pure white text",
+        "neon green-cyan-blue accent lines",
+        "subtle dark gray layers"
+      ],
+      "material_texture": [
+        "matte black surfaces",
+        "glowing edge lines",
+        "glass panels with neon borders",
+        "dark carbon fiber"
+      ],
+      "lighting_style": "high contrast, single neon accent light source, deep shadows, edge-lit geometry",
+      "motion_character": "snappy, instant, code-compile speed, sharp cuts, glitch-adjacent",
+      "seedance_style_anchor": "void black background, neon accent edge lines, high contrast developer aesthetic, dark mode UI, terminal glow, sharp geometric motion",
+      "seedance_negative_additions": [
+        "禁止暖色调主导",
+        "禁止圆角柔和风",
+        "禁止低对比度"
+      ],
+      "best_for": ["product-demo", "character-action"],
+      "brief_keywords": ["开发者", "dev", "vercel", "暗色", "dark mode", "终端", "代码", "黑客"]
+    }
+  }
+}

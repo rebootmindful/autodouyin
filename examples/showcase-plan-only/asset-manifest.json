@@ -1,0 +1,33 @@
+{
+  "id": "assets-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "items": [
+    {
+      "asset_id": "C01",
+      "type": "character",
+      "name": "主体角色",
+      "description": "承载“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”的主要角色或操作主体，风格对齐 Bauhaus Zen。",
+      "prompt": "Bauhaus Zen 风格主体角色，用于表现“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”，服装、轮廓和身份稳定一致。",
+      "required": true,
+      "continuity_priority": "high",
+      "identity_lock": {
+        "strategy": "text-only",
+        "gender_presentation": "not-specified",
+        "approx_age_range": "adult",
+        "hair": "保持前后统一，不随段落变化",
+        "outfit": "保持同一套主服装",
+        "accessories": "如出现配饰需保持不变",
+        "persona": "保持同一人物职业气质与年龄感"
+      }
+    },
+    {
+      "asset_id": "S01",
+      "type": "scene",
+      "name": "主场景",
+      "description": "承载“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”的主要工作环境或展示空间，风格对齐 Bauhaus Zen。",
+      "prompt": "Bauhaus Zen 风格主场景，用于表现“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”的空间关系、光线与背景层次。",
+      "required": true,
+      "continuity_priority": "medium"
+    }
+  ]
+}

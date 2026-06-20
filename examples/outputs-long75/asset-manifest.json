@@ -1,0 +1,30 @@
+{
+  "id": "assets-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "items": [
+    {
+      "asset_id": "C01",
+      "type": "character",
+      "name": "AI 操作主体",
+      "description": "统一主角形象，服务“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”的动作连续性。",
+      "prompt": "9:16 角色设定图，科技感操作主体，东方面孔，简洁专业穿着，稳定表情。",
+      "required": true
+    },
+    {
+      "asset_id": "S01",
+      "type": "scene",
+      "name": "工作台场景",
+      "description": "电脑、桌面、界面和光影关系的一致性锚点。",
+      "prompt": "与自动化视频工作流相关的工作台场景，屏幕可见脚本、分镜和任务面板，干净科技感。",
+      "required": true
+    },
+    {
+      "asset_id": "P01",
+      "type": "prop",
+      "name": "生成结果面板",
+      "description": "结果展示阶段的关键道具与信息承载体。",
+      "prompt": "结构化结果面板，包含 script、storyboard、seedance job、publish job 卡片，清晰易读。",
+      "required": true
+    }
+  ]
+}

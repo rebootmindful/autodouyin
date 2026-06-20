@@ -1,0 +1,20 @@
+{
+  "id": "brief-20260619-example-07",
+  "goal": "做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路",
+  "platform": "douyin",
+  "mode": "plan-only",
+  "duration_seconds": 75,
+  "aspect_ratio": "9:16",
+  "style": "clean tech cinematic",
+  "video_type": "workflow-explainer",
+  "must_include": [
+    "brief intake",
+    "script generation",
+    "storyboard generation",
+    "publish preparation"
+  ],
+  "must_avoid": [
+    "visual drift",
+    "single long fake prompt"
+  ]
+}

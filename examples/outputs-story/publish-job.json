@@ -1,0 +1,13 @@
+{
+  "id": "publish-job-local-001",
+  "platform": "douyin",
+  "video_path": "artifacts/output-video.mp4",
+  "title": "做一条 15 秒剧情短片，讲一个创作者深夜赶工，最后靠 AI",
+  "description": "围绕“做一条 15 秒剧情短片，讲一个创作者深夜赶工，最后靠 AI 自动生成脚本和分镜完成视频发布的故事”生成一条可编排、可执行、可发布的视频方案。 #AI视频 #抖音自动化 #Seedance",
+  "hashtags": [
+    "AI视频",
+    "抖音自动化",
+    "Seedance"
+  ],
+  "visibility": "public"
+}

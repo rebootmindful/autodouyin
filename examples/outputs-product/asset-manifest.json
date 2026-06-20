@@ -1,0 +1,30 @@
+{
+  "id": "assets-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "items": [
+    {
+      "asset_id": "C01",
+      "type": "character",
+      "name": "产品操作者手部或主体",
+      "description": "服务“做一条 8 秒竖屏产品演示视频，展示一个 AI 视频自动化工具如何从 brief 生成脚本和发布任务”的人机交互动作锚点。",
+      "prompt": "9:16 半身或手部交互参考，干净科技商业广告风，动作克制，适合产品演示。",
+      "required": true
+    },
+    {
+      "asset_id": "S01",
+      "type": "scene",
+      "name": "产品主界面场景",
+      "description": "UI 主界面、结果卡片和主流程空间锚点。",
+      "prompt": "产品主界面场景，重点区域清晰，卡片分层明确，商业级 clean tech premium 风格。",
+      "required": true
+    },
+    {
+      "asset_id": "P01",
+      "type": "prop",
+      "name": "卖点结果卡片",
+      "description": "用于最后卖点和完成状态展示。",
+      "prompt": "高质感结果卡片与完成状态面板，包含脚本、分镜、发布准备信息，极简商业广告感。",
+      "required": true
+    }
+  ]
+}

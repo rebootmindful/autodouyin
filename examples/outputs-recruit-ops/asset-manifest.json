@@ -1,0 +1,30 @@
+{
+  "id": "assets-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "items": [
+    {
+      "asset_id": "C01",
+      "type": "character",
+      "name": "电商运营人",
+      "description": "年轻自信的电商运营专员，穿着现代职场休闲装，表情专注且有活力，代表目标岗位的 ideal candidate",
+      "prompt": "A confident young e-commerce operations specialist in modern smart-casual attire, standing in a Fluent Design workspace, warm smile, professional yet energetic, acrylic blur background, colorful gradient ambient lighting, layered depth cards around them",
+      "required": true
+    },
+    {
+      "asset_id": "S01",
+      "type": "scene",
+      "name": "电商运营工作台",
+      "description": "现代电商品牌运营中心，多屏工作台，Fluent Design 风格的层叠面板布局，ambient colorful glow 照明",
+      "prompt": "Modern e-commerce operations workspace with multiple screens, Fluent Design layered acrylic panels, blue-purple-pink gradient mesh background, ambient colorful glow lighting, translucent floating data cards, clean and organized, depth shadows between layers",
+      "required": true
+    },
+    {
+      "asset_id": "P01",
+      "type": "prop",
+      "name": "数据增长面板",
+      "description": "核心道具：展示 GMV 增长曲线、转化率数据面板，以 Fluent 风格层叠卡片呈现，带 gradient glow 动画效果",
+      "prompt": "Fluent Design style data dashboard card showing growth curve and conversion metrics, acrylic material with depth shadow, blue-purple-pink gradient mesh accents, green upward arrows, reveal animation, layered translucent panels",
+      "required": true
+    }
+  ]
+}

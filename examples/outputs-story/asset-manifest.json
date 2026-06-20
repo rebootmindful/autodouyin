@@ -1,0 +1,30 @@
+{
+  "id": "assets-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "items": [
+    {
+      "asset_id": "C01",
+      "type": "character",
+      "name": "深夜创作者主角",
+      "description": "服务“做一条 15 秒剧情短片，讲一个创作者深夜赶工，最后靠 AI 自动生成脚本和分镜完成视频发布的故事”的情绪连续性主角锚点。",
+      "prompt": "9:16 夜景人物设定图，略带疲惫但专注的创作者，东方面孔，夜间办公光线，电影叙事风格。",
+      "required": true
+    },
+    {
+      "asset_id": "S01",
+      "type": "scene",
+      "name": "深夜办公桌场景",
+      "description": "时间压力、屏幕光和桌面混乱度的空间锚点。",
+      "prompt": "深夜办公桌场景，电脑屏幕亮起，桌面有便签、时钟和未完成任务，cinematic night drama 风格。",
+      "required": true
+    },
+    {
+      "asset_id": "P01",
+      "type": "prop",
+      "name": "任务结果与时间线索",
+      "description": "用于从压力到完成的剧情转折。",
+      "prompt": "任务面板、倒计时或消息提醒构成的剧情道具，支持从紧张到松弛的情绪转折。",
+      "required": true
+    }
+  ]
+}

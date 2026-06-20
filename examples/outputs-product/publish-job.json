@@ -1,0 +1,13 @@
+{
+  "id": "publish-job-local-001",
+  "platform": "douyin",
+  "video_path": "artifacts/output-video.mp4",
+  "title": "做一条 8 秒竖屏产品演示视频，展示一个 AI 视频自动化工",
+  "description": "围绕“做一条 8 秒竖屏产品演示视频，展示一个 AI 视频自动化工具如何从 brief 生成脚本和发布任务”生成一条可编排、可执行、可发布的视频方案。 #AI视频 #抖音自动化 #Seedance",
+  "hashtags": [
+    "AI视频",
+    "抖音自动化",
+    "Seedance"
+  ],
+  "visibility": "public"
+}

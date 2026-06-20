@@ -1,0 +1,17 @@
+{
+  "platform": "douyin",
+  "mode": "plan-only",
+  "aspect_ratio": "9:16",
+  "duration_seconds": 4,
+  "id": "brief-20260619-example-06",
+  "goal": "做一条 4 秒竖屏产品闪演视频，直接展示 AI 视频工作流工具的完成结果",
+  "style": "clean tech premium",
+  "video_type": "product-demo",
+  "must_include": [
+    "finished result",
+    "clean UI"
+  ],
+  "must_avoid": [
+    "slow build-up"
+  ]
+}

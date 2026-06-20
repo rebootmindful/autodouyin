@@ -1,0 +1,24 @@
+{
+  "id": "script-local-001",
+  "brief_id": "brief-20260619-recruit-ops",
+  "video_type": "product-demo",
+  "strategy": "five-beat-short-video",
+  "title": "电商运营岗招聘——数据驱动的高光日常",
+  "logline": "一个电商运营人的高光日常：从工作台全貌到增长飙升，这个岗位等你来写下一章。",
+  "segments": [
+    {
+      "segment_id": "seg-01",
+      "purpose": "setup",
+      "summary": "电商运营中心活力一瞥：年轻运营人立于工作台中央，数据卡片环绕，工作台全貌展开，工具与职责一目了然",
+      "emotion": "confident",
+      "estimated_seconds": 6
+    },
+    {
+      "segment_id": "seg-02",
+      "purpose": "payoff",
+      "summary": "团队协作展开、增长曲线飙升、团队击掌庆祝，最终品牌定格与招聘召唤",
+      "emotion": "triumphant",
+      "estimated_seconds": 9
+    }
+  ]
+}

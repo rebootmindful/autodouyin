@@ -1,0 +1,38 @@
+{
+  "id": "script-local-001",
+  "brief_id": "brief-20260619-example-06",
+  "video_type": "product-demo",
+  "strategy": "five-beat-short-video",
+  "title": "做一条 4 秒竖屏产品闪演视频，直接展示 AI 视频工作流工具的完成结果",
+  "logline": "围绕“做一条 4 秒竖屏产品闪演视频，直接展示 AI 视频工作流工具的完成结果”生成一条可编排、可执行、可发布的视频方案。",
+  "segments": [
+    {
+      "segment_id": "seg-01",
+      "purpose": "hook",
+      "summary": "前 2-3 秒建立钩子，不讲全故事，先给结果感或异常点。",
+      "emotion": "urgent",
+      "estimated_seconds": 1
+    },
+    {
+      "segment_id": "seg-02",
+      "purpose": "setup",
+      "summary": "交代场景、人物、任务关系，让观众看懂上下文。",
+      "emotion": "focused",
+      "estimated_seconds": 1
+    },
+    {
+      "segment_id": "seg-03",
+      "purpose": "payoff",
+      "summary": "给出最重要的成果展示、高潮动作或视觉确认。",
+      "emotion": "confident",
+      "estimated_seconds": 1
+    },
+    {
+      "segment_id": "seg-04",
+      "purpose": "close",
+      "summary": "回稳并落版，留下可执行预期或二刷钩子。",
+      "emotion": "resolved",
+      "estimated_seconds": 1
+    }
+  ]
+}

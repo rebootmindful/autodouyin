@@ -1,0 +1,9 @@
+{
+  "platform": "douyin",
+  "mode": "plan-only",
+  "aspect_ratio": "9:16",
+  "goal": "完整工作流展示",
+  "duration_seconds": 120,
+  "video_type": "workflow-explainer",
+  "id": "brief-local-001"
+}

@@ -1,0 +1,352 @@
+{
+  "script": {
+    "id": "script-local-001",
+    "brief_id": "brief-20260619-example-05",
+    "video_type": "character-action",
+    "strategy": "five-beat-short-video",
+    "title": "做一条 10 秒角色动作展示视频，主角像数字指挥官一样操控屏幕中的脚本、分镜和发",
+    "logline": "",
+    "segments": [
+      {
+        "segment_id": "seg-01",
+        "purpose": "hook",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 2
+      },
+      {
+        "segment_id": "seg-02",
+        "purpose": "setup",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 2
+      },
+      {
+        "segment_id": "seg-03",
+        "purpose": "turn",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 2
+      },
+      {
+        "segment_id": "seg-04",
+        "purpose": "payoff",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 2
+      },
+      {
+        "segment_id": "seg-05",
+        "purpose": "close",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 2
+      }
+    ]
+  },
+  "storyboard": {
+    "id": "storyboard-local-001",
+    "script_id": "script-local-001",
+    "shots": [
+      {
+        "shot_id": "shot-01",
+        "scene_id": "scene-01",
+        "segment_mode": "single-sequence",
+        "purpose": "hook",
+        "start_second": 0,
+        "end_second": 2,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z4",
+          "y": "Y4",
+          "x": "X1",
+          "focal_length_mm": 35,
+          "depth": "shallow"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      },
+      {
+        "shot_id": "shot-02",
+        "scene_id": "scene-02",
+        "segment_mode": "single-sequence",
+        "purpose": "setup",
+        "start_second": 2,
+        "end_second": 4,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z5",
+          "y": "Y4",
+          "x": "X2",
+          "focal_length_mm": 50,
+          "depth": "medium"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      },
+      {
+        "shot_id": "shot-03",
+        "scene_id": "scene-03",
+        "segment_mode": "single-sequence",
+        "purpose": "turn",
+        "start_second": 4,
+        "end_second": 6,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z5",
+          "y": "Y4",
+          "x": "X2",
+          "focal_length_mm": 50,
+          "depth": "medium"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      },
+      {
+        "shot_id": "shot-04",
+        "scene_id": "scene-04",
+        "segment_mode": "single-sequence",
+        "purpose": "payoff",
+        "start_second": 6,
+        "end_second": 8,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z3",
+          "y": "Y4",
+          "x": "X2",
+          "focal_length_mm": 85,
+          "depth": "shallow"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      },
+      {
+        "shot_id": "shot-05",
+        "scene_id": "scene-05",
+        "segment_mode": "single-sequence",
+        "purpose": "close",
+        "start_second": 8,
+        "end_second": 10,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z6",
+          "y": "Y4",
+          "x": "X4",
+          "focal_length_mm": 50,
+          "depth": "medium"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      }
+    ]
+  },
+  "assets": {
+    "id": "assets-local-001",
+    "storyboard_id": "storyboard-local-001",
+    "items": [
+      {
+        "asset_id": "C01",
+        "type": "character",
+        "name": "",
+        "description": "",
+        "prompt": "",
+        "required": true
+      },
+      {
+        "asset_id": "S01",
+        "type": "scene",
+        "name": "",
+        "description": "",
+        "prompt": "",
+        "required": true
+      },
+      {
+        "asset_id": "P01",
+        "type": "prop",
+        "name": "",
+        "description": "",
+        "prompt": "",
+        "required": true
+      }
+    ]
+  },
+  "seedance": {
+    "id": "seedance-job-local-001",
+    "storyboard_id": "storyboard-local-001",
+    "duration_seconds": 10,
+    "aspect_ratio": "9:16",
+    "mode": "text-image-video",
+    "global_style_anchor": "",
+    "continuity_locks": [],
+    "negative_constraints": [],
+    "slot_plan": [
+      {
+        "ref": "@图片1",
+        "asset_id": "C01",
+        "usage": "主体一致性参考"
+      },
+      {
+        "ref": "@图片2",
+        "asset_id": "S01",
+        "usage": "场景或空间背景参考"
+      },
+      {
+        "ref": "@图片3",
+        "asset_id": "P01",
+        "usage": "关键道具、结果卡片或动作强化参考"
+      }
+    ],
+    "video_type": "character-action",
+    "strategy": "five-beat-short-video",
+    "execution_recommendation": {
+      "video_type": "character-action",
+      "hard_single_generation_range_seconds": [
+        4,
+        15
+      ],
+      "official_ui_recommended_range_seconds": [
+        5,
+        12
+      ],
+      "fastest_test_window_seconds": [
+        4,
+        5
+      ],
+      "fastest_practical_window_seconds": [
+        5,
+        8
+      ],
+      "stable_expression_window_seconds": [
+        6,
+        10
+      ],
+      "default_duration_seconds_for_type": 10,
+      "max_single_generation_seconds": 15,
+      "scene_split_recommended_after_seconds": 60,
+      "suggested_split_strategy": "single-generation",
+      "requested_duration_seconds": 10
+    },
+    "scene_plan": [],
+    "prompt_blocks": [
+      {
+        "block_id": "pb-01",
+        "scene_id": "scene-01",
+        "mode": "single-sequence",
+        "start_second": 0,
+        "end_second": 2,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [],
+        "audio_refs": []
+      },
+      {
+        "block_id": "pb-02",
+        "scene_id": "scene-02",
+        "mode": "single-sequence",
+        "start_second": 2,
+        "end_second": 4,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [],
+        "audio_refs": []
+      },
+      {
+        "block_id": "pb-03",
+        "scene_id": "scene-03",
+        "mode": "single-sequence",
+        "start_second": 4,
+        "end_second": 6,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [],
+        "audio_refs": []
+      },
+      {
+        "block_id": "pb-04",
+        "scene_id": "scene-04",
+        "mode": "single-sequence",
+        "start_second": 6,
+        "end_second": 8,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [],
+        "audio_refs": []
+      },
+      {
+        "block_id": "pb-05",
+        "scene_id": "scene-05",
+        "mode": "single-sequence",
+        "start_second": 8,
+        "end_second": 10,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [],
+        "audio_refs": []
+      }
+    ]
+  },
+  "publish": {
+    "id": "publish-job-local-001",
+    "platform": "douyin",
+    "video_path": "artifacts/output-video.mp4",
+    "title": "",
+    "description": "",
+    "hashtags": [],
+    "visibility": "public"
+  }
+}

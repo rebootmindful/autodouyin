@@ -1,0 +1,262 @@
+{
+  "id": "seedance-job-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "duration_seconds": 120,
+  "aspect_ratio": "9:16",
+  "mode": "scene-split-edit-pipeline",
+  "global_style_anchor": "cinematic clean tech，统一视觉风格，画面干净，避免风格漂移",
+  "continuity_locks": [
+    "cinematic clean tech，统一视觉风格，画面干净，避免风格漂移",
+    "同一角色保持一致五官、身份、服装和发型，不变脸、不换人。",
+    "同一场景保持一致环境、光线、背景与空间关系，不突然切换。"
+  ],
+  "negative_constraints": [
+    "禁止风格漂移",
+    "禁止角色变脸或换人",
+    "禁止突然偏色",
+    "禁止新增无关人物",
+    "禁止光线突变",
+    "禁止出现文字、字幕、LOGO、水印"
+  ],
+  "slot_plan": [
+    {
+      "ref": "@图片1",
+      "asset_id": "C01",
+      "usage": "主体一致性参考"
+    },
+    {
+      "ref": "@图片2",
+      "asset_id": "S01",
+      "usage": "场景或空间背景参考"
+    },
+    {
+      "ref": "@图片3",
+      "asset_id": "P01",
+      "usage": "关键道具、结果卡片或动作强化参考"
+    }
+  ],
+  "video_type": "workflow-explainer",
+  "strategy": "scene-split-edit-pipeline",
+  "execution_recommendation": {
+    "video_type": "workflow-explainer",
+    "hard_single_generation_range_seconds": [
+      4,
+      15
+    ],
+    "official_ui_recommended_range_seconds": [
+      5,
+      12
+    ],
+    "fastest_test_window_seconds": [
+      4,
+      5
+    ],
+    "fastest_practical_window_seconds": [
+      5,
+      8
+    ],
+    "stable_expression_window_seconds": [
+      8,
+      12
+    ],
+    "default_duration_seconds_for_type": 15,
+    "max_single_generation_seconds": 15,
+    "scene_split_recommended_after_seconds": 60,
+    "suggested_split_strategy": "split into independent scenes, then edit",
+    "requested_duration_seconds": 120
+  },
+  "scene_plan": [
+    {
+      "scene_id": "scene-01",
+      "start_second": 0,
+      "end_second": 24,
+      "edit_join": "post-edit bridge"
+    },
+    {
+      "scene_id": "scene-02",
+      "start_second": 24,
+      "end_second": 48,
+      "edit_join": "post-edit bridge"
+    },
+    {
+      "scene_id": "scene-03",
+      "start_second": 48,
+      "end_second": 72,
+      "edit_join": "post-edit bridge"
+    },
+    {
+      "scene_id": "scene-04",
+      "start_second": 72,
+      "end_second": 96,
+      "edit_join": "post-edit bridge"
+    },
+    {
+      "scene_id": "scene-05",
+      "start_second": 96,
+      "end_second": 120,
+      "edit_join": "post-edit bridge"
+    }
+  ],
+  "prompt_blocks": [
+    {
+      "block_id": "pb-01",
+      "scene_id": "scene-01",
+      "mode": "scene-base",
+      "start_second": 0,
+      "end_second": 12,
+      "prompt": "本段正常生成。 工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：cinematic clean tech，统一视觉风格，画面干净，避免风格漂移 0-12秒画面：建立世界与空间关系，先让观众理解“完整工作流展示”发生在什么工作流环境中，界面与主体位置稳定。 镜头：稳定机位为主，先远后中，镜头编码 Z7 Y4 X2 到 Z5 Y4 X2，50mm，deep景深。 动作：主体进入场景，工作流逐步展开，但不急于爆发变化。 声音：节奏较慢的环境音和轻量配乐，优先可读性。 这是第 1/5 段，应保持风格、角色外观和场景关系不漂移。 额外要求：信息层级清楚，结果面板可读，过程到结果连续 全片保持统一视觉风格，风格不漂移。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-02",
+      "scene_id": "scene-01",
+      "mode": "scene-extension",
+      "start_second": 12,
+      "end_second": 24,
+      "prompt": "将@视频1延长12秒，接续上一段最后一帧的构图与角色状态，前1秒仅保留微动作和环境流动。 工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：cinematic clean tech，统一视觉风格，画面干净，避免风格漂移 12-24秒画面：建立世界与空间关系，先让观众理解“完整工作流展示”发生在什么工作流环境中，界面与主体位置稳定。 镜头：稳定机位为主，先远后中，镜头编码 Z7 Y4 X2 到 Z5 Y4 X2，50mm，deep景深。 动作：主体进入场景，工作流逐步展开，但不急于爆发变化。 声音：节奏较慢的环境音和轻量配乐，优先可读性。 这是第 1/5 段，应保持风格、角色外观和场景关系不漂移。 额外要求：信息层级清楚，结果面板可读，过程到结果连续 全片保持统一视觉风格，风格不漂移。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [
+        "@视频1"
+      ],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-03",
+      "scene_id": "scene-02",
+      "mode": "scene-base",
+      "start_second": 24,
+      "end_second": 36,
+      "prompt": "本段正常生成。 工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：cinematic clean tech，统一视觉风格，画面干净，避免风格漂移 24-36秒画面：进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。 镜头：从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。 动作：主体确认结果，系统停在待执行或待发布状态。 声音：配乐回稳，环境音持续，形成落点。 这是第 2/5 段，应保持风格、角色外观和场景关系不漂移。 额外要求：信息层级清楚，结果面板可读，过程到结果连续 全片保持统一视觉风格，风格不漂移。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-04",
+      "scene_id": "scene-02",
+      "mode": "scene-extension",
+      "start_second": 36,
+      "end_second": 48,
+      "prompt": "将@视频1延长12秒，接续上一段最后一帧的构图与角色状态，前1秒仅保留微动作和环境流动。 工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：cinematic clean tech，统一视觉风格，画面干净，避免风格漂移 36-48秒画面：进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。 镜头：从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。 动作：主体确认结果，系统停在待执行或待发布状态。 声音：配乐回稳，环境音持续，形成落点。 这是第 2/5 段，应保持风格、角色外观和场景关系不漂移。 额外要求：信息层级清楚，结果面板可读，过程到结果连续 全片保持统一视觉风格，风格不漂移。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [
+        "@视频1"
+      ],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-05",
+      "scene_id": "scene-03",
+      "mode": "scene-base",
+      "start_second": 48,
+      "end_second": 60,
+      "prompt": "本段正常生成。 工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：cinematic clean tech，统一视觉风格，画面干净，避免风格漂移 48-60秒画面：内容进入变化推进段，脚本、分镜、素材编号和视频任务开始持续生成，信息密度上升。 镜头：由中景推进到近景，局部横移辅助，镜头编码 Z5 Y4 X2 到 Z3 Y4 X2，50-85mm，medium到shallow景深。 动作：主体操作与系统编译动作联动，结果不断堆叠。 声音：配乐节奏明显加快，加入界面反馈音和切换音。 这是第 3/5 段，应保持风格、角色外观和场景关系不漂移。 额外要求：信息层级清楚，结果面板可读，过程到结果连续 全片保持统一视觉风格，风格不漂移。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-06",
+      "scene_id": "scene-03",
+      "mode": "scene-extension",
+      "start_second": 60,
+      "end_second": 72,
+      "prompt": "将@视频1延长12秒，接续上一段最后一帧的构图与角色状态，前1秒仅保留微动作和环境流动。 工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：cinematic clean tech，统一视觉风格，画面干净，避免风格漂移 60-72秒画面：内容进入变化推进段，脚本、分镜、素材编号和视频任务开始持续生成，信息密度上升。 镜头：由中景推进到近景，局部横移辅助，镜头编码 Z5 Y4 X2 到 Z3 Y4 X2，50-85mm，medium到shallow景深。 动作：主体操作与系统编译动作联动，结果不断堆叠。 声音：配乐节奏明显加快，加入界面反馈音和切换音。 这是第 3/5 段，应保持风格、角色外观和场景关系不漂移。 额外要求：信息层级清楚，结果面板可读，过程到结果连续 全片保持统一视觉风格，风格不漂移。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [
+        "@视频1"
+      ],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-07",
+      "scene_id": "scene-04",
+      "mode": "scene-base",
+      "start_second": 72,
+      "end_second": 84,
+      "prompt": "本段正常生成。 工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：cinematic clean tech，统一视觉风格，画面干净，避免风格漂移 72-84秒画面：进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。 镜头：从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。 动作：主体确认结果，系统停在待执行或待发布状态。 声音：配乐回稳，环境音持续，形成落点。 这是第 4/5 段，应保持风格、角色外观和场景关系不漂移。 额外要求：信息层级清楚，结果面板可读，过程到结果连续 全片保持统一视觉风格，风格不漂移。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-08",
+      "scene_id": "scene-04",
+      "mode": "scene-extension",
+      "start_second": 84,
+      "end_second": 96,
+      "prompt": "将@视频1延长12秒，接续上一段最后一帧的构图与角色状态，前1秒仅保留微动作和环境流动。 工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：cinematic clean tech，统一视觉风格，画面干净，避免风格漂移 84-96秒画面：进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。 镜头：从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。 动作：主体确认结果，系统停在待执行或待发布状态。 声音：配乐回稳，环境音持续，形成落点。 这是第 4/5 段，应保持风格、角色外观和场景关系不漂移。 额外要求：信息层级清楚，结果面板可读，过程到结果连续 全片保持统一视觉风格，风格不漂移。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [
+        "@视频1"
+      ],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-09",
+      "scene_id": "scene-05",
+      "mode": "scene-base",
+      "start_second": 96,
+      "end_second": 108,
+      "prompt": "本段正常生成。 工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：cinematic clean tech，统一视觉风格，画面干净，避免风格漂移 96-108秒画面：进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。 镜头：从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。 动作：主体确认结果，系统停在待执行或待发布状态。 声音：配乐回稳，环境音持续，形成落点。 这是第 5/5 段，应保持风格、角色外观和场景关系不漂移。 额外要求：信息层级清楚，结果面板可读，过程到结果连续 全片保持统一视觉风格，风格不漂移。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-10",
+      "scene_id": "scene-05",
+      "mode": "scene-extension",
+      "start_second": 108,
+      "end_second": 120,
+      "prompt": "将@视频1延长12秒，接续上一段最后一帧的构图与角色状态，前1秒仅保留微动作和环境流动。 工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：cinematic clean tech，统一视觉风格，画面干净，避免风格漂移 108-120秒画面：进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。 镜头：从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。 动作：主体确认结果，系统停在待执行或待发布状态。 声音：配乐回稳，环境音持续，形成落点。 这是第 5/5 段，应保持风格、角色外观和场景关系不漂移。 额外要求：信息层级清楚，结果面板可读，过程到结果连续 全片保持统一视觉风格，风格不漂移。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [
+        "@视频1"
+      ],
+      "audio_refs": []
+    }
+  ]
+}

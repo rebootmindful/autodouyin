@@ -1,0 +1,131 @@
+{
+  "id": "storyboard-local-001",
+  "script_id": "script-local-001",
+  "shots": [
+    {
+      "shot_id": "shot-01",
+      "scene_id": "scene-01",
+      "segment_mode": "scene-base",
+      "purpose": "world-build",
+      "start_second": 0,
+      "end_second": 15,
+      "visual": "人物或主体清楚出现在画面中，围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”逐步展开要点说明，画面持续体现 geometric simplicity、matte surfaces、generous whitespace。",
+      "camera": "稳定机位为主，先远后中，让空间关系可读。 镜头编码 Z7 Y4 X2，50mm，deep景深。",
+      "camera_codec": {
+        "z": "Z7",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "deep"
+      },
+      "action": "主体保持稳定出现，按节奏分点说明信息，不突然切大动作。 保持同一人物发型、服装、年龄感和职业气质一致。",
+      "audio": "延续统一环境音与配乐层次。 当前镜头需与前后段落保持风格连续，共 5 个镜头。",
+      "assets": [
+        "C01",
+        "S01"
+      ],
+      "continuity_note": "作为独立 scene 的开场，结尾应留给后续 scene 后期拼接。",
+      "dialogue": ""
+    },
+    {
+      "shot_id": "shot-02",
+      "scene_id": "scene-02",
+      "segment_mode": "scene-base",
+      "purpose": "setup-flow",
+      "start_second": 15,
+      "end_second": 30,
+      "visual": "人物或主体清楚出现在画面中，围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”逐步展开要点说明，画面持续体现 geometric simplicity、matte surfaces、generous whitespace。",
+      "camera": "中景稳定推进，让主要流程逐步展开。 镜头编码 Z5 Y4 X2，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体保持稳定出现，按节奏分点说明信息，不突然切大动作。 保持同一人物发型、服装、年龄感和职业气质一致。",
+      "audio": "延续统一环境音与配乐层次。 当前镜头需与前后段落保持风格连续，共 5 个镜头。",
+      "assets": [
+        "C01",
+        "S01"
+      ],
+      "continuity_note": "作为独立 scene 的开场，结尾应留给后续 scene 后期拼接。",
+      "dialogue": ""
+    },
+    {
+      "shot_id": "shot-03",
+      "scene_id": "scene-03",
+      "segment_mode": "scene-base",
+      "purpose": "change-push",
+      "start_second": 30,
+      "end_second": 45,
+      "visual": "人物或主体清楚出现在画面中，围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”逐步展开要点说明，画面持续体现 geometric simplicity、matte surfaces、generous whitespace。",
+      "camera": "由中景推进到近景，局部横移辅助变化。 镜头编码 Z5 Y4 X2，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体保持稳定出现，按节奏分点说明信息，不突然切大动作。 保持同一人物发型、服装、年龄感和职业气质一致。",
+      "audio": "延续统一环境音与配乐层次。 当前镜头需与前后段落保持风格连续，共 5 个镜头。",
+      "assets": [
+        "C01",
+        "S01"
+      ],
+      "continuity_note": "作为独立 scene 的开场，结尾应留给后续 scene 后期拼接。",
+      "dialogue": ""
+    },
+    {
+      "shot_id": "shot-04",
+      "scene_id": "scene-04",
+      "segment_mode": "scene-base",
+      "purpose": "peak-moment",
+      "start_second": 45,
+      "end_second": 60,
+      "visual": "人物或主体清楚出现在画面中，围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”逐步展开要点说明，画面持续体现 geometric simplicity、matte surfaces、generous whitespace。",
+      "camera": "近景强化高潮主体，镜头更聚焦更有冲击。 镜头编码 Z3 Y4 X2，85mm，shallow景深。",
+      "camera_codec": {
+        "z": "Z3",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 85,
+        "depth": "shallow"
+      },
+      "action": "主体保持稳定出现，按节奏分点说明信息，不突然切大动作。 保持同一人物发型、服装、年龄感和职业气质一致。",
+      "audio": "延续统一环境音与配乐层次。 当前镜头需与前后段落保持风格连续，共 5 个镜头。",
+      "assets": [
+        "C01",
+        "S01"
+      ],
+      "continuity_note": "作为独立 scene 的开场，结尾应留给后续 scene 后期拼接。",
+      "dialogue": ""
+    },
+    {
+      "shot_id": "shot-05",
+      "scene_id": "scene-05",
+      "segment_mode": "scene-base",
+      "purpose": "emotional-close",
+      "start_second": 60,
+      "end_second": 75,
+      "visual": "人物或主体清楚出现在画面中，围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”逐步展开要点说明，画面持续体现 geometric simplicity、matte surfaces、generous whitespace。",
+      "camera": "从近景回到中远景，轻微拉远完成收束。 镜头编码 Z6 Y4 X4，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体保持稳定出现，按节奏分点说明信息，不突然切大动作。 保持同一人物发型、服装、年龄感和职业气质一致。",
+      "audio": "延续统一环境音与配乐层次。 当前镜头需与前后段落保持风格连续，共 5 个镜头。",
+      "assets": [
+        "C01",
+        "S01"
+      ],
+      "continuity_note": "作为独立 scene 的开场，结尾应留给后续 scene 后期拼接。",
+      "dialogue": ""
+    }
+  ]
+}

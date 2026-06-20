@@ -1,0 +1,37 @@
+# [INPUT]: 依赖 {本地运行与适配器安装} 的 {可忽略产物}
+# [OUTPUT]: 对外提供 {依赖、运行时和本地配置忽略规则}
+# [POS]: {仓库根目录} 的 {运行卫生规则}
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Adapters
+adapters/douyin-upload-vendor/node_modules/
+adapters/douyin-upload-vendor/douyin-output/
+adapters/douyin-upload-vendor/.env.development
+adapters/douyin-upload-vendor/temp/
+
+# Runtime
+output/
+*.log
+*.tmp
+*.bak
+bootstrap.out.txt
+doctor-report.json
+.env
+.env.*
+!.env.example
+
+# Local tool state
+.codegraph/
+.omx/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

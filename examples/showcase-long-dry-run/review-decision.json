@@ -1,0 +1,7 @@
+{
+  "status": "approved",
+  "reviewer": "user",
+  "approved_at": "2026-06-20T19:17:44+08:00",
+  "selected_model": "seedance-2.0-fast",
+  "notes": "等待用户审核。确认通过后再进入真实生成。"
+}

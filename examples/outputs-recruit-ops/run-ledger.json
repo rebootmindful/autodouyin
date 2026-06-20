@@ -1,0 +1,16 @@
+{
+  "id": "run-ledger-local-001",
+  "brief_id": "brief-20260619-recruit-ops",
+  "mode": "plan-only",
+  "steps": [
+    {"step": 1, "artifact": "brief.json", "status": "done", "note": "brief 标准化完成"},
+    {"step": 2, "artifact": "skeleton.json", "status": "done", "note": "骨架生成：5 拍短视频，product-demo，microsoft-fluent"},
+    {"step": 3, "artifact": "script.json", "status": "done", "note": "叙事内容填充完成"},
+    {"step": 4, "artifact": "storyboard.json", "status": "done", "note": "分镜内容填充完成"},
+    {"step": 5, "artifact": "asset-manifest.json", "status": "done", "note": "素材清单填充完成"},
+    {"step": 6, "artifact": "seedance-job.json", "status": "done", "note": "Seedance prompt blocks 组装完成"},
+    {"step": 7, "artifact": "publish-job.json", "status": "done", "note": "发布任务填充完成"},
+    {"step": 8, "artifact": "validation", "status": "done", "note": "validate_artifacts.py 全部通过：结构/内容/时间轴/相机/风格"}
+  ],
+  "status": "done"
+}

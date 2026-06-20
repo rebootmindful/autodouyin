@@ -1,0 +1,262 @@
+{
+  "script": {
+    "id": "script-local-001",
+    "brief_id": "brief-20260619-example-02",
+    "video_type": "workflow-explainer",
+    "strategy": "three-phase-segmented-video",
+    "title": "做一个 36 秒的连续短视频，展示 AI 从 brief 生成脚本、分镜、视频任",
+    "logline": "",
+    "segments": [
+      {
+        "segment_id": "seg-01",
+        "purpose": "world-build",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 12
+      },
+      {
+        "segment_id": "seg-02",
+        "purpose": "change-push",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 12
+      },
+      {
+        "segment_id": "seg-03",
+        "purpose": "emotional-close",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 12
+      }
+    ]
+  },
+  "storyboard": {
+    "id": "storyboard-local-001",
+    "script_id": "script-local-001",
+    "shots": [
+      {
+        "shot_id": "shot-01",
+        "scene_id": "scene-01",
+        "segment_mode": "segment-base",
+        "purpose": "world-build",
+        "start_second": 0,
+        "end_second": 12,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z7",
+          "y": "Y4",
+          "x": "X2",
+          "focal_length_mm": 50,
+          "depth": "deep"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      },
+      {
+        "shot_id": "shot-02",
+        "scene_id": "scene-02",
+        "segment_mode": "segment-extension",
+        "purpose": "change-push",
+        "start_second": 12,
+        "end_second": 24,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z5",
+          "y": "Y4",
+          "x": "X2",
+          "focal_length_mm": 50,
+          "depth": "medium"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      },
+      {
+        "shot_id": "shot-03",
+        "scene_id": "scene-03",
+        "segment_mode": "segment-extension",
+        "purpose": "emotional-close",
+        "start_second": 24,
+        "end_second": 36,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z6",
+          "y": "Y4",
+          "x": "X4",
+          "focal_length_mm": 50,
+          "depth": "medium"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      }
+    ]
+  },
+  "assets": {
+    "id": "assets-local-001",
+    "storyboard_id": "storyboard-local-001",
+    "items": [
+      {
+        "asset_id": "C01",
+        "type": "character",
+        "name": "",
+        "description": "",
+        "prompt": "",
+        "required": true
+      },
+      {
+        "asset_id": "S01",
+        "type": "scene",
+        "name": "",
+        "description": "",
+        "prompt": "",
+        "required": true
+      },
+      {
+        "asset_id": "P01",
+        "type": "prop",
+        "name": "",
+        "description": "",
+        "prompt": "",
+        "required": true
+      }
+    ]
+  },
+  "seedance": {
+    "id": "seedance-job-local-001",
+    "storyboard_id": "storyboard-local-001",
+    "duration_seconds": 36,
+    "aspect_ratio": "9:16",
+    "mode": "segmented-extension",
+    "global_style_anchor": "",
+    "continuity_locks": [],
+    "negative_constraints": [],
+    "slot_plan": [
+      {
+        "ref": "@图片1",
+        "asset_id": "C01",
+        "usage": "主体一致性参考"
+      },
+      {
+        "ref": "@图片2",
+        "asset_id": "S01",
+        "usage": "场景或空间背景参考"
+      },
+      {
+        "ref": "@图片3",
+        "asset_id": "P01",
+        "usage": "关键道具、结果卡片或动作强化参考"
+      }
+    ],
+    "video_type": "workflow-explainer",
+    "strategy": "three-phase-segmented-video",
+    "execution_recommendation": {
+      "video_type": "workflow-explainer",
+      "hard_single_generation_range_seconds": [
+        4,
+        15
+      ],
+      "official_ui_recommended_range_seconds": [
+        5,
+        12
+      ],
+      "fastest_test_window_seconds": [
+        4,
+        5
+      ],
+      "fastest_practical_window_seconds": [
+        5,
+        8
+      ],
+      "stable_expression_window_seconds": [
+        8,
+        12
+      ],
+      "default_duration_seconds_for_type": 15,
+      "max_single_generation_seconds": 15,
+      "scene_split_recommended_after_seconds": 60,
+      "suggested_split_strategy": "3 segments preferred",
+      "requested_duration_seconds": 36
+    },
+    "scene_plan": [],
+    "prompt_blocks": [
+      {
+        "block_id": "pb-01",
+        "scene_id": "scene-01",
+        "mode": "segment-base",
+        "start_second": 0,
+        "end_second": 12,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [],
+        "audio_refs": []
+      },
+      {
+        "block_id": "pb-02",
+        "scene_id": "scene-02",
+        "mode": "segment-extension",
+        "start_second": 12,
+        "end_second": 24,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [
+          "@视频1"
+        ],
+        "audio_refs": []
+      },
+      {
+        "block_id": "pb-03",
+        "scene_id": "scene-03",
+        "mode": "segment-extension",
+        "start_second": 24,
+        "end_second": 36,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [
+          "@视频1"
+        ],
+        "audio_refs": []
+      }
+    ]
+  },
+  "publish": {
+    "id": "publish-job-local-001",
+    "platform": "douyin",
+    "video_path": "artifacts/output-video.mp4",
+    "title": "",
+    "description": "",
+    "hashtags": [],
+    "visibility": "public"
+  }
+}

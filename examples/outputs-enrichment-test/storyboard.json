@@ -1,0 +1,131 @@
+{
+  "id": "storyboard-local-001",
+  "script_id": "script-local-001",
+  "shots": [
+    {
+      "shot_id": "shot-01",
+      "scene_id": "scene-01",
+      "segment_mode": "single-sequence",
+      "purpose": "hook",
+      "start_second": 0,
+      "end_second": 3,
+      "visual": "竖屏中央，五张分镜卡片以 Bauhaus 网格瞬间排列成型，哑光表面反射柔和均匀光线，大面积留白衬托几何秩序，原色红点标记关键节点。",
+      "camera": "快速推近，从中景到近景锁定中央卡片组，镜头编码 Z4 Y4 X1，35mm，shallow 景深，第一眼抓住几何排列的功能美。",
+      "camera_codec": {
+        "z": "Z4",
+        "y": "Y4",
+        "x": "X1",
+        "focal_length_mm": 35,
+        "depth": "shallow"
+      },
+      "action": "分镜卡片从无到有以克制动画出现，无多余动效，仅几何位移。",
+      "audio": "短促 matte 敲击音，干净利落，立刻建立节奏。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "结尾卡片组居中定格，下一镜头从同一卡片组展开。"
+    },
+    {
+      "shot_id": "shot-02",
+      "scene_id": "scene-02",
+      "segment_mode": "single-sequence",
+      "purpose": "setup",
+      "start_second": 3,
+      "end_second": 6,
+      "visual": "工作台场景：哑光白底上，brief 文本被拆解为三个功能模块——脚本、分镜、素材编号，每个模块以矩形卡片呈现，间距均匀，留白充足。",
+      "camera": "中景稳定推进，镜头编码 Z5 Y4 X2，50mm，medium 景深，信息层级清晰可读。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "三个模块依次从上方滑入位，动作克制匀速，无弹性无回弹。",
+      "audio": "轻量环境音叠加卡片就位音，节奏平稳。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "结尾三个模块稳定排列，下一镜头从同一排列开始组装。"
+    },
+    {
+      "shot_id": "shot-03",
+      "scene_id": "scene-03",
+      "segment_mode": "single-sequence",
+      "purpose": "turn",
+      "start_second": 6,
+      "end_second": 9,
+      "visual": "模块开始自动连接：卡片之间出现细线几何连线，镜头编码和素材引用以原色标签形式挂载，信息密度上升但保持留白可读性。",
+      "camera": "轻微横移配合连线展开方向，镜头编码 Z5 Y4 X2，50mm，medium 景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "连线和标签以功能动画依次出现，无装饰性粒子或光效。",
+      "audio": "节奏轻微加快的界面反馈音，配乐保持极简。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "结尾连线网络完整呈现，下一镜头从同一网络聚焦到成果面板。"
+    },
+    {
+      "shot_id": "shot-04",
+      "scene_id": "scene-04",
+      "segment_mode": "single-sequence",
+      "purpose": "payoff",
+      "start_second": 9,
+      "end_second": 12,
+      "visual": "成果面板以 Bauhaus 网格排列：script、storyboard、seedance job 三张卡片居中，哑光质感，原色蓝色标记已完成状态，大面积留白让信息一眼可读。",
+      "camera": "由中景推到近景聚焦中央面板，镜头编码 Z3 Y4 X2，85mm，shallow 景深，强调结果。",
+      "camera_codec": {
+        "z": "Z3",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 85,
+        "depth": "shallow"
+      },
+      "action": "三张卡片状态从草稿切换为已完成，颜色变化克制。",
+      "audio": "结果确认音，配乐进入最高点但保持低音量。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "面板定格在已完成状态，下一镜头从同一面板缓慢拉远。"
+    },
+    {
+      "shot_id": "shot-05",
+      "scene_id": "scene-05",
+      "segment_mode": "single-sequence",
+      "purpose": "close",
+      "start_second": 12,
+      "end_second": 15,
+      "visual": "画面停留在发布就绪面板，主体确认手势后镜头缓慢拉远，面板缩小为几何构图中的一个元素，大面积留白形成收束。",
+      "camera": "缓慢拉远回到中远景，镜头编码 Z6 Y4 X4，50mm，medium 景深，形成留白收束。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体停留在确认姿态，无多余动作。",
+      "audio": "收束音效，配乐回稳留下呼吸感。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "全片结束，最终帧为几何留白构图。"
+    }
+  ]
+}

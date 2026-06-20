@@ -1,0 +1,131 @@
+{
+  "id": "storyboard-local-001",
+  "script_id": "script-local-001",
+  "shots": [
+    {
+      "shot_id": "shot-01",
+      "scene_id": "scene-01",
+      "segment_mode": "single-sequence",
+      "purpose": "hook",
+      "start_second": 0,
+      "end_second": 3,
+      "visual": "深夜赶工压力先立住，观众一眼看见主角的困境和截止压力。",
+      "camera": "快速推近，第一眼抓人，镜头编码 Z4 Y4 X1，35mm，shallow景深。",
+      "camera_codec": {
+        "z": "Z4",
+        "y": "Y4",
+        "x": "X1",
+        "focal_length_mm": 35,
+        "depth": "shallow"
+      },
+      "action": "主角在压力状态下停顿、皱眉或快速敲击键盘。",
+      "audio": "轻微压迫感环境音和急促键盘声，先立住焦虑。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-02",
+      "scene_id": "scene-02",
+      "segment_mode": "single-sequence",
+      "purpose": "setup",
+      "start_second": 3,
+      "end_second": 6,
+      "visual": "主角、桌面、时间和未完成工作被建立，问题具象化。",
+      "camera": "中景稳定推进，交代空间和工作流背景，镜头编码 Z5 Y4 X2，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "桌面信息、时间压力和未完成任务被逐步看清。",
+      "audio": "轻量环境音和键盘操作音，强调真实工作台氛围。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-03",
+      "scene_id": "scene-03",
+      "segment_mode": "single-sequence",
+      "purpose": "turn",
+      "start_second": 6,
+      "end_second": 9,
+      "visual": "AI 介入，脚本与分镜开始自动生成，局面发生逆转。",
+      "camera": "轻微横移配合主体操作，展示变化推进，镜头编码 Z5 Y4 X2，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "AI 接管重复劳动，脚本和分镜开始自动展开。",
+      "audio": "配乐从低压转向希望感，伴随界面展开音。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-04",
+      "scene_id": "scene-04",
+      "segment_mode": "single-sequence",
+      "purpose": "payoff",
+      "start_second": 9,
+      "end_second": 12,
+      "visual": "主角从焦虑切到放松，任务结果被明确展示。",
+      "camera": "由中景推到近景，强调结果与完成状态，镜头编码 Z3 Y4 X2，85mm，shallow景深。",
+      "camera_codec": {
+        "z": "Z3",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 85,
+        "depth": "shallow"
+      },
+      "action": "主角看到结果，状态从紧绷切到放松。",
+      "audio": "结果确认音带来明显情绪释放。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-05",
+      "scene_id": "scene-05",
+      "segment_mode": "single-sequence",
+      "purpose": "close",
+      "start_second": 12,
+      "end_second": 15,
+      "visual": "最终停在发布成功前一刻，形成松一口气的情绪落点。",
+      "camera": "缓慢拉远，形成收束和留白，镜头编码 Z6 Y4 X4，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主角停在确认发布前，完成情绪收束。",
+      "audio": "音乐回稳，留下松一口气的尾音。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    }
+  ]
+}

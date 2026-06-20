@@ -1,0 +1,30 @@
+{
+  "id": "assets-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "items": [
+    {
+      "asset_id": "C01",
+      "type": "character",
+      "name": "数字指挥官主角",
+      "description": "服务“做一条 10 秒角色动作展示视频，主角像数字指挥官一样操控屏幕中的脚本、分镜和发布流程高速成型”的角色动作与姿态锚点。",
+      "prompt": "9:16 动作角色设定图，数字指挥官气质，强势站姿，带科幻控制界面的 stylized cyber action 风格。",
+      "required": true
+    },
+    {
+      "asset_id": "S01",
+      "type": "scene",
+      "name": "能量工作台场景",
+      "description": "角色动作与信息流聚合的空间锚点。",
+      "prompt": "赛博风能量工作台场景，屏幕碎片、光轨、数据流围绕角色形成可控阵列。",
+      "required": true
+    },
+    {
+      "asset_id": "P01",
+      "type": "prop",
+      "name": "高能信息碎片",
+      "description": "用于动作高潮和结果汇聚。",
+      "prompt": "发光信息碎片、任务卡片和成型中的发布流程界面，高速聚合效果，动作片质感。",
+      "required": true
+    }
+  ]
+}

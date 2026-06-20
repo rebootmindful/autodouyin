@@ -1,0 +1,89 @@
+{
+  "id": "run-local-001",
+  "brief_id": "brief-20260619-example-01",
+  "mode": "plan-only",
+  "steps": [
+    {
+      "name": "normalize-brief",
+      "status": "success",
+      "started_at": "2026-06-19T16:06:32+08:00",
+      "ended_at": "2026-06-19T16:06:32+08:00",
+      "artifacts": [
+        "brief.json"
+      ],
+      "notes": "aesthetic_preset=bauhaus-zen"
+    },
+    {
+      "name": "compile-skeleton",
+      "status": "success",
+      "started_at": "2026-06-19T16:06:32+08:00",
+      "ended_at": "2026-06-19T16:06:32+08:00",
+      "artifacts": [
+        "skeleton.json"
+      ],
+      "notes": "5 segments, 5 shots, 3 assets, 5 prompt blocks"
+    },
+    {
+      "name": "agent-enrich-script",
+      "status": "success",
+      "started_at": "2026-06-19T16:06:32+08:00",
+      "ended_at": "2026-06-19T16:06:32+08:00",
+      "artifacts": [
+        "script.json"
+      ],
+      "notes": "logline + 5 segment summaries filled"
+    },
+    {
+      "name": "agent-enrich-storyboard",
+      "status": "success",
+      "started_at": "2026-06-19T16:06:32+08:00",
+      "ended_at": "2026-06-19T16:06:32+08:00",
+      "artifacts": [
+        "storyboard.json"
+      ],
+      "notes": "visual/camera/action/audio/continuity filled for 5 shots"
+    },
+    {
+      "name": "agent-enrich-assets",
+      "status": "success",
+      "started_at": "2026-06-19T16:06:32+08:00",
+      "ended_at": "2026-06-19T16:06:32+08:00",
+      "artifacts": [
+        "asset-manifest.json"
+      ],
+      "notes": "C01/S01/P01 name/description/prompt filled"
+    },
+    {
+      "name": "agent-enrich-seedance",
+      "status": "success",
+      "started_at": "2026-06-19T16:06:32+08:00",
+      "ended_at": "2026-06-19T16:06:32+08:00",
+      "artifacts": [
+        "seedance-job.json"
+      ],
+      "notes": "style_anchor + 5 prompt blocks filled, bauhaus-zen preset"
+    },
+    {
+      "name": "agent-enrich-publish",
+      "status": "success",
+      "started_at": "2026-06-19T16:06:32+08:00",
+      "ended_at": "2026-06-19T16:06:32+08:00",
+      "artifacts": [
+        "publish-job.json"
+      ],
+      "notes": "title/description/hashtags filled"
+    }
+  ],
+  "status": "success",
+  "artifacts": [
+    "brief.json",
+    "script.json",
+    "storyboard.json",
+    "asset-manifest.json",
+    "seedance-job.json",
+    "publish-job.json",
+    "run-ledger.json",
+    "script.md",
+    "storyboard.md"
+  ]
+}

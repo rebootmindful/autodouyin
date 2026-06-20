@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autodouyin.local/schemas/review-decision.schema.json",
+  "$comment": "[INPUT]: human review result; [OUTPUT]: execution gate decision; [POS]: schemas approval contract; [PROTOCOL]: update this contract, then check CLAUDE.md",
+  "title": "ReviewDecision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "reviewer", "approved_at", "selected_model", "notes"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["pending-review", "approved", "changes-requested", "rejected"]
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "approved_at": {
+      "type": "string"
+    },
+    "selected_model": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

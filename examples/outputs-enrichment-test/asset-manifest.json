@@ -1,0 +1,30 @@
+{
+  "id": "assets-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "items": [
+    {
+      "asset_id": "C01",
+      "type": "character",
+      "name": "AI 操作主体",
+      "description": "统一主角形象，几何简化风格的 AI 操作者，哑光质感，服务 brief 到发布的全流程动作连续性。",
+      "prompt": "9:16 角色设定图，几何简化风格的 AI 操作主体，哑光表面质感，东方面孔，简洁功能主义穿着，Bauhaus minimalism 风格，无多余装饰。",
+      "required": true
+    },
+    {
+      "asset_id": "S01",
+      "type": "scene",
+      "name": "工作台场景",
+      "description": "哑光白底工作台，屏幕可见脚本和分镜面板，大面积留白，功能主义空间关系。",
+      "prompt": "工作台场景，哑光白底，屏幕可见脚本和分镜卡片，大面积留白，均匀柔和光线，Bauhaus functional beauty 风格，几何秩序。",
+      "required": true
+    },
+    {
+      "asset_id": "P01",
+      "type": "prop",
+      "name": "结果面板",
+      "description": "结构化结果面板，包含 script、storyboard、seedance job 卡片，清晰易读，哑光质感。",
+      "prompt": "结构化结果面板，三张卡片以 Bauhaus 网格排列，哑光质感，原色标记已完成状态，大面积留白，functional beauty，清晰易读。",
+      "required": true
+    }
+  ]
+}

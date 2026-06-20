@@ -1,0 +1,13 @@
+{
+  "id": "publish-job-local-001",
+  "platform": "douyin",
+  "video_path": "artifacts/output-video.mp4",
+  "title": "做一个 75 秒的长流程视频，完整展示从 brief、脚本、",
+  "description": "围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”生成一条可审核、可执行、可回放的视频方案。 主题：做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路",
+  "hashtags": [
+    "#AI视频",
+    "#Seedance",
+    "#Douyin"
+  ],
+  "visibility": "public"
+}

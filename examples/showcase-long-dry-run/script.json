@@ -1,0 +1,52 @@
+{
+  "id": "script-local-001",
+  "brief_id": "brief-20260619-example-07",
+  "video_type": "workflow-explainer",
+  "strategy": "scene-split-edit-pipeline",
+  "title": "做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布",
+  "logline": "围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”生成一条可审核、可执行、可回放的视频方案。",
+  "segments": [
+    {
+      "segment_id": "seg-01",
+      "purpose": "world-build",
+      "summary": "围绕目标分点说明：建立世界与空间关系，让观众先看懂环境。 主题围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”展开。",
+      "emotion": "calm",
+      "estimated_seconds": 15,
+      "spoken_line": ""
+    },
+    {
+      "segment_id": "seg-02",
+      "purpose": "setup-flow",
+      "summary": "围绕目标分点说明：把主要流程展开，让结构进入视野。 主题围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”展开。",
+      "emotion": "focused",
+      "estimated_seconds": 15,
+      "spoken_line": ""
+    },
+    {
+      "segment_id": "seg-03",
+      "purpose": "change-push",
+      "summary": "围绕目标分点说明：把变化推起来，让系统、动作和信息同步升级。 主题围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”展开。",
+      "emotion": "active",
+      "estimated_seconds": 15,
+      "spoken_line": ""
+    },
+    {
+      "segment_id": "seg-04",
+      "purpose": "peak-moment",
+      "summary": "围绕目标分点说明：把高潮结果推到最强，形成强记忆点。 主题围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”展开。",
+      "emotion": "intense",
+      "estimated_seconds": 15,
+      "spoken_line": ""
+    },
+    {
+      "segment_id": "seg-05",
+      "purpose": "emotional-close",
+      "summary": "围绕目标分点说明：把节奏收回来，让画面与情绪落点稳定。 主题围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”展开。",
+      "emotion": "resolved",
+      "estimated_seconds": 15,
+      "spoken_line": ""
+    }
+  ],
+  "template_mode": "fallback-information",
+  "template_confidence": "low"
+}

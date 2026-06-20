@@ -1,0 +1,146 @@
+{
+  "id": "seedance-job-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "duration_seconds": 10,
+  "aspect_ratio": "9:16",
+  "mode": "text-image-video",
+  "global_style_anchor": "stylized cyber action，统一视觉风格，画面干净，避免风格漂移",
+  "continuity_locks": [
+    "stylized cyber action，统一视觉风格，画面干净，避免风格漂移",
+    "同一角色保持一致五官、身份、服装和发型，不变脸、不换人。",
+    "同一场景保持一致环境、光线、背景与空间关系，不突然切换。"
+  ],
+  "negative_constraints": [
+    "禁止风格漂移",
+    "禁止角色变脸或换人",
+    "禁止突然偏色",
+    "禁止新增无关人物",
+    "禁止光线突变",
+    "禁止出现文字、字幕、LOGO、水印"
+  ],
+  "slot_plan": [
+    {
+      "ref": "@图片1",
+      "asset_id": "C01",
+      "usage": "主体一致性参考"
+    },
+    {
+      "ref": "@图片2",
+      "asset_id": "S01",
+      "usage": "场景或空间背景参考"
+    },
+    {
+      "ref": "@图片3",
+      "asset_id": "P01",
+      "usage": "关键道具、结果卡片或动作强化参考"
+    }
+  ],
+  "video_type": "character-action",
+  "strategy": "five-beat-short-video",
+  "execution_recommendation": {
+    "video_type": "character-action",
+    "hard_single_generation_range_seconds": [
+      4,
+      15
+    ],
+    "official_ui_recommended_range_seconds": [
+      5,
+      12
+    ],
+    "fastest_test_window_seconds": [
+      4,
+      5
+    ],
+    "fastest_practical_window_seconds": [
+      5,
+      8
+    ],
+    "stable_expression_window_seconds": [
+      6,
+      10
+    ],
+    "default_duration_seconds_for_type": 10,
+    "max_single_generation_seconds": 15,
+    "scene_split_recommended_after_seconds": 60,
+    "suggested_split_strategy": "single-generation",
+    "requested_duration_seconds": 10
+  },
+  "scene_plan": [],
+  "prompt_blocks": [
+    {
+      "block_id": "pb-01",
+      "scene_id": "scene-01",
+      "mode": "single-sequence",
+      "start_second": 0,
+      "end_second": 2,
+      "prompt": "角色动作展示，强调姿态建立、动作升级和高潮定格。 风格锁定：stylized cyber action，统一视觉风格，画面干净，避免风格漂移 0-2秒画面：角色亮相直接给姿态与目标，画面突出hero pose、screen fragments、high-speed formation effect，第一秒先立住人物。 镜头：快速推近，第一眼抓人，镜头编码 Z4 Y4 X1，35mm，shallow景深。 动作：角色完成出场定格或起手式。 声音：短促能量启动音，直接进入动作气氛。 额外要求：动作动势连续，角色姿态强，高潮击中感明确",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-02",
+      "scene_id": "scene-02",
+      "mode": "single-sequence",
+      "start_second": 2,
+      "end_second": 4,
+      "prompt": "角色动作展示，强调姿态建立、动作升级和高潮定格。 风格锁定：stylized cyber action，统一视觉风格，画面干净，避免风格漂移 2-4秒画面：角色与场景能量开始聚合，界面元素围绕人物形成受控阵列。 镜头：中景稳定推进，交代空间和工作流背景，镜头编码 Z5 Y4 X2，50mm，medium景深。 动作：角色抬手、转身或蓄力，界面与能量元素开始受控聚集。 声音：低频蓄力音和界面元素聚合音同步出现。 额外要求：动作动势连续，角色姿态强，高潮击中感明确",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-03",
+      "scene_id": "scene-03",
+      "mode": "single-sequence",
+      "start_second": 4,
+      "end_second": 6,
+      "prompt": "角色动作展示，强调姿态建立、动作升级和高潮定格。 风格锁定：stylized cyber action，统一视觉风格，画面干净，避免风格漂移 4-6秒画面：主体进入动作推进段，动作与镜头一起升级，形成连续动势。 镜头：轻微横移配合主体操作，展示变化推进，镜头编码 Z5 Y4 X2，50mm，medium景深。 动作：角色进入核心动作段，运镜跟随动作变化。 声音：动作音效与节奏配乐同步增强。 额外要求：动作动势连续，角色姿态强，高潮击中感明确",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-04",
+      "scene_id": "scene-04",
+      "mode": "single-sequence",
+      "start_second": 6,
+      "end_second": 8,
+      "prompt": "角色动作展示，强调姿态建立、动作升级和高潮定格。 风格锁定：stylized cyber action，统一视觉风格，画面干净，避免风格漂移 6-8秒画面：高速动作与信息流在同一刻汇聚，形成强烈的动作完成镜头。 镜头：由中景推到近景，强调结果与完成状态，镜头编码 Z3 Y4 X2，85mm，shallow景深。 动作：动作高潮完成后定格在关键姿态。 声音：高潮击中音与配乐重拍同时落下。 额外要求：动作动势连续，角色姿态强，高潮击中感明确",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-05",
+      "scene_id": "scene-05",
+      "mode": "single-sequence",
+      "start_second": 8,
+      "end_second": 10,
+      "prompt": "角色动作展示，强调姿态建立、动作升级和高潮定格。 风格锁定：stylized cyber action，统一视觉风格，画面干净，避免风格漂移 8-10秒画面：动作收尾后定格在英雄式背面或正面收束姿态。 镜头：缓慢拉远，形成收束和留白，镜头编码 Z6 Y4 X4，50mm，medium景深。 动作：动作残留能量回收，角色留在强势收束位。 声音：收束音效，留下可执行的呼吸感。 额外要求：动作动势连续，角色姿态强，高潮击中感明确",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    }
+  ]
+}

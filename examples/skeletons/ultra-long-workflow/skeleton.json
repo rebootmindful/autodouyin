@@ -1,0 +1,383 @@
+{
+  "script": {
+    "id": "script-local-001",
+    "brief_id": "brief-20260619-example-07",
+    "video_type": "workflow-explainer",
+    "strategy": "scene-split-edit-pipeline",
+    "title": "做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布",
+    "logline": "",
+    "segments": [
+      {
+        "segment_id": "seg-01",
+        "purpose": "world-build",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 15
+      },
+      {
+        "segment_id": "seg-02",
+        "purpose": "setup-flow",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 15
+      },
+      {
+        "segment_id": "seg-03",
+        "purpose": "change-push",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 15
+      },
+      {
+        "segment_id": "seg-04",
+        "purpose": "peak-moment",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 15
+      },
+      {
+        "segment_id": "seg-05",
+        "purpose": "emotional-close",
+        "summary": "",
+        "emotion": "",
+        "estimated_seconds": 15
+      }
+    ]
+  },
+  "storyboard": {
+    "id": "storyboard-local-001",
+    "script_id": "script-local-001",
+    "shots": [
+      {
+        "shot_id": "shot-01",
+        "scene_id": "scene-01",
+        "segment_mode": "scene-base",
+        "purpose": "world-build",
+        "start_second": 0,
+        "end_second": 15,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z7",
+          "y": "Y4",
+          "x": "X2",
+          "focal_length_mm": 50,
+          "depth": "deep"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      },
+      {
+        "shot_id": "shot-02",
+        "scene_id": "scene-02",
+        "segment_mode": "scene-base",
+        "purpose": "setup-flow",
+        "start_second": 15,
+        "end_second": 30,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z5",
+          "y": "Y4",
+          "x": "X2",
+          "focal_length_mm": 50,
+          "depth": "medium"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      },
+      {
+        "shot_id": "shot-03",
+        "scene_id": "scene-03",
+        "segment_mode": "scene-base",
+        "purpose": "change-push",
+        "start_second": 30,
+        "end_second": 45,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z5",
+          "y": "Y4",
+          "x": "X2",
+          "focal_length_mm": 50,
+          "depth": "medium"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      },
+      {
+        "shot_id": "shot-04",
+        "scene_id": "scene-04",
+        "segment_mode": "scene-base",
+        "purpose": "peak-moment",
+        "start_second": 45,
+        "end_second": 60,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z3",
+          "y": "Y4",
+          "x": "X2",
+          "focal_length_mm": 85,
+          "depth": "shallow"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      },
+      {
+        "shot_id": "shot-05",
+        "scene_id": "scene-05",
+        "segment_mode": "scene-base",
+        "purpose": "emotional-close",
+        "start_second": 60,
+        "end_second": 75,
+        "visual": "",
+        "camera": "",
+        "camera_codec": {
+          "z": "Z6",
+          "y": "Y4",
+          "x": "X4",
+          "focal_length_mm": 50,
+          "depth": "medium"
+        },
+        "action": "",
+        "audio": "",
+        "assets": [
+          "C01",
+          "S01",
+          "P01"
+        ],
+        "continuity_note": ""
+      }
+    ]
+  },
+  "assets": {
+    "id": "assets-local-001",
+    "storyboard_id": "storyboard-local-001",
+    "items": [
+      {
+        "asset_id": "C01",
+        "type": "character",
+        "name": "",
+        "description": "",
+        "prompt": "",
+        "required": true
+      },
+      {
+        "asset_id": "S01",
+        "type": "scene",
+        "name": "",
+        "description": "",
+        "prompt": "",
+        "required": true
+      },
+      {
+        "asset_id": "P01",
+        "type": "prop",
+        "name": "",
+        "description": "",
+        "prompt": "",
+        "required": true
+      }
+    ]
+  },
+  "seedance": {
+    "id": "seedance-job-local-001",
+    "storyboard_id": "storyboard-local-001",
+    "duration_seconds": 75,
+    "aspect_ratio": "9:16",
+    "mode": "scene-split-edit-pipeline",
+    "global_style_anchor": "",
+    "continuity_locks": [],
+    "negative_constraints": [],
+    "slot_plan": [
+      {
+        "ref": "@图片1",
+        "asset_id": "C01",
+        "usage": "主体一致性参考"
+      },
+      {
+        "ref": "@图片2",
+        "asset_id": "S01",
+        "usage": "场景或空间背景参考"
+      },
+      {
+        "ref": "@图片3",
+        "asset_id": "P01",
+        "usage": "关键道具、结果卡片或动作强化参考"
+      }
+    ],
+    "video_type": "workflow-explainer",
+    "strategy": "scene-split-edit-pipeline",
+    "execution_recommendation": {
+      "video_type": "workflow-explainer",
+      "hard_single_generation_range_seconds": [
+        4,
+        15
+      ],
+      "official_ui_recommended_range_seconds": [
+        5,
+        12
+      ],
+      "fastest_test_window_seconds": [
+        4,
+        5
+      ],
+      "fastest_practical_window_seconds": [
+        5,
+        8
+      ],
+      "stable_expression_window_seconds": [
+        8,
+        12
+      ],
+      "default_duration_seconds_for_type": 15,
+      "max_single_generation_seconds": 15,
+      "scene_split_recommended_after_seconds": 60,
+      "suggested_split_strategy": "split into independent scenes, then edit",
+      "requested_duration_seconds": 75
+    },
+    "scene_plan": [
+      {
+        "scene_id": "scene-01",
+        "start_second": 0,
+        "end_second": 15,
+        "edit_join": "post-edit bridge"
+      },
+      {
+        "scene_id": "scene-02",
+        "start_second": 15,
+        "end_second": 30,
+        "edit_join": "post-edit bridge"
+      },
+      {
+        "scene_id": "scene-03",
+        "start_second": 30,
+        "end_second": 45,
+        "edit_join": "post-edit bridge"
+      },
+      {
+        "scene_id": "scene-04",
+        "start_second": 45,
+        "end_second": 60,
+        "edit_join": "post-edit bridge"
+      },
+      {
+        "scene_id": "scene-05",
+        "start_second": 60,
+        "end_second": 75,
+        "edit_join": "post-edit bridge"
+      }
+    ],
+    "prompt_blocks": [
+      {
+        "block_id": "pb-01",
+        "scene_id": "scene-01",
+        "mode": "scene-base",
+        "start_second": 0,
+        "end_second": 15,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [],
+        "audio_refs": []
+      },
+      {
+        "block_id": "pb-02",
+        "scene_id": "scene-02",
+        "mode": "scene-base",
+        "start_second": 15,
+        "end_second": 30,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [],
+        "audio_refs": []
+      },
+      {
+        "block_id": "pb-03",
+        "scene_id": "scene-03",
+        "mode": "scene-base",
+        "start_second": 30,
+        "end_second": 45,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [],
+        "audio_refs": []
+      },
+      {
+        "block_id": "pb-04",
+        "scene_id": "scene-04",
+        "mode": "scene-base",
+        "start_second": 45,
+        "end_second": 60,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [],
+        "audio_refs": []
+      },
+      {
+        "block_id": "pb-05",
+        "scene_id": "scene-05",
+        "mode": "scene-base",
+        "start_second": 60,
+        "end_second": 75,
+        "prompt": "",
+        "image_refs": [
+          "@图片1",
+          "@图片2",
+          "@图片3"
+        ],
+        "video_refs": [],
+        "audio_refs": []
+      }
+    ]
+  },
+  "publish": {
+    "id": "publish-job-local-001",
+    "platform": "douyin",
+    "video_path": "artifacts/output-video.mp4",
+    "title": "",
+    "description": "",
+    "hashtags": [],
+    "visibility": "public"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "id": "seedance-job-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "duration_seconds": 15,
+  "aspect_ratio": "9:16",
+  "mode": "text-image-video",
+  "global_style_anchor": "Bauhaus minimalism meets zen emptiness, matte surfaces, geometric clarity, primary color accents, generous whitespace, functional beauty",
+  "continuity_locks": [
+    "Bauhaus minimalism meets zen emptiness, matte surfaces, geometric clarity, primary color accents, generous whitespace, functional beauty，统一视觉风格，画面干净，避免风格漂移",
+    "同一角色保持一致五官、身份、服装和发型，不变脸、不换人。",
+    "同一场景保持一致环境、光线、背景与空间关系，不突然切换。",
+    "主角保持同一张脸、同一发型、同一服装、同一年龄感和同一职业气质，不切换人物设定。"
+  ],
+  "negative_constraints": [
+    "禁止风格漂移",
+    "禁止角色变脸或换人",
+    "禁止突然偏色",
+    "禁止新增无关人物",
+    "禁止光线突变",
+    "禁止出现文字、字幕、LOGO、水印",
+    "禁止过度装饰",
+    "禁止渐变滥用",
+    "禁止无意义动效"
+  ],
+  "slot_plan": [
+    {
+      "ref": "@图片1",
+      "asset_id": "C01",
+      "usage": "主体一致性参考"
+    },
+    {
+      "ref": "@图片2",
+      "asset_id": "S01",
+      "usage": "场景或空间背景参考"
+    }
+  ],
+  "video_type": "workflow-explainer",
+  "strategy": "five-beat-short-video",
+  "execution_recommendation": {
+    "video_type": "workflow-explainer",
+    "hard_single_generation_range_seconds": [
+      4,
+      15
+    ],
+    "official_ui_recommended_range_seconds": [
+      5,
+      12
+    ],
+    "fastest_test_window_seconds": [
+      4,
+      5
+    ],
+    "fastest_practical_window_seconds": [
+      5,
+      8
+    ],
+    "stable_expression_window_seconds": [
+      8,
+      12
+    ],
+    "default_duration_seconds_for_type": 15,
+    "max_single_generation_seconds": 15,
+    "scene_split_recommended_after_seconds": 60,
+    "suggested_split_strategy": "single-generation",
+    "requested_duration_seconds": 15
+  },
+  "scene_plan": [],
+  "prompt_blocks": [
+    {
+      "block_id": "pb-01",
+      "scene_id": "scene-01",
+      "mode": "single-sequence",
+      "start_second": 0,
+      "end_second": 6,
+      "prompt": "工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：Bauhaus minimalism meets zen emptiness, matte surfaces, geometric clarity, primary color accents, generous whitespace, functional beauty，统一视觉风格，画面干净，避免风格漂移 0-6秒画面：人物或主体清楚出现在画面中，围绕“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”逐步展开要点说明，画面持续体现 geometric simplicity、matte surfaces、generous whitespace。 镜头：中景稳定推进，交代空间和主体位置。 镜头编码 Z5 Y4 X2，50mm，medium景深。 动作：主体保持稳定出现，按节奏分点说明信息，不突然切大动作。 保持同一人物发型、服装、年龄感和职业气质一致。  声音：延续统一环境音与配乐层次。 当前镜头需与前后段落保持风格连续，共 2 个镜头。 额外要求：信息层级清楚，结果面板可读，过程到结果连续",
+      "image_refs": [
+        "@图片1",
+        "@图片2"
+      ],
+      "video_refs": [],
+      "audio_refs": [],
+      "duration_seconds": 6
+    },
+    {
+      "block_id": "pb-02",
+      "scene_id": "scene-02",
+      "mode": "single-sequence",
+      "start_second": 6,
+      "end_second": 15,
+      "prompt": "工作流演示视频，强调信息清晰、结果可见、过程有节奏。 风格锁定：Bauhaus minimalism meets zen emptiness, matte surfaces, geometric clarity, primary color accents, generous whitespace, functional beauty，统一视觉风格，画面干净，避免风格漂移 6-15秒画面：人物或主体清楚出现在画面中，围绕“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”逐步展开要点说明，画面持续体现 geometric simplicity、matte surfaces、generous whitespace。 镜头：由中景推到近景，强调结果与完成状态。 镜头编码 Z3 Y4 X2，85mm，shallow景深。 动作：主体保持稳定出现，按节奏分点说明信息，不突然切大动作。 保持同一人物发型、服装、年龄感和职业气质一致。  声音：延续统一环境音与配乐层次。 当前镜头需与前后段落保持风格连续，共 2 个镜头。 额外要求：信息层级清楚，结果面板可读，过程到结果连续",
+      "image_refs": [
+        "@图片1",
+        "@图片2"
+      ],
+      "video_refs": [],
+      "audio_refs": [],
+      "duration_seconds": 9
+    }
+  ],
+  "identity_strategy": "text-only"
+}

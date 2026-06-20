@@ -1,0 +1,7 @@
+interface:
+  display_name: "AutoDouyin"
+  short_description: "审核包优先的短视频生产编排 Skill"
+  default_prompt: "Use $autodouyin to turn this brief into a review package, storyboard, Seedance job, and optional Douyin publish preparation."
+
+policy:
+  allow_implicit_invocation: true

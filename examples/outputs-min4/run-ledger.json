@@ -1,0 +1,79 @@
+{
+  "id": "run-local-001",
+  "brief_id": "brief-20260619-example-06",
+  "mode": "plan-only",
+  "steps": [
+    {
+      "name": "normalize-brief",
+      "status": "success",
+      "started_at": "2026-06-19T14:02:26+08:00",
+      "ended_at": "2026-06-19T14:02:26+08:00",
+      "artifacts": [
+        "brief.json"
+      ],
+      "notes": "compiled with modular pipeline: story, seedance, render, publish bridge; scene split and duration guards included"
+    },
+    {
+      "name": "compile-script",
+      "status": "success",
+      "started_at": "2026-06-19T14:02:26+08:00",
+      "ended_at": "2026-06-19T14:02:26+08:00",
+      "artifacts": [
+        "script.md",
+        "script.json"
+      ],
+      "notes": "compiled with modular pipeline: story, seedance, render, publish bridge; scene split and duration guards included"
+    },
+    {
+      "name": "compile-storyboard",
+      "status": "success",
+      "started_at": "2026-06-19T14:02:26+08:00",
+      "ended_at": "2026-06-19T14:02:26+08:00",
+      "artifacts": [
+        "storyboard.md",
+        "storyboard.json"
+      ],
+      "notes": "compiled with modular pipeline: story, seedance, render, publish bridge; scene split and duration guards included"
+    },
+    {
+      "name": "compile-assets",
+      "status": "success",
+      "started_at": "2026-06-19T14:02:26+08:00",
+      "ended_at": "2026-06-19T14:02:26+08:00",
+      "artifacts": [
+        "asset-manifest.json"
+      ],
+      "notes": "compiled with modular pipeline: story, seedance, render, publish bridge; scene split and duration guards included"
+    },
+    {
+      "name": "compile-seedance-job",
+      "status": "success",
+      "started_at": "2026-06-19T14:02:26+08:00",
+      "ended_at": "2026-06-19T14:02:26+08:00",
+      "artifacts": [
+        "seedance-job.json"
+      ],
+      "notes": "compiled with modular pipeline: story, seedance, render, publish bridge; scene split and duration guards included"
+    },
+    {
+      "name": "compile-publish-job",
+      "status": "success",
+      "started_at": "2026-06-19T14:02:26+08:00",
+      "ended_at": "2026-06-19T14:02:26+08:00",
+      "artifacts": [
+        "publish-job.json"
+      ],
+      "notes": "compiled with modular pipeline: story, seedance, render, publish bridge; scene split and duration guards included"
+    }
+  ],
+  "status": "success",
+  "artifacts": [
+    "script.md",
+    "script.json",
+    "storyboard.md",
+    "storyboard.json",
+    "asset-manifest.json",
+    "seedance-job.json",
+    "publish-job.json"
+  ]
+}

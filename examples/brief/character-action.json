@@ -1,0 +1,19 @@
+{
+  "id": "brief-20260619-example-05",
+  "goal": "做一条 10 秒角色动作展示视频，主角像数字指挥官一样操控屏幕中的脚本、分镜和发布流程高速成型",
+  "platform": "douyin",
+  "mode": "plan-only",
+  "duration_seconds": 10,
+  "aspect_ratio": "9:16",
+  "style": "stylized cyber action",
+  "video_type": "character-action",
+  "must_include": [
+    "hero pose",
+    "screen fragments",
+    "high-speed formation effect"
+  ],
+  "must_avoid": [
+    "slow passive movement",
+    "weak action payoff"
+  ]
+}

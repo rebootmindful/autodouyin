@@ -1,0 +1,42 @@
+{
+  "name": "autodouyin",
+  "version": "0.1.0",
+  "description": "Review-first short-video production and publish orchestration skill.",
+  "author": {
+    "name": "Local developer"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "seedance",
+    "douyin",
+    "video",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AutoDouyin",
+    "shortDescription": "把 brief 编译成可审核的短视频对象链",
+    "longDescription": "AutoDouyin 先产出审核包，再推进 dry-run、真实生成、组装和发布准备，用稳定对象替代一段不可追溯的 prompt。",
+    "developerName": "Local developer",
+    "category": "Creativity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "用 autodouyin 把这个 brief 编译成完整审核包，先不要执行。",
+      "帮我把这个抖音视频需求拆成 storyboard、seedance-job 和 publish-job。",
+      "审核通过后，用 autodouyin 做 long-video dry-run。"
+    ],
+    "brandColor": "#E4572E",
+    "composerIcon": "./assets/composer-icon.png",
+    "logo": "./assets/logo.png",
+    "screenshots": [
+      "./assets/showcase-review-package.png",
+      "./assets/showcase-dry-run.png",
+      "./assets/showcase-scorecard.png"
+    ]
+  }
+}

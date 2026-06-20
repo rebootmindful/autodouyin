@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autodouyin.local/schemas/storyboard.schema.json",
+  "$comment": "[INPUT]: script and asset plan; [OUTPUT]: timed storyboard; [POS]: schemas execution-facing contract; [PROTOCOL]: update this contract, then check CLAUDE.md",
+  "title": "Storyboard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "script_id", "shots"],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "script_id": {
+      "type": "string"
+    },
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "shot_id",
+          "scene_id",
+          "segment_mode",
+          "purpose",
+          "start_second",
+          "end_second",
+          "visual",
+          "camera",
+          "camera_codec",
+          "action",
+          "audio",
+          "assets",
+          "continuity_note"
+        ],
+        "properties": {
+          "shot_id": {
+            "type": "string"
+          },
+          "scene_id": {
+            "type": "string"
+          },
+          "segment_mode": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "start_second": {
+            "type": "number",
+            "minimum": 0
+          },
+          "end_second": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "visual": {
+            "type": "string"
+          },
+          "camera": {
+            "type": "string"
+          },
+          "camera_codec": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["z", "y", "x", "focal_length_mm", "depth"],
+            "properties": {
+              "z": { "type": "string" },
+              "y": { "type": "string" },
+              "x": { "type": "string" },
+              "focal_length_mm": { "type": "integer", "minimum": 1 },
+              "depth": { "type": "string" }
+            }
+          },
+          "action": {
+            "type": "string"
+          },
+          "dialogue": {
+            "type": "string"
+          },
+          "audio": {
+            "type": "string"
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^(C|S|P)\\d{2}$"
+            }
+          },
+          "continuity_note": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

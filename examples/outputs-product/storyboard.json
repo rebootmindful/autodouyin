@@ -1,0 +1,131 @@
+{
+  "id": "storyboard-local-001",
+  "script_id": "script-local-001",
+  "shots": [
+    {
+      "shot_id": "shot-01",
+      "scene_id": "scene-01",
+      "segment_mode": "single-sequence",
+      "purpose": "hook",
+      "start_second": 0,
+      "end_second": 2,
+      "visual": "开场直接打产品或应用结果镜头，画面突出UI interface、generation result cards、publish-ready state，先给强展示感。",
+      "camera": "快速推近，第一眼抓人，镜头编码 Z4 Y4 X1，35mm，shallow景深。",
+      "camera_codec": {
+        "z": "Z4",
+        "y": "Y4",
+        "x": "X1",
+        "focal_length_mm": 35,
+        "depth": "shallow"
+      },
+      "action": "产品界面或结果卡片直接打在第一镜头，避免铺垫过长。",
+      "audio": "短促电子提示音，开场即抓注意力。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-02",
+      "scene_id": "scene-02",
+      "segment_mode": "single-sequence",
+      "purpose": "setup",
+      "start_second": 2,
+      "end_second": 4,
+      "visual": "切到产品 UI 主界面和关键结果卡片，信息层级清楚，重点模块一眼可识别。",
+      "camera": "中景稳定推进，交代空间和工作流背景，镜头编码 Z5 Y4 X2，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "关键功能模块逐层点亮，主流程入口被清晰揭示。",
+      "audio": "轻量环境音和键盘操作音，强调真实工作台氛围。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-03",
+      "scene_id": "scene-03",
+      "segment_mode": "single-sequence",
+      "purpose": "turn",
+      "start_second": 4,
+      "end_second": 6,
+      "visual": "产品核心流程被连续演示，关键能力以卡片、面板和动效逐段打开。",
+      "camera": "轻微横移配合主体操作，展示变化推进，镜头编码 Z5 Y4 X2，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "产品核心功能或 UI 动效被逐步展开。",
+      "audio": "节奏加快的界面反馈音和轻微上扬配乐。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-04",
+      "scene_id": "scene-04",
+      "segment_mode": "single-sequence",
+      "purpose": "payoff",
+      "start_second": 6,
+      "end_second": 7,
+      "visual": "产品或应用核心卖点被清楚展示，结果面板与价值一眼可见。",
+      "camera": "由中景推到近景，强调结果与完成状态，镜头编码 Z3 Y4 X2，85mm，shallow景深。",
+      "camera_codec": {
+        "z": "Z3",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 85,
+        "depth": "shallow"
+      },
+      "action": "卖点完成闭环展示，核心结果被定格强调。",
+      "audio": "结果确认音，配乐进入最高点后短暂停留。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-05",
+      "scene_id": "scene-05",
+      "segment_mode": "single-sequence",
+      "purpose": "close",
+      "start_second": 7,
+      "end_second": 8,
+      "visual": "品牌名、产品名或最终完成状态被定格，形成短促有力的记忆点。",
+      "camera": "缓慢拉远，形成收束和留白，镜头编码 Z6 Y4 X4，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "品牌或产品名停留在最后一刻形成记忆点。",
+      "audio": "收束音效，留下可执行的呼吸感。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    }
+  ]
+}

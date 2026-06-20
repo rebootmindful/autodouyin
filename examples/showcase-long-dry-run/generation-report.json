@@ -1,0 +1,75 @@
+{
+  "mode": "dry-run",
+  "total_blocks": 5,
+  "job_mode": "scene-split-edit-pipeline",
+  "blocks": [
+    {
+      "block_id": "pb-01",
+      "task_id": "dry-run",
+      "status": "planned",
+      "output_path": "D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\pb-01.mp4",
+      "duration_seconds": 15
+    },
+    {
+      "block_id": "pb-02",
+      "task_id": "dry-run",
+      "status": "planned",
+      "output_path": "D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\pb-02.mp4",
+      "duration_seconds": 15
+    },
+    {
+      "block_id": "pb-03",
+      "task_id": "dry-run",
+      "status": "planned",
+      "output_path": "D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\pb-03.mp4",
+      "duration_seconds": 15
+    },
+    {
+      "block_id": "pb-04",
+      "task_id": "dry-run",
+      "status": "planned",
+      "output_path": "D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\pb-04.mp4",
+      "duration_seconds": 15
+    },
+    {
+      "block_id": "pb-05",
+      "task_id": "dry-run",
+      "status": "planned",
+      "output_path": "D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\pb-05.mp4",
+      "duration_seconds": 15
+    }
+  ],
+  "commands": [
+    {
+      "block_id": "pb-01",
+      "command": "C:\\Users\\hooji\\AppData\\Roaming\\npm\\seedance.CMD generate @D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\.prompt_pb-01.txt --duration 15 --ratio 9:16 --model fast --wait --json --output D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\pb-01.mp4 --timeout 600",
+      "duration_seconds": 15
+    },
+    {
+      "block_id": "pb-02",
+      "command": "C:\\Users\\hooji\\AppData\\Roaming\\npm\\seedance.CMD generate @D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\.prompt_pb-02.txt --duration 15 --ratio 9:16 --model fast --wait --json --output D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\pb-02.mp4 --timeout 600",
+      "duration_seconds": 15
+    },
+    {
+      "block_id": "pb-03",
+      "command": "C:\\Users\\hooji\\AppData\\Roaming\\npm\\seedance.CMD generate @D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\.prompt_pb-03.txt --duration 15 --ratio 9:16 --model fast --wait --json --output D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\pb-03.mp4 --timeout 600",
+      "duration_seconds": 15
+    },
+    {
+      "block_id": "pb-04",
+      "command": "C:\\Users\\hooji\\AppData\\Roaming\\npm\\seedance.CMD generate @D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\.prompt_pb-04.txt --duration 15 --ratio 9:16 --model fast --wait --json --output D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\pb-04.mp4 --timeout 600",
+      "duration_seconds": 15
+    },
+    {
+      "block_id": "pb-05",
+      "command": "C:\\Users\\hooji\\AppData\\Roaming\\npm\\seedance.CMD generate @D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\.prompt_pb-05.txt --duration 15 --ratio 9:16 --model fast --wait --json --output D:\\skills\\autodouyin\\examples\\showcase-long-dry-run\\pb-05.mp4 --timeout 600",
+      "duration_seconds": 15
+    }
+  ],
+  "asset_requirements": {
+    "@图片1": "MISSING",
+    "@图片2": "MISSING"
+  },
+  "total_asset_count": 0,
+  "overall_status": "dry-run"
+}

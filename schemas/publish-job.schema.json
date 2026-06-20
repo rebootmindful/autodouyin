@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autodouyin.local/schemas/publish-job.schema.json",
+  "$comment": "[INPUT]: final video and publish metadata; [OUTPUT]: platform publish task; [POS]: schemas publish contract; [PROTOCOL]: update this contract, then check CLAUDE.md",
+  "title": "PublishJob",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "platform", "video_path", "title", "description"],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string",
+      "enum": ["douyin"]
+    },
+    "video_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "hashtags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cover_path": {
+      "type": "string"
+    },
+    "schedule_at": {
+      "type": "string"
+    },
+    "visibility": {
+      "type": "string"
+    },
+    "login_profile": {
+      "type": "string"
+    }
+  }
+}

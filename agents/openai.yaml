@@ -1,0 +1,11 @@
+# [INPUT]: 依赖 {SKILL.md} 的 {技能名称、触发场景与默认入口}
+# [OUTPUT]: 对外提供 {UI 展示元数据}
+# [POS]: {agents} 的 {产品界面配置}，服务 skill 列表和默认调用
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
+interface:
+  display_name: "AutoDouyin"
+  short_description: "短视频脚本到发布编排 Skill"
+  default_prompt: "Use $autodouyin to turn this brief into a script, storyboard, Seedance job, and optional Douyin publish job."
+
+policy:
+  allow_implicit_invocation: true

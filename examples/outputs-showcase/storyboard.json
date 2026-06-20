@@ -1,0 +1,131 @@
+{
+  "id": "storyboard-local-001",
+  "script_id": "script-local-001",
+  "shots": [
+    {
+      "shot_id": "shot-01",
+      "scene_id": "scene-01",
+      "segment_mode": "single-sequence",
+      "purpose": "hook",
+      "start_second": 0,
+      "end_second": 3,
+      "visual": "竖屏开场直接给结果感，画面突出突出自动化编排与结果展示，第一秒就让观众明白这是自动生成与发布的能力展示。",
+      "camera": "快速推近，第一眼抓人，镜头编码 Z4 Y4 X1，35mm，shallow景深。",
+      "camera_codec": {
+        "z": "Z4",
+        "y": "Y4",
+        "x": "X1",
+        "focal_length_mm": 35,
+        "depth": "shallow"
+      },
+      "action": "主体抬手唤起自动化流程，界面快速响应。",
+      "audio": "短促电子提示音，开场即抓注意力。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-02",
+      "scene_id": "scene-02",
+      "segment_mode": "single-sequence",
+      "purpose": "setup",
+      "start_second": 3,
+      "end_second": 6,
+      "visual": "切到工作台与产品界面，brief、脚本和分镜结构被展开，空间关系清楚，信息密度可读。",
+      "camera": "中景稳定推进，交代空间和工作流背景，镜头编码 Z5 Y4 X2，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "工作流面板展开，信息按顺序进入视野。",
+      "audio": "轻量环境音和键盘操作音，强调真实工作台氛围。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-03",
+      "scene_id": "scene-03",
+      "segment_mode": "single-sequence",
+      "purpose": "turn",
+      "start_second": 6,
+      "end_second": 9,
+      "visual": "主体进入执行段，系统开始生成素材编号、分镜镜头和任务清单，视觉信息逐步加速。",
+      "camera": "轻微横移配合主体操作，展示变化推进，镜头编码 Z5 Y4 X2，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "系统编译脚本、镜头、素材和任务对象。",
+      "audio": "节奏加快的界面反馈音和轻微上扬配乐。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-04",
+      "scene_id": "scene-04",
+      "segment_mode": "single-sequence",
+      "purpose": "payoff",
+      "start_second": 9,
+      "end_second": 12,
+      "visual": "结果面板集中展示 script、storyboard、seedance job 和 publish job，被编译完成的核心成果清晰可见。",
+      "camera": "由中景推到近景，强调结果与完成状态，镜头编码 Z3 Y4 X2，85mm，shallow景深。",
+      "camera_codec": {
+        "z": "Z3",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 85,
+        "depth": "shallow"
+      },
+      "action": "结果面板依次亮起，任务状态从草稿变为已准备。",
+      "audio": "结果确认音，配乐进入最高点后短暂停留。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-05",
+      "scene_id": "scene-05",
+      "segment_mode": "single-sequence",
+      "purpose": "close",
+      "start_second": 12,
+      "end_second": 15,
+      "visual": "画面停在待发布状态，主体确认方案，给出能继续执行的明确收束。",
+      "camera": "缓慢拉远，形成收束和留白，镜头编码 Z6 Y4 X4，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体停留在确认前一刻，形成发布前停顿。",
+      "audio": "收束音效，留下可执行的呼吸感。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    }
+  ]
+}

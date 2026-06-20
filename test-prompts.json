@@ -1,0 +1,91 @@
+[
+  {
+    "id": "tp-001",
+    "name": "minimal-15s-plan-only",
+    "prompt": "用 autodouyin 做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成短视频，先给我方案不要执行。",
+    "expected": {
+      "mode": "plan-only",
+      "duration_seconds": 15,
+      "aspect_ratio": "9:16",
+      "artifacts": [
+        "brief.json",
+        "script.json",
+        "script.md",
+        "storyboard.json",
+        "storyboard.md",
+        "asset-manifest.json",
+        "seedance-job.json",
+        "publish-job.json",
+        "review-summary.md",
+        "review-decision.json",
+        "run-ledger.json"
+      ],
+      "review_status": "pending-review",
+      "ledger_stage": "pending-review",
+      "validation": "artifacts are valid",
+      "max_block_duration": "<= 15s"
+    }
+  },
+  {
+    "id": "tp-002",
+    "name": "ultra-short-4s",
+    "prompt": "用 autodouyin 做一条 4 秒的产品展示视频，9:16，只要方案。",
+    "expected": {
+      "mode": "plan-only",
+      "duration_seconds": 4,
+      "segments_count": 2,
+      "purposes": ["hook", "payoff"],
+      "review_status": "pending-review",
+      "validation": "artifacts are valid"
+    }
+  },
+  {
+    "id": "tp-003",
+    "name": "long-120s-scene-split",
+    "prompt": "用 autodouyin 编译一个 120 秒的完整工作流展示视频，9:16，plan-only 模式。",
+    "expected": {
+      "mode": "plan-only",
+      "duration_seconds": 120,
+      "segments_count": 5,
+      "seedance_mode": "scene-split-edit-pipeline",
+      "max_block_duration": "<= 15s",
+      "scene_plan_not_empty": true,
+      "validation": "artifacts are valid"
+    }
+  },
+  {
+    "id": "tp-004",
+    "name": "product-demo-8s",
+    "prompt": "用 autodouyin 做一条产品展示视频，8 秒，突出 UI 界面和卖点。",
+    "expected": {
+      "video_type": "product-demo",
+      "duration_seconds": 8,
+      "template_fields": ["template_mode", "template_confidence"],
+      "validation": "artifacts are valid"
+    }
+  },
+  {
+    "id": "tp-005",
+    "name": "approve-and-generate-dry-run",
+    "prompt": "审核通过后，用 seedance-2.0-fast 做 dry-run，不要真执行。",
+    "expected": {
+      "review_status": "approved",
+      "selected_model": "seedance-2.0-fast",
+      "artifacts": ["generation-report.json", "run-ledger.json"],
+      "ledger_stage": "generated",
+      "generation_status": "dry-run or partial",
+      "validation": "artifacts are valid before generation"
+    }
+  },
+  {
+    "id": "tp-006",
+    "name": "prepare-publish-boundary",
+    "prompt": "视频组装后，帮我准备发布页，但不要点击发布。",
+    "expected": {
+      "mode": "publish-only or end-to-end",
+      "artifacts": ["publish-job.json", "run-ledger.json"],
+      "ledger_stage": "publish-prepared",
+      "boundary": "human final publish confirmation required"
+    }
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "platform": "douyin",
+  "mode": "plan-only",
+  "aspect_ratio": "9:16",
+  "duration_seconds": 15,
+  "id": "brief-20260619-example-04",
+  "goal": "做一条 15 秒剧情短片，讲一个创作者深夜赶工，最后靠 AI 自动生成脚本和分镜完成视频发布的故事",
+  "style": "cinematic night drama",
+  "video_type": "narrative-story",
+  "must_include": [
+    "late night desk",
+    "stress to relief",
+    "AI helps finish the job"
+  ],
+  "must_avoid": [
+    "flat emotional arc",
+    "generic office visuals"
+  ]
+}

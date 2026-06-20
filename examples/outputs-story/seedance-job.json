@@ -1,0 +1,146 @@
+{
+  "id": "seedance-job-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "duration_seconds": 15,
+  "aspect_ratio": "9:16",
+  "mode": "text-image-video",
+  "global_style_anchor": "cinematic night drama，统一视觉风格，画面干净，避免风格漂移",
+  "continuity_locks": [
+    "cinematic night drama，统一视觉风格，画面干净，避免风格漂移",
+    "同一角色保持一致五官、身份、服装和发型，不变脸、不换人。",
+    "同一场景保持一致环境、光线、背景与空间关系，不突然切换。"
+  ],
+  "negative_constraints": [
+    "禁止风格漂移",
+    "禁止角色变脸或换人",
+    "禁止突然偏色",
+    "禁止新增无关人物",
+    "禁止光线突变",
+    "禁止出现文字、字幕、LOGO、水印"
+  ],
+  "slot_plan": [
+    {
+      "ref": "@图片1",
+      "asset_id": "C01",
+      "usage": "主体一致性参考"
+    },
+    {
+      "ref": "@图片2",
+      "asset_id": "S01",
+      "usage": "场景或空间背景参考"
+    },
+    {
+      "ref": "@图片3",
+      "asset_id": "P01",
+      "usage": "关键道具、结果卡片或动作强化参考"
+    }
+  ],
+  "video_type": "narrative-story",
+  "strategy": "five-beat-short-video",
+  "execution_recommendation": {
+    "video_type": "narrative-story",
+    "hard_single_generation_range_seconds": [
+      4,
+      15
+    ],
+    "official_ui_recommended_range_seconds": [
+      5,
+      12
+    ],
+    "fastest_test_window_seconds": [
+      4,
+      5
+    ],
+    "fastest_practical_window_seconds": [
+      6,
+      8
+    ],
+    "stable_expression_window_seconds": [
+      8,
+      12
+    ],
+    "default_duration_seconds_for_type": 15,
+    "max_single_generation_seconds": 15,
+    "scene_split_recommended_after_seconds": 60,
+    "suggested_split_strategy": "single-generation",
+    "requested_duration_seconds": 15
+  },
+  "scene_plan": [],
+  "prompt_blocks": [
+    {
+      "block_id": "pb-01",
+      "scene_id": "scene-01",
+      "mode": "single-sequence",
+      "start_second": 0,
+      "end_second": 3,
+      "prompt": "剧情短片风格，强调情绪起伏、人物状态变化和结果反转。 风格锁定：cinematic night drama，统一视觉风格，画面干净，避免风格漂移 0-3秒画面：深夜赶工压力先立住，观众一眼看见主角的困境和截止压力。 镜头：快速推近，第一眼抓人，镜头编码 Z4 Y4 X1，35mm，shallow景深。 动作：主角在压力状态下停顿、皱眉或快速敲击键盘。 声音：轻微压迫感环境音和急促键盘声，先立住焦虑。 额外要求：人物情绪递进，压力到释放，剧情反转明确",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-02",
+      "scene_id": "scene-02",
+      "mode": "single-sequence",
+      "start_second": 3,
+      "end_second": 6,
+      "prompt": "剧情短片风格，强调情绪起伏、人物状态变化和结果反转。 风格锁定：cinematic night drama，统一视觉风格，画面干净，避免风格漂移 3-6秒画面：主角、桌面、时间和未完成工作被建立，问题具象化。 镜头：中景稳定推进，交代空间和工作流背景，镜头编码 Z5 Y4 X2，50mm，medium景深。 动作：桌面信息、时间压力和未完成任务被逐步看清。 声音：轻量环境音和键盘操作音，强调真实工作台氛围。 额外要求：人物情绪递进，压力到释放，剧情反转明确",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-03",
+      "scene_id": "scene-03",
+      "mode": "single-sequence",
+      "start_second": 6,
+      "end_second": 9,
+      "prompt": "剧情短片风格，强调情绪起伏、人物状态变化和结果反转。 风格锁定：cinematic night drama，统一视觉风格，画面干净，避免风格漂移 6-9秒画面：AI 介入，脚本与分镜开始自动生成，局面发生逆转。 镜头：轻微横移配合主体操作，展示变化推进，镜头编码 Z5 Y4 X2，50mm，medium景深。 动作：AI 接管重复劳动，脚本和分镜开始自动展开。 声音：配乐从低压转向希望感，伴随界面展开音。 额外要求：人物情绪递进，压力到释放，剧情反转明确",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-04",
+      "scene_id": "scene-04",
+      "mode": "single-sequence",
+      "start_second": 9,
+      "end_second": 12,
+      "prompt": "剧情短片风格，强调情绪起伏、人物状态变化和结果反转。 风格锁定：cinematic night drama，统一视觉风格，画面干净，避免风格漂移 9-12秒画面：主角从焦虑切到放松，任务结果被明确展示。 镜头：由中景推到近景，强调结果与完成状态，镜头编码 Z3 Y4 X2，85mm，shallow景深。 动作：主角看到结果，状态从紧绷切到放松。 声音：结果确认音带来明显情绪释放。 额外要求：人物情绪递进，压力到释放，剧情反转明确",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-05",
+      "scene_id": "scene-05",
+      "mode": "single-sequence",
+      "start_second": 12,
+      "end_second": 15,
+      "prompt": "剧情短片风格，强调情绪起伏、人物状态变化和结果反转。 风格锁定：cinematic night drama，统一视觉风格，画面干净，避免风格漂移 12-15秒画面：最终停在发布成功前一刻，形成松一口气的情绪落点。 镜头：缓慢拉远，形成收束和留白，镜头编码 Z6 Y4 X4，50mm，medium景深。 动作：主角停在确认发布前，完成情绪收束。 声音：音乐回稳，留下松一口气的尾音。 额外要求：人物情绪递进，压力到释放，剧情反转明确",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    }
+  ]
+}

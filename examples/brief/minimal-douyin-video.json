@@ -1,0 +1,18 @@
+{
+  "id": "brief-20260619-example-01",
+  "goal": "做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频",
+  "platform": "douyin",
+  "mode": "plan-only",
+  "duration_seconds": 15,
+  "aspect_ratio": "9:16",
+  "style": "clean tech cinematic",
+  "must_include": [
+    "AI assistant",
+    "script generation",
+    "video publish workflow"
+  ],
+  "must_avoid": [
+    "real celebrity faces",
+    "platform policy violations"
+  ]
+}

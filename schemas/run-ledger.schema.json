@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autodouyin.local/schemas/run-ledger.schema.json",
+  "$comment": "[INPUT]: pipeline step results; [OUTPUT]: auditable run log; [POS]: schemas execution history contract; [PROTOCOL]: update this contract, then check CLAUDE.md",
+  "title": "RunLedger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "brief_id", "mode", "steps", "status", "artifacts"],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "brief_id": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["plan-only", "generate-only", "publish-only", "end-to-end"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending-review", "approved", "success", "partial", "failed"]
+    },
+    "current_stage": {
+      "type": "string",
+      "enum": [
+        "compiled",
+        "pending-review",
+        "approved",
+        "generating",
+        "generated",
+        "assembling",
+        "assembled",
+        "publish-prepared",
+        "publishing",
+        "published",
+        "failed"
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status", "started_at", "ended_at", "artifacts", "notes"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["success", "skipped", "failed"]
+          },
+          "started_at": {
+            "type": "string"
+          },
+          "ended_at": {
+            "type": "string"
+          },
+          "artifacts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

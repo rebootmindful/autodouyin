@@ -1,0 +1,31 @@
+{
+  "id": "script-local-001",
+  "brief_id": "brief-20260619-example-07",
+  "video_type": "workflow-explainer",
+  "strategy": "scene-split-edit-pipeline",
+  "title": "做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布",
+  "logline": "围绕“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”生成一条可编排、可执行、可发布的视频方案。",
+  "segments": [
+    {
+      "segment_id": "seg-01",
+      "purpose": "world-build",
+      "summary": "建立世界",
+      "emotion": "calm",
+      "estimated_seconds": 25
+    },
+    {
+      "segment_id": "seg-02",
+      "purpose": "change-push",
+      "summary": "变化推进",
+      "emotion": "active",
+      "estimated_seconds": 25
+    },
+    {
+      "segment_id": "seg-03",
+      "purpose": "emotional-close",
+      "summary": "情绪收束",
+      "emotion": "resolved",
+      "estimated_seconds": 25
+    }
+  ]
+}

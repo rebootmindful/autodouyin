@@ -1,0 +1,94 @@
+{
+  "id": "run-local-001",
+  "brief_id": "brief-20260619-example-01",
+  "mode": "plan-only",
+  "status": "pending-review",
+  "current_stage": "pending-review",
+  "artifacts": [
+    "brief.json",
+    "script.json",
+    "script.md",
+    "storyboard.json",
+    "storyboard.md",
+    "asset-manifest.json",
+    "seedance-job.json",
+    "publish-job.json",
+    "review-summary.md",
+    "review-decision.json"
+  ],
+  "steps": [
+    {
+      "name": "normalize-brief",
+      "status": "success",
+      "started_at": "2026-06-20T19:17:44+08:00",
+      "ended_at": "2026-06-20T19:17:44+08:00",
+      "artifacts": [
+        "brief.json"
+      ],
+      "notes": "输入标准化完成。"
+    },
+    {
+      "name": "compile-script",
+      "status": "success",
+      "started_at": "2026-06-20T19:17:44+08:00",
+      "ended_at": "2026-06-20T19:17:44+08:00",
+      "artifacts": [
+        "script.json",
+        "script.md"
+      ],
+      "notes": "脚本编译完成。"
+    },
+    {
+      "name": "compile-storyboard",
+      "status": "success",
+      "started_at": "2026-06-20T19:17:44+08:00",
+      "ended_at": "2026-06-20T19:17:44+08:00",
+      "artifacts": [
+        "storyboard.json",
+        "storyboard.md"
+      ],
+      "notes": "分镜编译完成。"
+    },
+    {
+      "name": "compile-assets",
+      "status": "success",
+      "started_at": "2026-06-20T19:17:44+08:00",
+      "ended_at": "2026-06-20T19:17:44+08:00",
+      "artifacts": [
+        "asset-manifest.json"
+      ],
+      "notes": "素材清单编译完成。"
+    },
+    {
+      "name": "compile-seedance-job",
+      "status": "success",
+      "started_at": "2026-06-20T19:17:44+08:00",
+      "ended_at": "2026-06-20T19:17:44+08:00",
+      "artifacts": [
+        "seedance-job.json"
+      ],
+      "notes": "Seedance 任务编译完成。"
+    },
+    {
+      "name": "compile-publish-job",
+      "status": "success",
+      "started_at": "2026-06-20T19:17:44+08:00",
+      "ended_at": "2026-06-20T19:17:44+08:00",
+      "artifacts": [
+        "publish-job.json"
+      ],
+      "notes": "发布任务编译完成。"
+    },
+    {
+      "name": "prepare-review",
+      "status": "success",
+      "started_at": "2026-06-20T19:17:44+08:00",
+      "ended_at": "2026-06-20T19:17:44+08:00",
+      "artifacts": [
+        "review-summary.md",
+        "review-decision.json"
+      ],
+      "notes": "已进入待审核状态。"
+    }
+  ]
+}

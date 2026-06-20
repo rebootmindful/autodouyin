@@ -1,0 +1,256 @@
+{
+  "id": "storyboard-local-001",
+  "script_id": "script-local-001",
+  "shots": [
+    {
+      "shot_id": "shot-01",
+      "scene_id": "scene-01",
+      "segment_mode": "scene-base",
+      "purpose": "world-build",
+      "start_second": 0,
+      "end_second": 12,
+      "visual": "建立世界与空间关系，先让观众理解“完整工作流展示”发生在什么工作流环境中，界面与主体位置稳定。",
+      "camera": "稳定机位为主，先远后中，镜头编码 Z7 Y4 X2 到 Z5 Y4 X2，50mm，deep景深。",
+      "camera_codec": {
+        "z": "Z7",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "deep"
+      },
+      "action": "主体进入场景，工作流逐步展开，但不急于爆发变化。",
+      "audio": "节奏较慢的环境音和轻量配乐，优先可读性。 这是第 1/5 段，应保持风格、角色外观和场景关系不漂移。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "当前 scene 内部可续拍；scene 与 scene 之间改用后期拼接而不是跨 scene 延长。"
+    },
+    {
+      "shot_id": "shot-02",
+      "scene_id": "scene-01",
+      "segment_mode": "scene-extension",
+      "purpose": "world-build",
+      "start_second": 12,
+      "end_second": 24,
+      "visual": "建立世界与空间关系，先让观众理解“完整工作流展示”发生在什么工作流环境中，界面与主体位置稳定。",
+      "camera": "稳定机位为主，先远后中，镜头编码 Z7 Y4 X2 到 Z5 Y4 X2，50mm，deep景深。",
+      "camera_codec": {
+        "z": "Z7",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "deep"
+      },
+      "action": "主体进入场景，工作流逐步展开，但不急于爆发变化。",
+      "audio": "节奏较慢的环境音和轻量配乐，优先可读性。 这是第 1/5 段，应保持风格、角色外观和场景关系不漂移。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "当前 scene 内部可续拍；scene 与 scene 之间改用后期拼接而不是跨 scene 延长。"
+    },
+    {
+      "shot_id": "shot-03",
+      "scene_id": "scene-02",
+      "segment_mode": "scene-base",
+      "purpose": "setup-flow",
+      "start_second": 24,
+      "end_second": 36,
+      "visual": "进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。",
+      "camera": "从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体确认结果，系统停在待执行或待发布状态。",
+      "audio": "配乐回稳，环境音持续，形成落点。 这是第 2/5 段，应保持风格、角色外观和场景关系不漂移。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "当前 scene 内部可续拍；scene 与 scene 之间改用后期拼接而不是跨 scene 延长。"
+    },
+    {
+      "shot_id": "shot-04",
+      "scene_id": "scene-02",
+      "segment_mode": "scene-extension",
+      "purpose": "setup-flow",
+      "start_second": 36,
+      "end_second": 48,
+      "visual": "进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。",
+      "camera": "从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体确认结果，系统停在待执行或待发布状态。",
+      "audio": "配乐回稳，环境音持续，形成落点。 这是第 2/5 段，应保持风格、角色外观和场景关系不漂移。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "当前 scene 内部可续拍；scene 与 scene 之间改用后期拼接而不是跨 scene 延长。"
+    },
+    {
+      "shot_id": "shot-05",
+      "scene_id": "scene-03",
+      "segment_mode": "scene-base",
+      "purpose": "change-push",
+      "start_second": 48,
+      "end_second": 60,
+      "visual": "内容进入变化推进段，脚本、分镜、素材编号和视频任务开始持续生成，信息密度上升。",
+      "camera": "由中景推进到近景，局部横移辅助，镜头编码 Z5 Y4 X2 到 Z3 Y4 X2，50-85mm，medium到shallow景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体操作与系统编译动作联动，结果不断堆叠。",
+      "audio": "配乐节奏明显加快，加入界面反馈音和切换音。 这是第 3/5 段，应保持风格、角色外观和场景关系不漂移。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "当前 scene 内部可续拍；scene 与 scene 之间改用后期拼接而不是跨 scene 延长。"
+    },
+    {
+      "shot_id": "shot-06",
+      "scene_id": "scene-03",
+      "segment_mode": "scene-extension",
+      "purpose": "change-push",
+      "start_second": 60,
+      "end_second": 72,
+      "visual": "内容进入变化推进段，脚本、分镜、素材编号和视频任务开始持续生成，信息密度上升。",
+      "camera": "由中景推进到近景，局部横移辅助，镜头编码 Z5 Y4 X2 到 Z3 Y4 X2，50-85mm，medium到shallow景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体操作与系统编译动作联动，结果不断堆叠。",
+      "audio": "配乐节奏明显加快，加入界面反馈音和切换音。 这是第 3/5 段，应保持风格、角色外观和场景关系不漂移。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "当前 scene 内部可续拍；scene 与 scene 之间改用后期拼接而不是跨 scene 延长。"
+    },
+    {
+      "shot_id": "shot-07",
+      "scene_id": "scene-04",
+      "segment_mode": "scene-base",
+      "purpose": "peak-moment",
+      "start_second": 72,
+      "end_second": 84,
+      "visual": "进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。",
+      "camera": "从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体确认结果，系统停在待执行或待发布状态。",
+      "audio": "配乐回稳，环境音持续，形成落点。 这是第 4/5 段，应保持风格、角色外观和场景关系不漂移。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "当前 scene 内部可续拍；scene 与 scene 之间改用后期拼接而不是跨 scene 延长。"
+    },
+    {
+      "shot_id": "shot-08",
+      "scene_id": "scene-04",
+      "segment_mode": "scene-extension",
+      "purpose": "peak-moment",
+      "start_second": 84,
+      "end_second": 96,
+      "visual": "进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。",
+      "camera": "从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体确认结果，系统停在待执行或待发布状态。",
+      "audio": "配乐回稳，环境音持续，形成落点。 这是第 4/5 段，应保持风格、角色外观和场景关系不漂移。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "当前 scene 内部可续拍；scene 与 scene 之间改用后期拼接而不是跨 scene 延长。"
+    },
+    {
+      "shot_id": "shot-09",
+      "scene_id": "scene-05",
+      "segment_mode": "scene-base",
+      "purpose": "emotional-close",
+      "start_second": 96,
+      "end_second": 108,
+      "visual": "进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。",
+      "camera": "从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体确认结果，系统停在待执行或待发布状态。",
+      "audio": "配乐回稳，环境音持续，形成落点。 这是第 5/5 段，应保持风格、角色外观和场景关系不漂移。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "当前 scene 内部可续拍；scene 与 scene 之间改用后期拼接而不是跨 scene 延长。"
+    },
+    {
+      "shot_id": "shot-10",
+      "scene_id": "scene-05",
+      "segment_mode": "scene-extension",
+      "purpose": "emotional-close",
+      "start_second": 108,
+      "end_second": 120,
+      "visual": "进入情绪收束段，成果集中展示，画面从动作推进回到稳态，形成完整闭环。",
+      "camera": "从近景回到中远景，轻微拉远，镜头编码 Z3 Y4 X2 到 Z6 Y4 X4，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体确认结果，系统停在待执行或待发布状态。",
+      "audio": "配乐回稳，环境音持续，形成落点。 这是第 5/5 段，应保持风格、角色外观和场景关系不漂移。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "当前 scene 内部可续拍；scene 与 scene 之间改用后期拼接而不是跨 scene 延长。"
+    }
+  ]
+}

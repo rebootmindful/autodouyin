@@ -1,0 +1,20 @@
+{
+  "job_id": "seedance-job-local-001",
+  "blocks": [
+    {
+      "block_id": "pb-01",
+      "task_id": "unknown",
+      "status": "failed",
+      "error": "✗ API error (401): {\"error\":{\"code\":\"AuthenticationError\",\"message\":\"The API key format is incorrect. Request id: 021781877000570982b29f8728970ed398f78ebc517c3ae6fad85\",\"param\":\"\",\"type\":\"Unauthorized\"}}\n",
+      "output_path": ""
+    },
+    {
+      "block_id": "pb-02",
+      "task_id": "unknown",
+      "status": "failed",
+      "error": "✗ API error (401): {\"error\":{\"code\":\"AuthenticationError\",\"message\":\"The API key format is incorrect. Request id: 021781877000824afd8a45cd617ef9c890e825ed50ba4e5947f55\",\"param\":\"\",\"type\":\"Unauthorized\"}}\n",
+      "output_path": ""
+    }
+  ],
+  "overall_status": "partial"
+}

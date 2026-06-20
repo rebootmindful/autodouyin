@@ -1,0 +1,22 @@
+{
+  "platform": "douyin",
+  "mode": "plan-only",
+  "aspect_ratio": "9:16",
+  "id": "brief-20260619-recruit-ops",
+  "goal": "做一条 15 秒竖屏招聘短视频，电商品牌招募运营岗位，展示岗位吸引力与团队氛围",
+  "duration_seconds": 15,
+  "style": "modern e-commerce, dynamic professional",
+  "video_type": "product-demo",
+  "aesthetic_preset": "microsoft-fluent",
+  "must_include": [
+    "运营工作台场景",
+    "数据面板与增长曲线",
+    "团队协作氛围",
+    "岗位核心卖点"
+  ],
+  "must_avoid": [
+    "传统招聘海报感",
+    "枯燥文字堆叠",
+    "过度娱乐化"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "publish-job-local-001",
+  "platform": "douyin",
+  "video_path": "artifacts/output-video.mp4",
+  "title": "做一条 4 秒竖屏产品闪演视频，直接展示 AI 视频工作流工",
+  "description": "围绕“做一条 4 秒竖屏产品闪演视频，直接展示 AI 视频工作流工具的完成结果”生成一条可编排、可执行、可发布的视频方案。 #AI视频 #抖音自动化 #Seedance",
+  "hashtags": [
+    "AI视频",
+    "抖音自动化",
+    "Seedance"
+  ],
+  "visibility": "public"
+}

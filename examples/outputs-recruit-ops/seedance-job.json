@@ -1,0 +1,69 @@
+{
+  "id": "seedance-job-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "duration_seconds": 15,
+  "aspect_ratio": "9:16",
+  "mode": "text-image-video",
+  "global_style_anchor": "Fluent Design acrylic layers, colorful gradient mesh backgrounds, layered depth cards, spring-physics motion, modern productivity aesthetic",
+  "continuity_locks": [
+    "Fluent Design acrylic layers, colorful gradient mesh backgrounds, layered depth cards, spring-physics motion, modern productivity aesthetic",
+    "同一角色保持一致五官、身份、服装和发型，不变脸、不换人。",
+    "同一场景保持一致环境、光线、背景与空间关系，不突然切换。"
+  ],
+  "negative_constraints": [
+    "禁止风格漂移",
+    "禁止角色变脸或换人",
+    "禁止突然偏色",
+    "禁止新增无关人物",
+    "禁止光线突变",
+    "禁止出现文字、字幕、LOGO、水印",
+    "禁止纯黑背景",
+    "禁止单色平面",
+    "禁止生硬切割"
+  ],
+  "slot_plan": [
+    {"ref": "@图片1", "asset_id": "C01", "usage": "主体一致性参考"},
+    {"ref": "@图片2", "asset_id": "S01", "usage": "场景或空间背景参考"},
+    {"ref": "@图片3", "asset_id": "P01", "usage": "关键道具、结果卡片或动作强化参考"}
+  ],
+  "video_type": "product-demo",
+  "strategy": "five-beat-short-video",
+  "execution_recommendation": {
+    "video_type": "product-demo",
+    "hard_single_generation_range_seconds": [4, 15],
+    "official_ui_recommended_range_seconds": [5, 12],
+    "fastest_test_window_seconds": [4, 5],
+    "fastest_practical_window_seconds": [5, 8],
+    "stable_expression_window_seconds": [6, 10],
+    "default_duration_seconds_for_type": 8,
+    "max_single_generation_seconds": 15,
+    "scene_split_recommended_after_seconds": 60,
+    "suggested_split_strategy": "single-generation",
+    "requested_duration_seconds": 15
+  },
+  "scene_plan": [],
+  "prompt_blocks": [
+    {
+      "block_id": "pb-01",
+      "scene_id": "scene-01",
+      "mode": "single-sequence",
+      "start_second": 0,
+      "end_second": 6,
+      "prompt": "商业产品演示视频，强调卖点直给、UI清晰、动作利落。风格锁定：Fluent Design acrylic layers, colorful gradient mesh backgrounds, layered depth cards, spring-physics motion, modern productivity aesthetic。统一视觉风格，画面干净，避免风格漂移。0-6秒画面：竖屏中央，年轻运营人自信站立，周围环绕半透明 acrylic 数据卡片显示订单量、转化率等核心指标，背景 blue-purple-pink 渐变网格，层叠深度感，ambient colorful glow 勾勒人物轮廓。镜头先快速推近抓住活力感，然后稳定推进展示现代电商运营工作台全貌：主屏实时数据仪表盘，左侧 layered cards 商品列表，右侧 translucent panel 用户画像，Microsoft blue 主色调，信息层级清晰。动作：数据卡片以 spring-physics 弹性动画从四周滑入就位，数据面板以 reveal-from-behind 动画展开，人物保持自信微笑。声音：清脆 reveal 音效叠加轻量电子节拍，过渡到平稳数据流声。额外要求：商业广告节奏，卖点一眼可见，界面与动效高级干净。",
+      "image_refs": ["@图片1", "@图片2", "@图片3"],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-02",
+      "scene_id": "scene-02",
+      "mode": "single-sequence",
+      "start_second": 6,
+      "end_second": 15,
+      "prompt": "商业产品演示视频。风格锁定同上。6-15秒画面：运营人站在中央分析数据，三张 layered cards 从两侧滑入展示团队成员，卡片之间出现 colorful gradient 连线，信息流以光点形式流动，协作能量可视化。随后全屏增长曲线以 gradient mesh blue-purple-pink 动画向上飙升，曲线轨迹留有 colorful glow 尾迹，前景运营人与团队成员击掌庆祝，背景数据面板全部显示绿色上升箭头，Fluent 层叠卡片标记达成状态。最后画面过渡到温暖渐变背景，品牌标识居中，下方招聘文案以 Fluent 排版呈现，团队剪影在背景 translucent panel 隐约可见，留白充足。镜头：轻微横移配合连线展开，再由中景推到近景聚焦增长曲线与庆祝动作，85mm shallow 景深，最后缓慢拉远回到中远景形成温暖收束。动作：团队卡片 spring-physics 就位，增长曲线加速上升，击掌有力，品牌标识与招聘文案稳定呈现。声音：节奏加快的协作反馈音叠加轻快鼓点，增长曲线到达最高点时确认击中音与欢呼，最后配乐回稳留下温暖尾音。额外要求：商业广告节奏，卖点一眼可见，界面与动效高级干净。",
+      "image_refs": ["@图片1", "@图片2", "@图片3"],
+      "video_refs": [],
+      "audio_refs": []
+    }
+  ]
+}

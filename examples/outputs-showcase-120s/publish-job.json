@@ -1,0 +1,13 @@
+{
+  "id": "publish-job-local-001",
+  "platform": "douyin",
+  "video_path": "artifacts/output-video.mp4",
+  "title": "完整工作流展示",
+  "description": "围绕“完整工作流展示”生成一条可编排、可执行、可发布的视频方案。 #AI视频 #抖音自动化 #Seedance",
+  "hashtags": [
+    "AI视频",
+    "抖音自动化",
+    "Seedance"
+  ],
+  "visibility": "public"
+}

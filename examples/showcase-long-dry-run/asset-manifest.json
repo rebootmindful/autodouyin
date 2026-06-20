@@ -1,0 +1,33 @@
+{
+  "id": "assets-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "items": [
+    {
+      "asset_id": "C01",
+      "type": "character",
+      "name": "主体角色",
+      "description": "承载“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”的主要角色或操作主体，风格对齐 Bauhaus Zen。",
+      "prompt": "Bauhaus Zen 风格主体角色，用于表现“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”，服装、轮廓和身份稳定一致。",
+      "required": true,
+      "continuity_priority": "high",
+      "identity_lock": {
+        "strategy": "derived-stills",
+        "gender_presentation": "not-specified",
+        "approx_age_range": "adult",
+        "hair": "保持前后统一，不随段落变化",
+        "outfit": "保持同一套主服装",
+        "accessories": "如出现配饰需保持不变",
+        "persona": "保持同一人物职业气质与年龄感"
+      }
+    },
+    {
+      "asset_id": "S01",
+      "type": "scene",
+      "name": "主场景",
+      "description": "承载“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”的主要工作环境或展示空间，风格对齐 Bauhaus Zen。",
+      "prompt": "Bauhaus Zen 风格主场景，用于表现“做一个 75 秒的长流程视频，完整展示从 brief、脚本、分镜、视频任务到发布准备的全链路”的空间关系、光线与背景层次。",
+      "required": true,
+      "continuity_priority": "medium"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "platform": "douyin",
+  "mode": "plan-only",
+  "aspect_ratio": "9:16",
+  "goal": "AI 帮人自动生成短视频",
+  "duration_seconds": 15,
+  "video_type": "workflow-explainer",
+  "id": "brief-local-001"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "script-local-001",
+  "brief_id": "brief-20260619-example-01",
+  "video_type": "workflow-explainer",
+  "strategy": "five-beat-short-video",
+  "title": "做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频",
+  "logline": "围绕“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”生成一条可审核、可执行、可回放的视频方案。",
+  "segments": [
+    {
+      "segment_id": "seg-01",
+      "purpose": "setup",
+      "summary": "围绕目标分点说明：交代主体、场景和工作流背景。 主题围绕“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”展开。",
+      "emotion": "focused",
+      "estimated_seconds": 6,
+      "spoken_line": ""
+    },
+    {
+      "segment_id": "seg-02",
+      "purpose": "payoff",
+      "summary": "围绕目标分点说明：集中展示结果，让价值清楚落地。 主题围绕“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”展开。",
+      "emotion": "confident",
+      "estimated_seconds": 9,
+      "spoken_line": ""
+    }
+  ],
+  "template_mode": "fallback-information",
+  "template_confidence": "low"
+}

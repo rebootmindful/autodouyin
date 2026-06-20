@@ -1,0 +1,131 @@
+{
+  "id": "storyboard-local-001",
+  "script_id": "script-local-001",
+  "shots": [
+    {
+      "shot_id": "shot-01",
+      "scene_id": "scene-01",
+      "segment_mode": "single-sequence",
+      "purpose": "hook",
+      "start_second": 0,
+      "end_second": 2,
+      "visual": "角色亮相直接给姿态与目标，画面突出hero pose、screen fragments、high-speed formation effect，第一秒先立住人物。",
+      "camera": "快速推近，第一眼抓人，镜头编码 Z4 Y4 X1，35mm，shallow景深。",
+      "camera_codec": {
+        "z": "Z4",
+        "y": "Y4",
+        "x": "X1",
+        "focal_length_mm": 35,
+        "depth": "shallow"
+      },
+      "action": "角色完成出场定格或起手式。",
+      "audio": "短促能量启动音，直接进入动作气氛。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-02",
+      "scene_id": "scene-02",
+      "segment_mode": "single-sequence",
+      "purpose": "setup",
+      "start_second": 2,
+      "end_second": 4,
+      "visual": "角色与场景能量开始聚合，界面元素围绕人物形成受控阵列。",
+      "camera": "中景稳定推进，交代空间和工作流背景，镜头编码 Z5 Y4 X2，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "角色抬手、转身或蓄力，界面与能量元素开始受控聚集。",
+      "audio": "低频蓄力音和界面元素聚合音同步出现。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-03",
+      "scene_id": "scene-03",
+      "segment_mode": "single-sequence",
+      "purpose": "turn",
+      "start_second": 4,
+      "end_second": 6,
+      "visual": "主体进入动作推进段，动作与镜头一起升级，形成连续动势。",
+      "camera": "轻微横移配合主体操作，展示变化推进，镜头编码 Z5 Y4 X2，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "角色进入核心动作段，运镜跟随动作变化。",
+      "audio": "动作音效与节奏配乐同步增强。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-04",
+      "scene_id": "scene-04",
+      "segment_mode": "single-sequence",
+      "purpose": "payoff",
+      "start_second": 6,
+      "end_second": 8,
+      "visual": "高速动作与信息流在同一刻汇聚，形成强烈的动作完成镜头。",
+      "camera": "由中景推到近景，强调结果与完成状态，镜头编码 Z3 Y4 X2，85mm，shallow景深。",
+      "camera_codec": {
+        "z": "Z3",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 85,
+        "depth": "shallow"
+      },
+      "action": "动作高潮完成后定格在关键姿态。",
+      "audio": "高潮击中音与配乐重拍同时落下。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    },
+    {
+      "shot_id": "shot-05",
+      "scene_id": "scene-05",
+      "segment_mode": "single-sequence",
+      "purpose": "close",
+      "start_second": 8,
+      "end_second": 10,
+      "visual": "动作收尾后定格在英雄式背面或正面收束姿态。",
+      "camera": "缓慢拉远，形成收束和留白，镜头编码 Z6 Y4 X4，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z6",
+        "y": "Y4",
+        "x": "X4",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "动作残留能量回收，角色留在强势收束位。",
+      "audio": "收束音效，留下可执行的呼吸感。",
+      "assets": [
+        "C01",
+        "S01",
+        "P01"
+      ],
+      "continuity_note": "保持主角、工作台和界面布局连续，后续段落沿用统一风格与空间关系。"
+    }
+  ]
+}

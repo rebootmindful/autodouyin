@@ -1,0 +1,56 @@
+{
+  "id": "storyboard-local-001",
+  "script_id": "script-local-001",
+  "shots": [
+    {
+      "shot_id": "shot-01",
+      "scene_id": "scene-01",
+      "segment_mode": "single-sequence",
+      "purpose": "setup",
+      "start_second": 0,
+      "end_second": 6,
+      "visual": "人物或主体清楚出现在画面中，围绕“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”逐步展开要点说明，画面持续体现 geometric simplicity、matte surfaces、generous whitespace。",
+      "camera": "中景稳定推进，交代空间和主体位置。 镜头编码 Z5 Y4 X2，50mm，medium景深。",
+      "camera_codec": {
+        "z": "Z5",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 50,
+        "depth": "medium"
+      },
+      "action": "主体保持稳定出现，按节奏分点说明信息，不突然切大动作。 保持同一人物发型、服装、年龄感和职业气质一致。",
+      "audio": "延续统一环境音与配乐层次。 当前镜头需与前后段落保持风格连续，共 2 个镜头。",
+      "assets": [
+        "C01",
+        "S01"
+      ],
+      "continuity_note": "保持主体、空间和光线连续，后续镜头沿用同一视觉关系。",
+      "dialogue": ""
+    },
+    {
+      "shot_id": "shot-02",
+      "scene_id": "scene-02",
+      "segment_mode": "single-sequence",
+      "purpose": "payoff",
+      "start_second": 6,
+      "end_second": 15,
+      "visual": "人物或主体清楚出现在画面中，围绕“做一条 15 秒 9:16 的抖音视频，主题是 AI 帮人自动生成并发布短视频”逐步展开要点说明，画面持续体现 geometric simplicity、matte surfaces、generous whitespace。",
+      "camera": "由中景推到近景，强调结果与完成状态。 镜头编码 Z3 Y4 X2，85mm，shallow景深。",
+      "camera_codec": {
+        "z": "Z3",
+        "y": "Y4",
+        "x": "X2",
+        "focal_length_mm": 85,
+        "depth": "shallow"
+      },
+      "action": "主体保持稳定出现，按节奏分点说明信息，不突然切大动作。 保持同一人物发型、服装、年龄感和职业气质一致。",
+      "audio": "延续统一环境音与配乐层次。 当前镜头需与前后段落保持风格连续，共 2 个镜头。",
+      "assets": [
+        "C01",
+        "S01"
+      ],
+      "continuity_note": "保持主体、空间和光线连续，后续镜头沿用同一视觉关系。",
+      "dialogue": ""
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "publish-job-local-001",
+  "platform": "douyin",
+  "video_path": "artifacts/output-video.mp4",
+  "title": "AI 自动编译短视频：从 brief 到发布",
+  "description": "展示 AI 如何把一句话 brief 自动编译成脚本、分镜和 Seedance 任务规格。Bauhaus 极简风格，信息从混沌到秩序。#AI视频 #自动化 #Seedance #短视频",
+  "hashtags": [
+    "AI视频",
+    "自动化",
+    "Seedance",
+    "短视频",
+    "Bauhaus"
+  ],
+  "visibility": "public"
+}

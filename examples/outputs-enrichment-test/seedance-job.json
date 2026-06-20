@@ -1,0 +1,149 @@
+{
+  "id": "seedance-job-local-001",
+  "storyboard_id": "storyboard-local-001",
+  "duration_seconds": 15,
+  "aspect_ratio": "9:16",
+  "mode": "text-image-video",
+  "global_style_anchor": "Bauhaus minimalism meets zen emptiness, matte surfaces, geometric clarity, primary color accents, generous whitespace, functional beauty",
+  "continuity_locks": [
+    "Bauhaus minimalism meets zen emptiness, matte surfaces, geometric clarity, primary color accents, generous whitespace, functional beauty",
+    "同一角色保持一致五官、身份、服装和发型，不变脸、不换人。",
+    "同一场景保持一致环境、光线、背景与空间关系，不突然切换。"
+  ],
+  "negative_constraints": [
+    "禁止风格漂移",
+    "禁止角色变脸或换人",
+    "禁止突然偏色",
+    "禁止新增无关人物",
+    "禁止光线突变",
+    "禁止出现文字、字幕、LOGO、水印",
+    "禁止过度装饰",
+    "禁止渐变滥用",
+    "禁止无意义动效"
+  ],
+  "slot_plan": [
+    {
+      "ref": "@图片1",
+      "asset_id": "C01",
+      "usage": "主体一致性参考"
+    },
+    {
+      "ref": "@图片2",
+      "asset_id": "S01",
+      "usage": "场景或空间背景参考"
+    },
+    {
+      "ref": "@图片3",
+      "asset_id": "P01",
+      "usage": "关键道具、结果卡片或动作强化参考"
+    }
+  ],
+  "video_type": "workflow-explainer",
+  "strategy": "five-beat-short-video",
+  "execution_recommendation": {
+    "video_type": "workflow-explainer",
+    "hard_single_generation_range_seconds": [
+      4,
+      15
+    ],
+    "official_ui_recommended_range_seconds": [
+      5,
+      12
+    ],
+    "fastest_test_window_seconds": [
+      4,
+      5
+    ],
+    "fastest_practical_window_seconds": [
+      5,
+      8
+    ],
+    "stable_expression_window_seconds": [
+      8,
+      12
+    ],
+    "default_duration_seconds_for_type": 15,
+    "max_single_generation_seconds": 15,
+    "scene_split_recommended_after_seconds": 60,
+    "suggested_split_strategy": "single-generation",
+    "requested_duration_seconds": 15
+  },
+  "scene_plan": [],
+  "prompt_blocks": [
+    {
+      "block_id": "pb-01",
+      "scene_id": "scene-01",
+      "mode": "single-sequence",
+      "start_second": 0,
+      "end_second": 3,
+      "prompt": "工作流演示视频，强调信息清晰、结果可见、过程有节奏。风格锁定：Bauhaus minimalism meets zen emptiness, matte surfaces, geometric clarity, primary color accents, generous whitespace, functional beauty。0-3秒画面：竖屏中央，五张分镜卡片以 Bauhaus 网格瞬间排列成型，哑光表面反射柔和均匀光线，大面积留白衬托几何秩序，原色红点标记关键节点。镜头：快速推近，从中景到近景锁定中央卡片组，35mm，shallow 景深。动作：分镜卡片从无到有以克制动画出现，无多余动效，仅几何位移。声音：短促 matte 敲击音，干净利落。额外要求：信息层级清楚，结果面板可读，过程到结果连续。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-02",
+      "scene_id": "scene-02",
+      "mode": "single-sequence",
+      "start_second": 3,
+      "end_second": 6,
+      "prompt": "工作流演示视频，强调信息清晰、结果可见、过程有节奏。风格锁定：Bauhaus minimalism meets zen emptiness, matte surfaces, geometric clarity。3-6秒画面：工作台场景，哑光白底上，brief 文本被拆解为三个功能模块，每个模块以矩形卡片呈现，间距均匀，留白充足。镜头：中景稳定推进，50mm，medium 景深。动作：三个模块依次从上方滑入位，动作克制匀速。声音：轻量环境音叠加卡片就位音。额外要求：信息层级清楚，结果面板可读，过程到结果连续。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-03",
+      "scene_id": "scene-03",
+      "mode": "single-sequence",
+      "start_second": 6,
+      "end_second": 9,
+      "prompt": "工作流演示视频。风格锁定同上。6-9秒画面：模块开始自动连接，卡片之间出现细线几何连线，镜头编码和素材引用以原色标签形式挂载，信息密度上升但保持留白可读性。镜头：轻微横移配合连线展开，50mm，medium 景深。动作：连线和标签以功能动画依次出现，无装饰性粒子或光效。声音：节奏轻微加快的界面反馈音。额外要求：信息层级清楚，结果面板可读，过程到结果连续。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-04",
+      "scene_id": "scene-04",
+      "mode": "single-sequence",
+      "start_second": 9,
+      "end_second": 12,
+      "prompt": "工作流演示视频。风格锁定同上。9-12秒画面：成果面板以 Bauhaus 网格排列，script、storyboard、seedance job 三张卡片居中，哑光质感，原色蓝色标记已完成状态，大面积留白让信息一眼可读。镜头：由中景推到近景聚焦中央面板，85mm，shallow 景深。动作：三张卡片状态从草稿切换为已完成。声音：结果确认音，配乐最高点但保持低音量。额外要求：信息层级清楚，结果面板可读，过程到结果连续。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    },
+    {
+      "block_id": "pb-05",
+      "scene_id": "scene-05",
+      "mode": "single-sequence",
+      "start_second": 12,
+      "end_second": 15,
+      "prompt": "工作流演示视频。风格锁定同上。12-15秒画面：画面停留在发布就绪面板，主体确认手势后镜头缓慢拉远，面板缩小为几何构图中的一个元素，大面积留白形成收束。镜头：缓慢拉远回到中远景，50mm，medium 景深。动作：主体停留在确认姿态，无多余动作。声音：收束音效，配乐回稳留下呼吸感。额外要求：信息层级清楚，结果面板可读，过程到结果连续。",
+      "image_refs": [
+        "@图片1",
+        "@图片2",
+        "@图片3"
+      ],
+      "video_refs": [],
+      "audio_refs": []
+    }
+  ]
+}
