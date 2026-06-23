@@ -320,8 +320,16 @@ def validate_style_consistency(data: dict) -> list[str]:
     if not preset_data:
         return issues
     keywords = preset_data.get("visual_keywords", [])
-    if keywords and anchor and not any(kw.lower() in anchor.lower() for kw in keywords):
-        issues.append(f"seedance-job.json: global_style_anchor does not reflect preset '{preset}' keywords")
+    if keywords and anchor:
+        anchor_lower = anchor.lower()
+        # 词级匹配: 提取 visual_keywords 中 ≥4 字符的词，检查是否出现在 anchor 中
+        all_words = set()
+        for kw in keywords:
+            for w in kw.lower().split():
+                if len(w) >= 4:
+                    all_words.add(w)
+        if all_words and not any(w in anchor_lower for w in all_words):
+            issues.append(f"seedance-job.json: global_style_anchor does not reflect preset '{preset}' keywords")
     return issues
 
 

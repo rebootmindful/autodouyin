@@ -46,6 +46,19 @@ def write_json(path: Path, data: dict) -> None:
 
 
 def compile_outputs(brief: dict, output_dir: Path | None = None) -> dict:
+    # 优先检测 shot_prompts.json (LLM 直出 Seedance 分镜提示词)
+    shot_prompts_path = (output_dir / "shot_prompts.json") if output_dir else None
+    if shot_prompts_path and shot_prompts_path.exists():
+        from compile_from_prompts import build_review_package_from_prompts
+        shot_prompts = json.loads(shot_prompts_path.read_text(encoding="utf-8"))
+        # 检查是否已填充 (非空模板)
+        has_content = any(s.get("prompt", "").strip() for s in shot_prompts.get("shots", []))
+        if has_content:
+            outputs = build_review_package_from_prompts(brief, shot_prompts)
+            outputs["script_md"] = render_script_md(outputs["script"], brief)
+            outputs["storyboard_md"] = render_storyboard_md(outputs["storyboard"], outputs["seedance"])
+            return outputs
+    # fallback: 原有编译路径 (含 creative_content.json 检测)
     skeleton = build_skeleton(brief)
     outputs = build_review_package(brief, skeleton, output_dir)
     outputs["script_md"] = render_script_md(outputs["script"], outputs["brief"])
@@ -55,9 +68,9 @@ def compile_outputs(brief: dict, output_dir: Path | None = None) -> dict:
 
 def compile_to_directory(brief: dict, output_dir: Path, creative: bool = False) -> list[str]:
     if creative:
-        # 生成 creative_content.json 模板，引导 LLM 填入创意
-        from creative_writer import generate_template as gen_creative_template
-        gen_creative_template(brief, str(output_dir / "creative_content.json"))
+        # 生成 shot_prompts.json 模板 (LLM 直出模式)
+        from creative_writer import generate_shot_prompts_template as gen_shot_template
+        gen_shot_template(brief, str(output_dir / "shot_prompts.json"))
     outputs = compile_outputs(brief, output_dir)
     write_outputs(output_dir, outputs)
     return validate_directory(output_dir)

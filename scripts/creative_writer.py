@@ -115,8 +115,9 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Creative writing prompt generator")
     parser.add_argument("--brief", help="path to brief.json")
     parser.add_argument("--prompt", action="store_true", help="output creative writing prompt")
+    parser.add_argument("--direct", action="store_true", help="output Seedance-native shot prompt guide (LLM writes prompts directly)")
     parser.add_argument("--template", action="store_true", help="output creative_content.json template")
-    parser.add_argument("--output", help="write creative_content.json template to file")
+    parser.add_argument("--output", help="write shot_prompts.json template to file")
     return parser.parse_args()
 
 
@@ -181,6 +182,132 @@ def build_prompt(brief: dict) -> str:
 - `shots[]`: 每个镜头的核心视觉描述和镜头建议
 - `cta_moment`: CTA 如何作为剧情的自然终点出现
 """
+
+
+_DIRECT_METHODOLOGY = """
+## Seedance 分镜提示词写作指南
+
+你是 Seedance 视频提示词专家。像豆包那样，直接写一镜一镜的提示词。不要翻译 brief —— 用 Seedance 的视觉语言创造画面。
+
+### 写作规则
+
+1. **每镜开头声明格式**: "{ratio}竖屏，{preset}风格。"
+2. **描述画面里有什么**: 主体、空间、光线、色彩、材质。用名词和形容词，不用抽象概念。
+3. **描述在发生什么**: 动作、变化、情绪。展示，不要说明。
+4. **镜头运动**: 推/拉/摇/跟/固定。写进画面描述里，不要单独列。
+5. **不要写的**: 字幕、LOGO、文字、UI 元素 — 这些后期叠加。
+6. **每镜 80-200 字**: 足够让 Seedance 理解画面，但不过度约束。
+7. **camera_hint 可选**: 如 "中景推进 Z5 Y4 X2 50mm"。不写也没关系，编译器补默认值。
+
+### 示例 (product-demo, 15s, 3 shots)
+
+shot-01 (0-5s):
+"9:16竖屏，apple-cupertino风格。白色陶瓷智能花盆置于titanium质感桌面中央，一株绿萝从盆沿垂下。花盆正面圆形LED屏显示😰表情，柔和的红色脉冲光在frosted glass背景上投出微光。镜头从远景缓推至中景。"
+
+shot-02 (5-10s):
+"一只手从画外右侧伸入，修长手指握着透明玻璃水壶，倾斜——水柱落入深褐色土壤。LED屏的😰开始闪烁，红光渐变成温暖的绿色。绿萝叶片微微颤动，仿佛在呼吸。镜头推进至花盆LED屏特写，shallow景深。"
+
+shot-03 (10-15s):
+"😊表情在LED屏上稳定亮起，柔和的绿光照亮花盆周围的空气。镜头缓慢拉远——露出整张桌面，花盆旁出现手机屏幕（显示App界面，植物状态'已浇水'）。画面定格，留白空间供后期叠加slogan。"
+"""
+
+
+def build_direct_prompt(brief: dict) -> str:
+    """生成 Seedance-native 分镜提示词引导."""
+    duration = brief["duration_seconds"]
+    ratio = brief["aspect_ratio"]
+    preset = brief.get("aesthetic_preset", "")
+    must_include = brief.get("must_include", [])
+    must_avoid = brief.get("must_avoid", [])
+
+    include_lines = "\n".join(f"  - {item}" for item in must_include) if must_include else "  - (无特殊要求)"
+    avoid_lines = "\n".join(f"  - {item}" for item in must_avoid) if must_avoid else "  - (无特殊限制)"
+
+    # 建议分镜数
+    if duration <= 8:
+        suggested_shots = "1-2"
+    elif duration <= 15:
+        suggested_shots = "2-3"
+    else:
+        suggested_shots = "3-5"
+
+    return f"""# Seedance 分镜提示词写作
+
+## 技术约束
+- 时长: {duration}s
+- 比例: {ratio}
+- 美学预设: {preset}
+- 建议分镜数: {suggested_shots} shots
+
+## 创作目标
+{brief['goal']}
+
+## 风格基调
+- 风格: {brief.get('style', '')}
+- 语调: {brief.get('tone', '')}
+
+## 必须包含
+{include_lines}
+
+## 必须避免
+{avoid_lines}
+
+{_DIRECT_METHODOLOGY}
+
+## 输出格式
+
+请输出符合 `schemas/shot-prompts.schema.json` 的 JSON。写进 `shot_prompts.json`。
+
+字段:
+- `creative_direction`: 一句话创作方向
+- `shots[]`: 分镜数组
+  - `shot_id`: "shot-01", "shot-02"...
+  - `start_second` / `end_second`: 时间范围
+  - `prompt`: Seedance 原生提示词（最重要！）
+  - `camera_hint`: 可选镜头建议
+
+注意: 你的 prompt 字段会直接喂给 Seedance API。写你最好的视觉语言。
+"""
+
+
+def generate_shot_prompts_template(brief: dict, output_path: str | None = None) -> dict:
+    """生成 shot_prompts.json 空模板."""
+    duration = brief["duration_seconds"]
+    if duration <= 8:
+        shot_count = 2
+    elif duration <= 15:
+        shot_count = 3
+    else:
+        shot_count = min(5, max(3, duration // 8))
+
+    shot_dur = duration / shot_count
+    shots = []
+    for i in range(shot_count):
+        start = round(i * shot_dur, 1)
+        end = round((i + 1) * shot_dur, 1) if i < shot_count - 1 else duration
+        shots.append({
+            "shot_id": f"shot-{i+1:02d}",
+            "start_second": start,
+            "end_second": end,
+            "prompt": "",
+            "camera_hint": "",
+        })
+
+    template = {
+        "id": f"shot-prompts-{brief['id']}",
+        "brief_id": brief["id"],
+        "generated_by": "",
+        "creative_direction": "",
+        "shots": shots,
+    }
+
+    if output_path:
+        path = Path(output_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(template, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(f"shot_prompts template -> {path}")
+
+    return template
 
 
 def generate_template(brief: dict, output_path: str | None = None) -> dict:
@@ -276,14 +403,17 @@ def main() -> None:
 
     brief = load_brief(args.brief)
 
-    if args.prompt:
+    if args.direct:
+        if args.output:
+            generate_shot_prompts_template(brief, args.output)
+        print(build_direct_prompt(brief))
+    elif args.prompt:
         print(build_prompt(brief))
     elif args.template or args.output:
         template = generate_template(brief, args.output)
         if args.template:
             print(json.dumps(template, ensure_ascii=False, indent=2))
     else:
-        # 默认输出 prompt
         print(build_prompt(brief))
 
 
