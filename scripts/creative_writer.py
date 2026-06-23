@@ -185,38 +185,119 @@ def build_prompt(brief: dict) -> str:
 
 
 _DIRECT_METHODOLOGY = """
-## Seedance 分镜提示词写作指南
+## 导演引擎 — 先思考，再写提示词
 
-你是 Seedance 视频提示词专家。像豆包那样，直接写一镜一镜的提示词。不要翻译 brief —— 用 Seedance 的视觉语言创造画面。
+你不是写 prompt，你是在导演一个镜头。不要把 brief 翻译成画面清单——先像一个导演那样读懂这个场景，再让每一句 prompt 都服务于一个明确的意图。
 
-### 写作规则
+### 第一步: 导演之读 (Director's Read)
 
-1. **每镜开头声明格式**: "{ratio}竖屏，{preset}风格。"
-2. **描述画面里有什么**: 主体、空间、光线、色彩、材质。用名词和形容词，不用抽象概念。
-3. **描述在发生什么**: 动作、变化、情绪。展示，不要说明。
-4. **镜头运动**: 推/拉/摇/跟/固定。写进画面描述里，不要单独列。
-5. **不要写的**: 字幕、LOGO、文字、UI 元素 — 这些后期叠加。
-6. **每镜 80-200 字**: 足够让 Seedance 理解画面，但不过度约束。
-7. **camera_hint 可选**: 如 "中景推进 Z5 Y4 X2 50mm"。不写也没关系，编译器补默认值。
+在写任何提示词之前，用大白话回答这 5 个问题。答案决定一切后续选择。
 
-### 示例 (product-demo, 15s, 3 shots)
+1. **功能**: 这个镜头在整个视频里做什么？引入/深化/转折/收尾？
+2. **转折**: 观众从什么状态变到什么状态？用一个对子表达: ____ → ____
+3. **视角**: 观众站在谁的体验里？身体位置在哪？
+4. **力量**: 谁/什么掌控这个画面？力量在谁手里？
+5. **潜台词**: 画面上没说出来的真话是什么？
+
+### 第二步: 场景类型路由
+
+根据功能选择一个场景类型。每个类型有一套连贯的默认设置。
+
+| 场景功能 | 镜头 | 灯光 | 表演 | 拒绝什么 |
+|---|---|---|---|---|
+| 产品展示 | controlled move→detail | hero light on material | one honest use action | "动态产品镜头"和无目的漂移 |
+| 揭示/发现 | withhold→disclose, 镜头与主体一同发现 | light tracks the change | 反应就是镜头内容 | 一次性展示所有 |
+| 亲密对话 | MCU→CU, eye-level | soft motivated key | micro-behavior: 停顿的眼神, 吞咽, 手出卖平静 | 漫游镜头和大景别破坏亲密 |
+| 决策/转折点 | push-in to isolate | light shifts on commit | one decisive physical action | 让台词替代身体动作 |
+| 喜剧节拍 | locked frame, deadpan hold | clean, even | commitment+restraint, hold past comfort | 忙碌的镜头踩到笑点的节奏 |
+| 情感低谷 | distance+stillness, cool soft light | negative space, near-silence | containment: 最小的真实手势 | 配乐驱动和多动的镜头 |
+| 登场/建立 | wide→medium-wide, environmental light | places subject in space | 姿势和步速在远处就能读出状态 | 没有主体关系的漂亮空镜 |
+| 追逐/动作 | tracking/handheld, screen-direction | contrast light | effort+consequence: weight, recovery | 叠太多动作变混沌 |
+| 对抗/力量 | opposed angles, height encodes status | warm/cool split | stillness as dominance | 抹平力量差的对称中立 |
+| 变身/特效 | locked camera, change is legible | light tracks change | subject responds, not narrates | 没有锚点和余波的奇观 |
+
+### 第三步: 导演之声 (Voice)
+
+{director_voice_section}
+
+### 第四步: Director Formula
+
+用这个 7 槽公式写每一镜的 prompt。Subject+Action 放最前面——Seedance 靠前几个词建立画面层级。不要强迫填满，如果参考图已经展示了信息就不重复。
+
+| 槽位 | 填什么 | 模式 |
+|---|---|---|
+| **Subject** | 模型必须锁定的主体 | `白色陶瓷智能花盆, LED圆形屏幕😰表情` |
+| **Action** | 可见的变化, 一个明确的物理动作 | `水柱倾斜落入土壤, LED😰闪烁渐变为😊绿光` |
+| **Scene** | 参考图之外才需要补充的空间信息 | `titanium质感桌面, frosted glass背景虚化` |
+| **Camera** | 一个主要运动+终点 | `远景缓推至中景` 或 `推进至LED屏特写, shallow景深` |
+| **Light** | 物理光源+情绪 | `morning light从窗边斜入, LED绿光照亮周围空气` |
+| **Audio** | 环境音/SFX/对白/静默 | `水滴声, 柔和的电子提示音` |
+| **Constraints** | 保持不变的+排除的 | `不要文字/LOGO/字幕` `保持花盆形状和植物特征` |
+
+### 第五步: 写完后自检 (Coherence Test)
+
+每个镜头写完检查:
+
+[ ] 能用一句话说清这个镜头的意图吗？如果说不清，回到第一步。
+[ ] 镜头/灯光/表演/声音都指向同一个意图吗？任何不服务于意图的元素砍掉。
+[ ] 表演是可见的动作，不是情绪词吗？("她很难过" → "她折好信纸, 双手压平, 没有抬头")
+[ ] 灯光有可信的光源吗？镜头运动有理由吗？
+[ ] 这个镜头的风格和全片一致吗？
+
+### 完整示例
+
+Brief: "15秒智能花盆产品演示。缺水😰→浇水→😊，展示产品魅力，让人想买。"
+
+**导演之读**:
+- 功能: 揭示产品魅力 (reveal)
+- 转折: 普通物品 → 渴望之物
+- 视角: 买家之眼——近距离观看这个美丽的小东西活过来
+- 力量: 产品掌控画面——它是表演者, 手只是配角
+- 潜台词: 拥有它 = 拥有一个会表达情感的小生命
+
+**Voice**: 构图经典 (composed classicist) — 精确、均衡、clean
+
+**Three shots**:
 
 shot-01 (0-5s):
-"9:16竖屏，apple-cupertino风格。白色陶瓷智能花盆置于titanium质感桌面中央，一株绿萝从盆沿垂下。花盆正面圆形LED屏显示😰表情，柔和的红色脉冲光在frosted glass背景上投出微光。镜头从远景缓推至中景。"
+"9:16竖屏, apple-cupertino风格。白色陶瓷智能花盆居于构图中央, titanium质感桌面反射morning light。一株绿萝从盆沿垂下, 叶片微卷。花盆正面圆形LED屏显示😰表情, 红色脉冲光在frosted glass背景上投出呼吸般的光晕。镜头从远景以ease-in-out缓推至中景。"
+→ 意图: 建立渴望——让观众先看到这个美丽的东西, 再发现它在"口渴"
 
-shot-02 (5-10s):
-"一只手从画外右侧伸入，修长手指握着透明玻璃水壶，倾斜——水柱落入深褐色土壤。LED屏的😰开始闪烁，红光渐变成温暖的绿色。绿萝叶片微微颤动，仿佛在呼吸。镜头推进至花盆LED屏特写，shallow景深。"
+shot-02 (5-11s):
+"一只手从画外右侧优雅伸入, 透明玻璃水壶倾斜——水柱落入深褐色土壤。LED屏😰开始闪烁, 红光渐变为温暖的绿色, 😊表情缓缓浮现。绿萝叶片微微颤动展开。镜头推进至花盆LED屏特写, shallow景深让背景完全虚化, 观众的注意力被锁在变化本身。"
+→ 意图: 展示转变——浇水的瞬间就是产品魔法的瞬间
 
-shot-03 (10-15s):
-"😊表情在LED屏上稳定亮起，柔和的绿光照亮花盆周围的空气。镜头缓慢拉远——露出整张桌面，花盆旁出现手机屏幕（显示App界面，植物状态'已浇水'）。画面定格，留白空间供后期叠加slogan。"
+shot-03 (11-15s):
+"😊表情在LED屏上稳定亮起, 绿光照亮花盆周围的空气。镜头缓慢拉远——露出整张桌面构图, 花盆旁出现iPhone显示App界面(植物状态'已浇水')。画面定格在花盆😊与App的和谐构图。"
+→ 意图: 完成渴望——观众现在想要这个能表达情感的花盆
 """
 
 
+_VOICE_GUIDE = {
+    "intimate-minimalist": "**导演之声: 亲密极简** — 近景、眼平、小运动、单一柔光、克制表演、缓慢剪辑。适合情感故事、个人时刻、孤独感。不要让镜头闯入角色的空间。",
+    "composed-classicist": "**导演之声: 构图经典** — 精确、均衡、有分寸的运动、干净雕塑光、耐心节奏、精准表演。适合高端产品、商业广告、premium内容。每个画面都应该可以截图当海报。",
+    "kinetic-visceral": "**导演之声: 动感本能** — 手持能量、追踪、近距、硬光高对比、快速打击感、高度用力表演。适合运动、动作、hype视频。让观众感觉到冲击。",
+    "expressive-stylist": "**导演之声: 表现风格** — 大胆运镜、设计感构图、戏剧化但合理的光、饱和色彩、音乐性节奏、风格化肢体。适合音乐视频、时尚、幻想。画面本身就是表达。",
+    "observational-naturalist": "**导演之声: 观察自然** — 隐形镜头、自然光驱动、柔和克制、长镜头晚剪辑、生活化表演。适合纪录片感、真实瞬间、接地气的内容。镜头不应该被注意到。",
+    "graphic-formalist": "**导演之声: 图形形式** — 锁定或精确几何、硬光造型、有限色彩、精确冷面节奏、风格化或冷面表演。适合设计感品牌、冷面喜剧、视觉冲击型内容。",
+}
+
+_VOICE_DEFAULTS = {
+    "intimate-minimalist": "近景眼平·小运动·单一柔光·微表情",
+    "composed-classicist": "精确均衡·hero light·有分寸的运动·干净",
+    "kinetic-visceral": "手持追踪·高对比·快速打击·高度用力",
+    "expressive-stylist": "大胆运镜·饱和色彩·戏剧光·风格化",
+    "observational-naturalist": "隐形镜头·自然光·长镜头·生活化",
+    "graphic-formalist": "锁定几何·硬光·有限色彩·冷面节奏",
+}
+
+
 def build_direct_prompt(brief: dict) -> str:
-    """生成 Seedance-native 分镜提示词引导."""
+    """生成 Seedance-native 导演级分镜提示词引导."""
     duration = brief["duration_seconds"]
     ratio = brief["aspect_ratio"]
     preset = brief.get("aesthetic_preset", "")
+    voice = brief.get("director_voice", "")
     must_include = brief.get("must_include", [])
     must_avoid = brief.get("must_avoid", [])
 
@@ -231,12 +312,24 @@ def build_direct_prompt(brief: dict) -> str:
     else:
         suggested_shots = "3-5"
 
-    return f"""# Seedance 分镜提示词写作
+    # Voice 指引
+    if voice and voice in _VOICE_GUIDE:
+        voice_section = _VOICE_GUIDE[voice]
+        voice_default = _VOICE_DEFAULTS.get(voice, "")
+        voice_section += f"\n\n默认倾向: {voice_default}。每个镜头的设置从这个默认出发，根据具体的场景功能微调。"
+    else:
+        voice_section = "**导演之声**: 未预设。根据内容推断——产品→构图经典, 情感→亲密极简, 动作→动感本能, 品牌→图形形式。选定后每个镜头保持一致。"
+        voice_default = ""
+
+    methodology = _DIRECT_METHODOLOGY.replace("{director_voice_section}", voice_section)
+
+    return f"""# Seedance 导演级分镜提示词
 
 ## 技术约束
 - 时长: {duration}s
 - 比例: {ratio}
 - 美学预设: {preset}
+- 导演之声: {voice if voice else '(由你推断)'}
 - 建议分镜数: {suggested_shots} shots
 
 ## 创作目标
@@ -252,21 +345,24 @@ def build_direct_prompt(brief: dict) -> str:
 ## 必须避免
 {avoid_lines}
 
-{_DIRECT_METHODOLOGY}
+{methodology}
 
 ## 输出格式
 
 请输出符合 `schemas/shot-prompts.schema.json` 的 JSON。写进 `shot_prompts.json`。
 
-字段:
-- `creative_direction`: 一句话创作方向
-- `shots[]`: 分镜数组
-  - `shot_id`: "shot-01", "shot-02"...
-  - `start_second` / `end_second`: 时间范围
-  - `prompt`: Seedance 原生提示词（最重要！）
-  - `camera_hint`: 可选镜头建议
+可选质量字段:
+- `director_voice`: 你选择的导演之声
+- `scene_function`: 场景功能类型
+- `intention`: 一句话——这个视频要让观众感受到什么
 
-注意: 你的 prompt 字段会直接喂给 Seedance API。写你最好的视觉语言。
+分镜字段:
+- `shots[].shot_id`: "shot-01", "shot-02"...
+- `shots[].start_second` / `shots[].end_second`: 时间范围
+- `shots[].prompt`: Seedance 提示词（Director Formula 7槽: Subject+Action+Scene+Camera+Light+Audio+Constraints）
+- `shots[].camera_hint`: 可选镜头编码建议
+
+记住: prompt 不只是描述画面——prompt 是一个导演的指令。每一句都应该能回答"为什么这样写"。
 """
 
 

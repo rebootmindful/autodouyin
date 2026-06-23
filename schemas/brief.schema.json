@@ -105,6 +105,11 @@
     "template_override": {
       "type": "string",
       "description": "显式指定编译模板，绕过关键词自动匹配。设为 'none' 跳过所有模板接管。可选值: recruit-exact | none"
+    },
+    "director_voice": {
+      "type": "string",
+      "enum": ["observational-naturalist", "composed-classicist", "kinetic-visceral", "expressive-stylist", "intimate-minimalist", "graphic-formalist"],
+      "description": "导演之声——决定镜头/灯光/节奏的默认倾向。composed-classicist适合产品/商业片，intimate-minimalist适合情感故事，kinetic-visceral适合运动/激情。不设则由LLM根据内容推断。"
     }
   }
 }
