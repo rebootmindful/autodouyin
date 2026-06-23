@@ -110,6 +110,64 @@ def is_creative_recruiting(brief: dict) -> bool:
     return any(signal in text for signal in CREATIVE_CONTENT_SIGNALS)
 
 
+# ──────────────────────────────────────────────
+# Creative Content — LLM 创作层接入
+# ──────────────────────────────────────────────
+
+def load_creative_content(output_dir: Path) -> dict | None:
+    """加载 LLM 创作的 creative_content.json。若不存在或未被 LLM 填充则返回 None。
+
+    判定"已填充"的条件：至少一个角色有名字 + 至少一个镜头有 visual_core。
+    仅有空模板占位符视为未填充。
+    """
+    path = output_dir / "creative_content.json"
+    if not path.exists():
+        return None
+    data = json.loads(path.read_text(encoding="utf-8"))
+    # 检查是否已被 LLM 填充（不是空模板）
+    chars = data.get("characters", [])
+    shots = data.get("shots", [])
+    has_char = any(c.get("name", "").strip() for c in chars)
+    has_visual = any(s.get("visual_core", "").strip() for s in shots)
+    if not has_char or not has_visual:
+        return None  # 空模板，未填充
+    return data
+
+
+def has_creative_content(output_dir: Path) -> bool:
+    return load_creative_content(output_dir) is not None
+
+
+def _creative_char(creative: dict, asset_id: str) -> dict | None:
+    for c in creative.get("characters", []):
+        if c["asset_id"] == asset_id:
+            return c
+    return None
+
+
+def _creative_scene(creative: dict, asset_id: str) -> dict | None:
+    for s in creative.get("scenes", []):
+        if s["asset_id"] == asset_id:
+            return s
+    return None
+
+
+def _creative_segment(creative: dict, seg_id: str) -> dict | None:
+    for seg in creative.get("segments", []):
+        if seg["segment_id"] == seg_id:
+            return seg
+    return None
+
+
+def _creative_shot(creative: dict, shot_id: str) -> dict | None:
+    for sh in creative.get("shots", []):
+        if sh["shot_id"] == shot_id:
+            return sh
+    return None
+
+
+# ──────────────────────────────────────────────
+
 def now_iso() -> str:
     return datetime.now().astimezone().isoformat(timespec="seconds")
 
@@ -253,26 +311,44 @@ def segment_copy(segment: dict, brief: dict) -> tuple[str, str]:
     return f"{summary} 主题围绕“{goal}”展开。", emotion
 
 
-def fill_script(script: dict, brief: dict) -> dict:
+def fill_script(script: dict, brief: dict, output_dir: Path | None = None) -> dict:
     enriched = deepcopy(script)
+    creative = load_creative_content(output_dir) if output_dir else None
     intent = infer_intent_family(brief)
     enriched["title"] = concise_title(brief["goal"], limit=40)
     enriched["logline"] = f"围绕“{brief['goal']}”生成一条可审核、可执行、可回放的视频方案。"
     creative_recruit = is_creative_recruiting(brief)
     pure_recruit = is_recruiting_video(brief) and not creative_recruit
-    enriched["template_mode"] = "recruit-exact" if pure_recruit else fallback_family(intent)
-    enriched["template_confidence"] = "high" if pure_recruit else ("medium" if intent != "explain" else "low")
+
+    if creative:
+        enriched["template_mode"] = "llm-creative"
+        enriched["template_confidence"] = "high"
+    elif pure_recruit:
+        enriched["template_mode"] = "recruit-exact"
+        enriched["template_confidence"] = "high"
+    else:
+        enriched["template_mode"] = fallback_family(intent)
+        enriched["template_confidence"] = "medium" if intent != "explain" else "low"
+
     spoken_lines = recruiting_lines(brief) if pure_recruit else []
     for segment in enriched["segments"]:
         summary, emotion = segment_copy(segment, brief)
         segment["spoken_line"] = ""
-        if pure_recruit:
+        if creative:
+            cseg = _creative_segment(creative, segment["segment_id"])
+            if cseg:
+                segment["summary"] = cseg.get("beat_name") or cseg["emotion_curve"]
+                segment["emotion"] = cseg["emotion_curve"]
+                dialogue_lines = cseg.get("dialogue", [])
+                segment["spoken_line"] = " | ".join(
+                    f"{d['speaker']}: {d['line']}" for d in dialogue_lines
+                ) if dialogue_lines else ""
+        elif pure_recruit:
             idx = int(segment["segment_id"][-2:]) - 1
             spoken = spoken_lines[min(idx, len(spoken_lines) - 1)]
             segment["summary"] = f"人物面对镜头讲解招聘信息：{summary}"
             segment["spoken_line"] = spoken
         elif creative_recruit:
-            # 保留创作主链，segment 摘要由 brief goal 驱动而非通用招聘模板
             segment["summary"] = f"{summary} 主题围绕“{brief['goal']}”展开，在结尾自然引导至招聘行动号召。"
         else:
             if enriched["template_mode"] == "fallback-information":
@@ -336,9 +412,10 @@ def shot_continuity(shot: dict) -> str:
     return "保持主体、空间和光线连续，后续镜头沿用同一视觉关系。"
 
 
-def fill_storyboard(storyboard: dict, script: dict, brief: dict, preset: dict) -> dict:
+def fill_storyboard(storyboard: dict, script: dict, brief: dict, preset: dict, output_dir: Path | None = None) -> dict:
     enriched = deepcopy(storyboard)
     total = len(enriched["shots"])
+    creative = load_creative_content(output_dir) if output_dir else None
     pure_recruit = is_recruiting_video(brief) and not is_creative_recruiting(brief)
     creative_recruit = is_creative_recruiting(brief)
     strategy = identity_strategy(brief)
@@ -348,7 +425,26 @@ def fill_storyboard(storyboard: dict, script: dict, brief: dict, preset: dict) -
         camera = CAMERA_TEXT.get(shot["purpose"], "镜头语言简洁稳定，优先保证主体可读。")
         action = ACTION_TEXT.get(shot["purpose"], "主体与系统围绕目标推进。")
         shot["dialogue"] = ""
-        if pure_recruit:
+        if creative:
+            cshot = _creative_shot(creative, shot["shot_id"])
+            if cshot:
+                shot["visual"] = cshot["visual_core"]
+                shot["camera"] = cshot.get("camera_style", camera)
+            # 从 creative segments 提取对白
+            seg_id = f"seg-{shot['shot_id'][-2:]}"
+            cseg = _creative_segment(creative, seg_id)
+            if cseg:
+                dialogue_lines = cseg.get("dialogue", [])
+                shot["dialogue"] = " | ".join(
+                    f"{d['speaker']}: {d['line']}" for d in dialogue_lines
+                ) if dialogue_lines else ""
+                shot["audio"] = recruiting_audio(shot["dialogue"], total) if dialogue_lines else shot_audio(shot, total)
+            else:
+                shot["audio"] = shot_audio(shot, total)
+            shot["action"] = ACTION_TEXT.get(shot["purpose"], "角色按剧情节奏推进，动作与表情饱满。")
+            if strategy in {"first-block-anchor", "derived-stills", "text-only"}:
+                shot["action"] += " 保持同一人物发型、服装、年龄感和职业气质一致。"
+        elif pure_recruit:
             dialogue = recruiting_dialogue(shot, script)
             shot["dialogue"] = dialogue
             shot["visual"] = recruiting_visual(brief, shot)
@@ -391,11 +487,29 @@ def fill_storyboard(storyboard: dict, script: dict, brief: dict, preset: dict) -
     return enriched
 
 
-def asset_item_text(asset_id: str, brief: dict, preset: dict) -> tuple[str, str, str]:
+def asset_item_text(asset_id: str, brief: dict, preset: dict, output_dir: Path | None = None) -> tuple[str, str, str]:
     goal = brief["goal"]
     style = preset["display_name"]
+    creative = load_creative_content(output_dir) if output_dir else None
     pure_recruit = is_recruiting_video(brief) and not is_creative_recruiting(brief)
     creative_recruit = is_creative_recruiting(brief)
+
+    if creative and asset_id.startswith("C"):
+        ch = _creative_char(creative, asset_id)
+        if ch:
+            return (
+                ch["name"],
+                f"{ch['personality']} — {ch['appearance']}",
+                f"{style} 风格，{ch['appearance']}。{ch.get('voice_style', '')}",
+            )
+    if creative and asset_id.startswith("S"):
+        sc = _creative_scene(creative, asset_id)
+        if sc:
+            return (
+                sc["name"],
+                f"{sc['setting']} — 情绪: {sc['mood']}",
+                f"{style} 风格，{sc['setting']}。关键道具: {', '.join(sc.get('key_props', []))}",
+            )
     if pure_recruit and asset_id.startswith("C"):
         return (
             "招聘讲解人",
@@ -445,14 +559,14 @@ def asset_item_text(asset_id: str, brief: dict, preset: dict) -> tuple[str, str,
     )
 
 
-def fill_assets(assets: dict, brief: dict, preset: dict) -> dict:
+def fill_assets(assets: dict, brief: dict, preset: dict, output_dir: Path | None = None) -> dict:
     enriched = deepcopy(assets)
     strategy = identity_strategy(brief)
     bindings = source_file_bindings(brief)
     keep_ids = set(active_asset_ids(brief))
     enriched["items"] = [item for item in enriched["items"] if item["asset_id"] in keep_ids]
     for item in enriched["items"]:
-        name, description, prompt = asset_item_text(item["asset_id"], brief, preset)
+        name, description, prompt = asset_item_text(item["asset_id"], brief, preset, output_dir)
         item["name"] = name
         item["description"] = description
         item["prompt"] = prompt
@@ -528,11 +642,20 @@ def fill_seedance(seedance: dict, storyboard: dict, brief: dict, preset: dict) -
     return enriched
 
 
-def fill_publish(publish: dict, brief: dict, script: dict) -> dict:
+def fill_publish(publish: dict, brief: dict, script: dict, output_dir: Path | None = None) -> dict:
     enriched = deepcopy(publish)
+    creative = load_creative_content(output_dir) if output_dir else None
     title = concise_title(script["title"], limit=30)
     enriched["title"] = title or "短视频方案"
-    if is_creative_recruiting(brief):
+    if creative:
+        cta = creative.get("cta_moment", {})
+        enriched["description"] = (
+            f"{creative.get('creative_direction', brief['goal'])}\n\n"
+            f"品牌招聘电商运营。\n"
+            f"如果你有电商运营经验，欢迎投递。"
+        )
+        enriched["hashtags"] = ["#招聘", "#电商运营", "#搞笑", "#求职"]
+    elif is_creative_recruiting(brief):
         enriched["description"] = (
             f"{brief['goal']}\n\n"
             "品牌招聘电商运营。\n"
@@ -670,13 +793,13 @@ def ledger_step(name: str, artifacts: list[str], note: str, timestamp: str) -> d
     }
 
 
-def build_review_package(brief: dict, skeleton: dict) -> dict:
+def build_review_package(brief: dict, skeleton: dict, output_dir: Path | None = None) -> dict:
     preset = pick_preset(brief)
-    script = fill_script(skeleton["script"], brief)
-    storyboard = fill_storyboard(skeleton["storyboard"], script, brief, preset)
-    assets = fill_assets(skeleton["assets"], brief, preset)
+    script = fill_script(skeleton["script"], brief, output_dir)
+    storyboard = fill_storyboard(skeleton["storyboard"], script, brief, preset, output_dir)
+    assets = fill_assets(skeleton["assets"], brief, preset, output_dir)
     seedance = fill_seedance(skeleton["seedance"], storyboard, brief, preset)
-    publish = fill_publish(skeleton["publish"], brief, script)
+    publish = fill_publish(skeleton["publish"], brief, script, output_dir)
     review_decision = build_review_decision()
     review_summary = build_review_summary(brief, script, seedance)
     return {

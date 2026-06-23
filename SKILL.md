@@ -27,6 +27,55 @@ description: |
 4. `end-to-end`
    - 从 brief 一直走到可执行任务，但执行前必须先过审核关口。
 
+## Creative Writing Phase（创作阶段）
+
+当 brief 包含创作元素（角色、剧情、宠物、搞笑、反转等）时，在编译前先进入 LLM 创作阶段。不要让规则模板接管想象力。
+
+### 工作流
+
+```
+brief.json
+  → [Creative Phase] LLM 创作 creative_content.json
+  → [Compile Phase]  compile_pipeline.py --brief ... --output-dir ...
+  → [Review Phase]    用户审核
+  → [Execute Phase]   生成视频
+```
+
+### Step 0: 生成创作模板
+
+```bash
+python scripts/compile_pipeline.py --brief <brief.json> --output-dir <dir> --creative
+```
+
+产出 `creative_content.json` 空模板。同时产出规则编译产物作为 fallback。
+
+### Step 1: LLM 填入创意
+
+按 `schemas/creative-content.schema.json` 规范填入：
+
+1. **角色先行** — 先创造有辨识度的角色（名字、性格、外观、说话风格、角色弧线）。角色必须有缺陷或欲望。
+2. **情绪曲线** — 每段标注 `emotion_curve`（如"安逸→惊恐"）和 `beat_name`（节奏点名）。
+3. **视觉即叙事** — `visual_core` 用 Seedance 可理解的视觉语言：空间、光线、材质、动作、表情。不写抽象概念。
+4. **对白节奏** — 每句 ≤15 字，含表演提示（`delivery`）。角色之间要有停顿空间。
+5. **CTA 是故事终点** — `cta_moment` 是剧情反转的自然结果，不是贴上去的广告。
+
+### 方法论
+
+- **不要**把 brief 当成信息清单逐条翻译。
+- **要**先想象"这个视频最好看的 3 秒是什么"，从那 3 秒倒推整个结构。
+- **不要**让角色面对镜头念 JD。
+- **要**让角色在场景里活起来——做什么、怕什么、想要什么。
+- 约束越具体，创作越聚焦。空白画布让 LLM 输出陈词滥调。
+
+### 编译器行为
+
+- `creative_content.json` 存在且已填充 → 编译器使用 LLM 创作内容（`template_mode: llm-creative`），仅补充技术细节（camera codec、duration、aspect_ratio）
+- `creative_content.json` 不存在或为空模板 → 编译器 fallback 到规则模板（含 creative_recruit 检测）
+
+### 也可直接手写 creative_content.json
+
+如果不想用 `--creative` 生成模板，可以直接按 schema 手写 `creative_content.json` 放入产物目录。编译器检测到已填充内容后自动启用创作路径。
+
 ## Runtime Rule
 
 当前最小主链只有 5 步：
@@ -49,7 +98,22 @@ description: |
 
 ## Main Commands
 
-### 1. 生成审核包
+### 0. （推荐）LLM 创作阶段
+
+```bash
+# 生成 creative_content.json 模板 + 规则编译产物
+python scripts/run_pipeline.py --brief <brief.json> --output-dir <dir> --creative
+```
+
+然后 LLM 按 `schemas/creative-content.schema.json` 填入创意内容到 `creative_content.json`。
+
+再运行普通编译，编译器自动检测已填充的 creative_content.json 并启用 `llm-creative` 路径：
+
+```bash
+python scripts/run_pipeline.py --brief <brief.json> --output-dir <dir>
+```
+
+### 1. 生成审核包（无创作阶段）
 
 ```bash
 python scripts/run_pipeline.py --brief <brief.json> --output-dir <dir>
@@ -175,6 +239,13 @@ python scripts/validate_artifacts.py --dir <dir>
 3. 执行前平台规则
 
 ## Read Path
+
+### 用户要做 LLM 创作
+
+先读：
+
+- [schemas/creative-content.schema.json](schemas/creative-content.schema.json)
+- [scripts/creative_writer.py](scripts/creative_writer.py)
 
 ### 用户要做方案与审核
 

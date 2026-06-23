@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autodouyin.local/schemas/creative-content.schema.json",
+  "$comment": "[INPUT]: brief + LLM imagination; [OUTPUT]: creative content object; [POS]: schemas creative contract — LLM fills this, compiler consumes it; [PROTOCOL]: update then check CLAUDE.md",
+  "title": "CreativeContent",
+  "description": "LLM 创作产出。编译器优先使用此数据，不存在时 fallback 到规则模板。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "brief_id", "generated_by", "characters", "scenes", "segments", "shots"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "brief_id": { "type": "string", "minLength": 1 },
+    "generated_by": {
+      "type": "string",
+      "description": "标记由哪个 LLM/模型生成，用于追溯"
+    },
+    "creative_direction": {
+      "type": "string",
+      "description": "一句话创作方向：核心冲突、风格基调、独特视角"
+    },
+    "characters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["asset_id", "name", "personality", "appearance", "voice_style"],
+        "properties": {
+          "asset_id": { "type": "string", "pattern": "^C\\d{2}$" },
+          "name": { "type": "string" },
+          "role": { "type": "string", "description": "在剧情中的角色定位" },
+          "personality": { "type": "string", "description": "性格关键词+行为特征" },
+          "appearance": { "type": "string", "description": "外观描述：物种、服装、标志性特征、表情范围" },
+          "voice_style": { "type": "string", "description": "说话风格、语速、口头禅" },
+          "arc": { "type": "string", "description": "角色弧线：从什么状态变到什么状态" }
+        }
+      }
+    },
+    "scenes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["asset_id", "name", "setting", "mood", "key_props"],
+        "properties": {
+          "asset_id": { "type": "string", "pattern": "^S\\d{2}$" },
+          "name": { "type": "string" },
+          "setting": { "type": "string", "description": "空间描述：位置、光线、氛围" },
+          "mood": { "type": "string", "description": "情绪基调：压迫/轻松/温馨/冰冷" },
+          "key_props": { "type": "array", "items": { "type": "string" }, "description": "关键道具清单" }
+        }
+      }
+    },
+    "segments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["segment_id", "emotion_curve", "dialogue"],
+        "properties": {
+          "segment_id": { "type": "string", "pattern": "^seg-\\d{2}$" },
+          "emotion_curve": {
+            "type": "string",
+            "description": "情绪曲线：从 X 情绪 → Y 情绪。如 '安逸→惊恐' '压迫→释放'"
+          },
+          "beat_name": { "type": "string", "description": "节奏点名：如 '摸鱼暴露' '追命三连问' '反转掏简历'" },
+          "dialogue": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["speaker", "line"],
+              "properties": {
+                "speaker": { "type": "string" },
+                "line": { "type": "string" },
+                "delivery": { "type": "string", "description": "表演提示：语气、节奏、停顿" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["shot_id", "visual_core", "camera_style"],
+        "properties": {
+          "shot_id": { "type": "string", "pattern": "^shot-\\d{2}$" },
+          "visual_core": {
+            "type": "string",
+            "description": "核心视觉描述：画面里有什么、发生什么、色调气氛。用 Seedance 可理解的视觉语言写。"
+          },
+          "camera_style": {
+            "type": "string",
+            "description": "镜头建议：机位、运动、焦段偏好"
+          },
+          "key_moment": {
+            "type": "string",
+            "description": "这个镜头最重要的一个瞬间是什么"
+          }
+        }
+      }
+    },
+    "cta_moment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "timing_seconds": { "type": "string", "description": "CTA 出现的时间窗如 '27-30'" },
+        "visual": { "type": "string", "description": "CTA 出现时的画面状态" },
+        "text": { "type": "string", "description": "CTA 文案" }
+      }
+    }
+  }
+}

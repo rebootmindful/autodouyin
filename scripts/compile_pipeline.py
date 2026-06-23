@@ -26,6 +26,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--brief", required=True, help="raw brief path")
     parser.add_argument("--output-dir", required=True, help="artifact output dir")
+    parser.add_argument("--creative", action="store_true", help="generate creative_content.json template for LLM")
     return parser.parse_args()
 
 
@@ -44,16 +45,20 @@ def write_json(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def compile_outputs(brief: dict) -> dict:
+def compile_outputs(brief: dict, output_dir: Path | None = None) -> dict:
     skeleton = build_skeleton(brief)
-    outputs = build_review_package(brief, skeleton)
+    outputs = build_review_package(brief, skeleton, output_dir)
     outputs["script_md"] = render_script_md(outputs["script"], outputs["brief"])
     outputs["storyboard_md"] = render_storyboard_md(outputs["storyboard"], outputs["seedance"])
     return outputs
 
 
-def compile_to_directory(brief: dict, output_dir: Path) -> list[str]:
-    outputs = compile_outputs(brief)
+def compile_to_directory(brief: dict, output_dir: Path, creative: bool = False) -> list[str]:
+    if creative:
+        # 生成 creative_content.json 模板，引导 LLM 填入创意
+        from creative_writer import generate_template as gen_creative_template
+        gen_creative_template(brief, str(output_dir / "creative_content.json"))
+    outputs = compile_outputs(brief, output_dir)
     write_outputs(output_dir, outputs)
     return validate_directory(output_dir)
 
@@ -62,7 +67,7 @@ def main() -> None:
     args = parse_args()
     brief = load_brief(args.brief)
     output_dir = ensure_dir(args.output_dir)
-    issues = compile_to_directory(brief, output_dir)
+    issues = compile_to_directory(brief, output_dir, creative=args.creative)
     if issues:
         raise SystemExit("\n".join(issues))
     print(f"review package written to {output_dir}")
