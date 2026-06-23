@@ -84,6 +84,31 @@ ATMOSPHERE_KEYWORDS = ["氛围", "质感", "情绪", "梦境", "抽象", "诗意
 SELL_KEYWORDS = ["卖点", "转化", "下单", "商品", "产品", "功能", "广告", "介绍"]
 CHARACTER_KEYWORDS = ["人物", "主角", "女生", "男生", "角色", "口播", "面对镜头"]
 
+# 含创作元素的 recruiting brief：有具体角色/剧情/场景/动物/喜剧元素
+CREATIVE_CONTENT_SIGNALS = [
+    "宠物", "猫", "狗", "动物", "对话", "搞笑", "反转", "反差", "爆点",
+    "剧情", "角色扮演", "剧场", "小剧场", "喜剧", "段子",
+    "办公室", "工位", "摸鱼", "训话", "简历",
+]
+
+
+def is_creative_recruiting(brief: dict) -> bool:
+    """recruiting brief 是否包含创作内容（角色/剧情/场景），需要保留创作主链"""
+    if not is_recruiting_video(brief):
+        return False
+    creative_types = {"character-action", "narrative-story"}
+    if brief.get("video_type") in creative_types:
+        return True
+    text = " ".join(
+        [
+            str(brief.get("goal", "")),
+            str(brief.get("style", "")),
+            str(brief.get("tone", "")),
+            " ".join(brief.get("must_include", [])),
+        ]
+    )
+    return any(signal in text for signal in CREATIVE_CONTENT_SIGNALS)
+
 
 def now_iso() -> str:
     return datetime.now().astimezone().isoformat(timespec="seconds")
@@ -110,6 +135,11 @@ def keyword_text(preset: dict) -> str:
 
 
 def is_recruiting_video(brief: dict) -> bool:
+    override = brief.get("template_override")
+    if override == "none":
+        return False
+    if override == "recruit-exact":
+        return True
     text = " ".join(
         [
             str(brief.get("goal", "")),
@@ -209,10 +239,11 @@ def identity_risk(strategy: str) -> str:
 
 
 def recruiting_lines(brief: dict) -> list[str]:
+    # NOTE: 品牌名称由用户 brief 提供，不使用硬编码占位。此处为通用模板默认措辞。
     return [
-        "大家好，戈蓝公司正在招聘电商运营，想找既懂平台节奏也能把执行落地的人加入团队。",
+        "我们正在招聘电商运营，想找既懂平台节奏也能把执行落地的人加入团队。",
         "这个岗位会负责店铺日常运营、活动报名与执行、商品与页面优化，以及核心数据复盘和增长推进。",
-        "如果你有电商运营经验，做事细致、沟通顺畅，也希望在业务里真正拿结果，欢迎投递戈蓝公司的电商运营岗位。",
+        "如果你有电商运营经验，做事细致、沟通顺畅，也希望在业务里真正拿结果，欢迎投递电商运营岗位。",
     ]
 
 
@@ -227,18 +258,22 @@ def fill_script(script: dict, brief: dict) -> dict:
     intent = infer_intent_family(brief)
     enriched["title"] = concise_title(brief["goal"], limit=40)
     enriched["logline"] = f"围绕“{brief['goal']}”生成一条可审核、可执行、可回放的视频方案。"
-    enriched["template_mode"] = "recruit-exact" if is_recruiting_video(brief) else fallback_family(intent)
-    enriched["template_confidence"] = "high" if is_recruiting_video(brief) else ("medium" if intent != "explain" else "low")
-    recruit_mode = is_recruiting_video(brief)
-    spoken_lines = recruiting_lines(brief) if recruit_mode else []
+    creative_recruit = is_creative_recruiting(brief)
+    pure_recruit = is_recruiting_video(brief) and not creative_recruit
+    enriched["template_mode"] = "recruit-exact" if pure_recruit else fallback_family(intent)
+    enriched["template_confidence"] = "high" if pure_recruit else ("medium" if intent != "explain" else "low")
+    spoken_lines = recruiting_lines(brief) if pure_recruit else []
     for segment in enriched["segments"]:
         summary, emotion = segment_copy(segment, brief)
         segment["spoken_line"] = ""
-        if recruit_mode:
+        if pure_recruit:
             idx = int(segment["segment_id"][-2:]) - 1
             spoken = spoken_lines[min(idx, len(spoken_lines) - 1)]
             segment["summary"] = f"人物面对镜头讲解招聘信息：{summary}"
             segment["spoken_line"] = spoken
+        elif creative_recruit:
+            # 保留创作主链，segment 摘要由 brief goal 驱动而非通用招聘模板
+            segment["summary"] = f"{summary} 主题围绕“{brief['goal']}”展开，在结尾自然引导至招聘行动号召。"
         else:
             if enriched["template_mode"] == "fallback-information":
                 segment["summary"] = f"围绕目标分点说明：{summary}"
@@ -257,9 +292,9 @@ def shot_intro(brief: dict, preset: dict, shot: dict) -> str:
 
 def recruiting_visual(brief: dict, shot: dict) -> str:
     visuals = {
-        "world-build": "人物站在整洁办公室或直播电商工作位前，面对镜头开场介绍戈蓝公司正在招聘电商运营，背景可见电脑、电商后台和团队办公氛围。",
+        "world-build": "人物站在整洁办公室或直播电商工作位前，面对镜头开场介绍品牌正在招聘电商运营，背景可见电脑、电商后台和团队办公氛围。",
         "change-push": "人物继续面对镜头讲解岗位 JD，旁侧穿插店铺后台、活动报名页面、商品链接和数据看板的特写，突出职责内容。",
-        "emotional-close": "人物给出岗位亮点和投递邀请，镜头拉到中景，背景保持干净专业，画面收在公司与岗位行动号召上。",
+        "emotional-close": "人物给出岗位亮点和投递邀请，镜头拉到中景，背景保持干净专业，画面收在品牌与岗位行动号召上。",
     }
     return visuals.get(shot["purpose"], shot_intro(brief, pick_preset(brief), shot))
 
@@ -304,19 +339,39 @@ def shot_continuity(shot: dict) -> str:
 def fill_storyboard(storyboard: dict, script: dict, brief: dict, preset: dict) -> dict:
     enriched = deepcopy(storyboard)
     total = len(enriched["shots"])
-    recruit_mode = is_recruiting_video(brief)
+    pure_recruit = is_recruiting_video(brief) and not is_creative_recruiting(brief)
+    creative_recruit = is_creative_recruiting(brief)
     strategy = identity_strategy(brief)
     asset_ids = active_asset_ids(brief)
-    for shot in enriched["shots"]:
+    for i, shot in enumerate(enriched["shots"]):
+        is_last_shot = (i == total - 1)
         camera = CAMERA_TEXT.get(shot["purpose"], "镜头语言简洁稳定，优先保证主体可读。")
         action = ACTION_TEXT.get(shot["purpose"], "主体与系统围绕目标推进。")
         shot["dialogue"] = ""
-        if recruit_mode:
+        if pure_recruit:
             dialogue = recruiting_dialogue(shot, script)
             shot["dialogue"] = dialogue
             shot["visual"] = recruiting_visual(brief, shot)
             shot["action"] = recruiting_action(shot)
             shot["audio"] = recruiting_audio(dialogue, total)
+        elif creative_recruit:
+            # 创作主链 + 招聘元素注入
+            keywords = keyword_text(preset)
+            shot["visual"] = f"围绕“{brief['goal']}”建立主视觉与角色互动，画面持续体现 {keywords}。"
+            if is_last_shot:
+                shot["visual"] += " 结尾画面自然过渡至招聘行动号召，出现品牌与投递引导元素。"
+            shot["action"] = "角色按剧情节奏推进，动作与表情饱满。"
+            if is_last_shot:
+                shot["action"] += " 最后动作指向招聘信息或投递入口。"
+            if shot.get("segment_mode") in {"segment-extension", "scene-extension"}:
+                shot["action"] += " 保持同一人物发型、服装、年龄感和职业气质一致。"
+            shot["audio"] = shot_audio(shot, total)
+            # 末段注入招聘口播提示
+            if is_last_shot and script.get("segments"):
+                last_seg = script["segments"][-1]
+                if last_seg.get("spoken_line"):
+                    shot["dialogue"] = last_seg["spoken_line"]
+                    shot["audio"] = f"人物同步口播：“{shot['dialogue']}” 背景配乐保持克制明快，共 {total} 个镜头。"
         else:
             if script.get("template_mode") == "fallback-information":
                 shot["visual"] = f"人物或主体清楚出现在画面中，围绕“{brief['goal']}”逐步展开要点说明，画面持续体现 {keyword_text(preset)}。"
@@ -339,24 +394,37 @@ def fill_storyboard(storyboard: dict, script: dict, brief: dict, preset: dict) -
 def asset_item_text(asset_id: str, brief: dict, preset: dict) -> tuple[str, str, str]:
     goal = brief["goal"]
     style = preset["display_name"]
-    recruit_mode = is_recruiting_video(brief)
-    if recruit_mode and asset_id.startswith("C"):
+    pure_recruit = is_recruiting_video(brief) and not is_creative_recruiting(brief)
+    creative_recruit = is_creative_recruiting(brief)
+    if pure_recruit and asset_id.startswith("C"):
         return (
             "招聘讲解人",
-            f"戈蓝公司招聘宣传视频中的主讲人物，面对镜头讲解电商运营岗位 JD，风格对齐 {style}。",
-            f"{style} 风格企业招聘讲解人，职业感强，面对镜头自然讲述戈蓝公司电商运营岗位职责与亮点。",
+            f"品牌招聘宣传视频中的主讲人物，面对镜头讲解电商运营岗位 JD，风格对齐 {style}。",
+            f"{style} 风格企业招聘讲解人，职业感强，面对镜头自然讲述电商运营岗位职责与亮点。",
         )
-    if recruit_mode and asset_id.startswith("S"):
+    if pure_recruit and asset_id.startswith("S"):
         return (
             "办公与后台场景",
-            f"戈蓝公司办公区、电商后台或运营工作位，用来承接岗位说明，风格对齐 {style}。",
+            f"品牌办公区、电商后台或运营工作位，用来承接岗位说明，风格对齐 {style}。",
             f"{style} 风格企业办公场景，包含电脑屏幕、电商后台、数据看板和团队办公氛围，体现电商运营岗位真实环境。",
         )
-    if recruit_mode and asset_id.startswith("P"):
+    if pure_recruit and asset_id.startswith("P"):
         return (
             "JD信息卡",
             f"用于展示岗位职责、任职要求、投递行动号召的信息卡或屏幕内容，风格对齐 {style}。",
             f"{style} 风格岗位 JD 信息卡，简洁展示职责、亮点和投递提示，适合招聘宣传视频穿插使用。",
+        )
+    if creative_recruit and asset_id.startswith("C"):
+        return (
+            f"角色-{asset_id}",
+            f"根据“{goal}”设计的视频角色，需保持外观一致贯穿全片，风格对齐 {style}。",
+            f"{style} 风格角色设计，围绕“{goal}”展开，表情丰富、辨识度高，适合剧情推进。",
+        )
+    if creative_recruit and asset_id.startswith("S"):
+        return (
+            f"场景-{asset_id}",
+            f"根据“{goal}”设计的视频场景，建立空间与氛围，风格对齐 {style}。",
+            f"{style} 风格场景设计，围绕“{goal}”展开，空间关系清晰、光线与材质层次丰富。",
         )
     if asset_id.startswith("C"):
         return (
@@ -464,9 +532,17 @@ def fill_publish(publish: dict, brief: dict, script: dict) -> dict:
     enriched = deepcopy(publish)
     title = concise_title(script["title"], limit=30)
     enriched["title"] = title or "短视频方案"
-    if is_recruiting_video(brief):
+    if is_creative_recruiting(brief):
         enriched["description"] = (
-            "戈蓝公司招聘电商运营。\n"
+            f"{brief['goal']}\n\n"
+            "品牌招聘电商运营。\n"
+            "岗位方向：店铺运营、活动执行、商品与页面优化、数据复盘。\n"
+            "如果你有电商运营经验，欢迎投递，一起把业务做出结果。"
+        )
+        enriched["hashtags"] = ["#招聘", "#电商运营", "#搞笑", "#求职"]
+    elif is_recruiting_video(brief):
+        enriched["description"] = (
+            "品牌招聘电商运营。\n"
             "岗位方向：店铺运营、活动执行、商品与页面优化、数据复盘。\n"
             "如果你有电商运营经验，欢迎投递，一起把业务做出结果。"
         )

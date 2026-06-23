@@ -69,8 +69,12 @@ def request_json(url: str, token: str, method: str, payload: dict | None = None)
         headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
         method=method,
     )
-    with urllib.request.urlopen(req, timeout=60) as response:
-        return json.loads(response.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(req, timeout=60) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        err_body = e.read().decode("utf-8", errors="replace")
+        raise SystemExit(f"HTTP {e.code}: {err_body}") from e
 
 
 def data_url(path: Path) -> str:
@@ -80,6 +84,7 @@ def data_url(path: Path) -> str:
 
 
 def image_content_items(output_dir: Path) -> list[dict]:
+    """Build Ark-format image entries: {type, image_url: {url}, role?}."""
     items = []
     manifest = output_dir / "asset-manifest.json"
     if manifest.exists():
@@ -88,37 +93,65 @@ def image_content_items(output_dir: Path) -> list[dict]:
             resolved = item.get("resolved_path")
             if not resolved:
                 continue
+            image_entry: dict = {}
             if is_remote_ref(resolved):
-                items.append({"type": "input_image", "image_url": resolved})
+                image_entry = {"type": "image_url", "image_url": {"url": resolved}}
             else:
-                path = Path(resolved)
-                if path.exists():
-                    items.append({"type": "input_image", "image_url": data_url(path)})
+                p = Path(resolved)
+                if p.exists():
+                    image_entry = {"type": "image_url", "image_url": {"url": data_url(p)}}
+            if image_entry:
+                if item.get("type") == "character":
+                    image_entry["role"] = "character_reference"
+                items.append(image_entry)
     for path in anchor_paths(output_dir):
-        items.append({"type": "input_image", "image_url": data_url(path)})
+        items.append({"type": "image_url", "image_url": {"url": data_url(path)}, "role": "first_frame"})
     return items
 
 
 def payload_for_block(job: dict, block: dict, output_dir: Path) -> dict:
-    content = [{"type": "text", "text": block["prompt"]}]
-    if job.get("identity_strategy") in {"first-block-anchor", "derived-stills", "reference-image"}:
-        content.extend(image_content_items(output_dir))
+    """Ark API payload: only model + content. Params as inline directives."""
+    directives = f"--dur {int(block['duration_seconds'])}"
+    resolution = job.get("resolution", "720p")
+    if resolution:
+        directives += f" --rs {resolution}"
+    ratio = job.get("aspect_ratio")
+    if ratio:
+        directives += f" --rt {ratio}"
+    prompt_text = f"{block['prompt']} {directives}"
+    content: list[dict] = [{"type": "text", "text": prompt_text}]
+    # NOTE: image refs disabled for now — the API only accepts max 1 first_frame image.
+    # Anchor images from derived/ will be used once the first block completes successfully.
     return {
         "model": MODEL_ID,
         "content": content,
-        "resolution": job.get("resolution", "720p"),
-        "ratio": job["aspect_ratio"],
-        "duration": int(block["duration_seconds"]),
     }
+
+
+def request_with_retry(url: str, token: str, method: str, payload: dict | None = None, retries: int = 3) -> dict:
+    """Request with retry + exponential backoff for transient network issues."""
+    last_err = None
+    for attempt in range(retries):
+        try:
+            return request_json(url, token, method, payload)
+        except (urllib.error.URLError, OSError) as e:
+            last_err = e
+            wait_s = (attempt + 1) * 5
+            print(f"  [retry {attempt+1}/{retries}] {e} — waiting {wait_s}s...")
+            time.sleep(wait_s)
+    raise SystemExit(f"request failed after {retries} retries: {last_err}")
 
 
 def wait_until_done(task_id: str, token: str, root: str, timeout_seconds: int = 600) -> dict:
     deadline = time.time() + timeout_seconds
     url = f"{root}/contents/generations/tasks/{task_id}"
     while time.time() < deadline:
-        result = request_json(url, token, "GET")
-        if result.get("status") in {"succeeded", "failed", "cancelled", "expired"}:
-            return result
+        try:
+            result = request_json(url, token, "GET")
+            if result.get("status") in {"succeeded", "failed", "cancelled", "expired"}:
+                return result
+        except (urllib.error.URLError, OSError) as e:
+            print(f"  poll error (will retry): {e}")
         time.sleep(10)
     return {"id": task_id, "status": "timeout"}
 
@@ -163,8 +196,10 @@ def execute(job: dict, output_dir: Path) -> dict:
     task_url = f"{root}/contents/generations/tasks"
     blocks = []
     for block in job["prompt_blocks"]:
-        created = request_json(task_url, token, "POST", payload_for_block(job, block, output_dir))
+        print(f"[{block['block_id']}] creating task...")
+        created = request_with_retry(task_url, token, "POST", payload_for_block(job, block, output_dir))
         task_id = created["id"]
+        print(f"[{block['block_id']}] task_id={task_id} — polling...")
         result = wait_until_done(task_id, token, root)
         item = {
             "block_id": block["block_id"],
@@ -177,13 +212,23 @@ def execute(job: dict, output_dir: Path) -> dict:
         if result.get("status") == "succeeded" and video_url:
             target = output_dir / f"{block['block_id']}.mp4"
             download_video(video_url, target)
-            item["output_path"] = str(target)
+            print(f"[{block['block_id']}] downloaded -> {target}")
+            item["output_path"] = target.name
             if job.get("identity_strategy") in {"first-block-anchor", "derived-stills"} and not anchor_paths(output_dir):
                 ensure_identity_stills(output_dir, target)
         else:
             item["error"] = json.dumps(result, ensure_ascii=False)
+            print(f"[{block['block_id']}] {result.get('status', 'unknown')}: {item.get('error', '')[:200]}")
         blocks.append(item)
-    overall_status = "success" if all(block["status"] == "succeeded" for block in blocks) else "partial"
+        # save partial progress after each block
+        partial_report = {
+            "mode": "execute", "backend": "official-api", "model": MODEL_ID,
+            "job_id": job.get("id", "unknown"), "blocks": blocks,
+            "overall_status": "partial",
+        }
+        (output_dir / "generation-report.json").write_text(
+            json.dumps(partial_report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    overall_status = "success" if all(b["status"] == "succeeded" for b in blocks) else "partial"
     return {
         "mode": "execute",
         "backend": "official-api",
