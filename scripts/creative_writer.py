@@ -28,40 +28,87 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_PATH = ROOT / "schemas" / "creative-content.schema.json"
 
-# ── 创作方法论文本，注入 prompt ──
+# ── 按视频类型的创作方法论 ──
 
-CREATIVE_METHODOLOGY = """
+_METHODOLOGY_COMMON = """
 ## 创作方法论
 
-你是短视频编剧+导演。你的任务不是"写一条招聘广告"，而是——
-用30秒讲一个让人看完想转发的小故事。
+你是短视频编剧+导演。不要翻译 brief 为画面清单——用 {duration} 秒讲一个让人看完想行动的小故事。
 
-### 规则
+### 通用规则
 
-1. **角色先行，不是信息先行**
-   - 先创造 1-2 个有辨识度的角色。谁？什么性格？什么关系？
-   - 观众因为喜欢角色而看完，不是因为听完 JD 信息。
-   - 角色必须有缺陷或欲望——完美角色无趣。
-
-2. **情绪曲线驱动，不是信息清单驱动**
-   - 不要按"第一段介绍、第二段讲解、第三段号召"来结构。
-   - 按"建立→冲突→反转→释放"来结构。
-   - 每个 segment 标注情绪曲线：从 X 情绪 → Y 情绪。
-
-3. **视觉即叙事**
-   - 不要写"人物在办公室讲解JD"。
-   - 写"金毛犬的爪子从手机滑落，屏幕还亮着抖音界面。英短猫的影子从门口投进来。"
-   - 用 Seedance 能理解的视觉语言：空间、光线、材质、动作。
-
-4. **对白要有节奏**
-   - 每句对白不超过 15 字（字幕友好）。
-   - 对白之间留停顿空间（让画面呼吸）。
-   - 用对白揭示角色，而不是解释信息。
-
-5. **CTA 是故事的终点，不是贴上去的广告**
-   - 不要让角色突然面对镜头说"快来投简历"。
-   - 让 CTA 成为剧情反转的自然结果。
+- **情绪曲线驱动，不是信息清单驱动**：按"建立→冲突→反转→释放"结构，每段标注 X→Y 情绪变化。
+- **视觉即叙事**：用 Seedance 可理解的视觉语言——空间、光线、材质、动作、色彩。不写抽象概念。
+- **约束即燃料**：brief 里的限制越具体，创作越聚焦。空白画布产出陈词滥调。
 """
+
+_METHODOLOGY_PRODUCT_DEMO = """
+### 产品演示专属
+
+- **产品是主角，赋予它性格**：花盆不只是花盆——它是一个会饿、会渴、会开心的小东西。找到产品的"人格"。
+- **展示变化，不是展示功能**：不要列"材质陶瓷、LED屏幕、蓝牙连接"。展示"从😰到😊的那一瞬间"。
+- **让观众渴望那个变化**：看完视频，观众应该想"我也想让我的植物这么开心"，而不是"这个产品有LED屏"。
+- **slogan 是情绪的落点**：让 slogan 出现在情绪最高点，不是在黑屏上飘一行字。
+"""
+
+_METHODOLOGY_CHARACTER_ACTION = """
+### 角色驱动专属
+
+- **角色先行，不是信息先行**：先创造 1-2 个有辨识度的角色。谁？什么性格？什么关系？角色必须有缺陷或欲望。
+- **对白揭示角色，不是解释信息**：每句 ≤15 字，留停顿空间让画面呼吸。用角色的嘴说出故事，不是用旁白。
+- **反转是高潮，不是附录**：最好的 3 秒放在最后——那个让人想转发、想评论、想@好友的瞬间。
+"""
+
+_METHODOLOGY_NARRATIVE = """
+### 剧情叙事专属
+
+- **情绪弧线是第一结构**：从什么状态开始 → 经历什么转折 → 落到什么新状态。不是三段式，是抛物线。
+- **留白比填满更有力**：不解释每一个变化。让镜头、光线、表情说话。
+- **结尾是释放，不是总结**：不要"这个故事告诉我们……"。停在最有张力的那一帧。
+"""
+
+_METHODOLOGY_WORKFLOW = """
+### 信息演示专属
+
+- **结果先行**：第一秒就让观众看到最终效果，再倒推展示过程。
+- **信息层次，不是信息堆砌**：每个镜头只传达一个关键变化。before/after 的对比比文字更有力。
+- **节奏 = 信任**：快不等于有信息量。关键帧留 0.5s 让眼睛注册。
+"""
+
+_METHODOLOGY_SPACE_TOUR = """
+### 空间漫游专属
+
+- **路径即叙事**：观众跟着镜头走一条有情绪起伏的路线，不是随机漫游。
+- **材质和光线是主角**：frosted glass 的散射、titanium 的反光、morning light 的角度——这些比"空间很大"重要 100 倍。
+- **停在有呼吸感的地方**：最后一个镜头应该是让人想截图的画面。
+"""
+
+_CTA_CLOSING = """
+### 收尾
+
+- 让 CTA 成为故事的自然落点，不是贴上去的按钮。
+- 最后一个镜头留 2-3 秒给观众反应——然后才出现行动号召。
+"""
+
+
+def _methodology_for(brief: dict) -> str:
+    """根据 video_type 返回对应的方法论."""
+    vt = brief.get("video_type", "")
+    duration = brief.get("duration_seconds", 15)
+    common = _METHODOLOGY_COMMON.format(duration=duration)
+
+    if vt == "product-demo":
+        return common + _METHODOLOGY_PRODUCT_DEMO + _CTA_CLOSING
+    elif vt == "character-action":
+        return common + _METHODOLOGY_CHARACTER_ACTION + _CTA_CLOSING
+    elif vt == "narrative-story":
+        return common + _METHODOLOGY_NARRATIVE + _CTA_CLOSING
+    elif vt == "workflow-explainer":
+        return common + _METHODOLOGY_WORKFLOW + _CTA_CLOSING
+    elif vt == "space-tour":
+        return common + _METHODOLOGY_SPACE_TOUR + _CTA_CLOSING
+    else:
+        return common + _CTA_CLOSING
 
 
 def parse_args() -> argparse.Namespace:
@@ -119,7 +166,7 @@ def build_prompt(brief: dict) -> str:
 ## 必须避免
 {avoid_lines}
 
-{CREATIVE_METHODOLOGY}
+{_methodology_for(brief)}
 
 ## 输出格式
 
@@ -133,8 +180,6 @@ def build_prompt(brief: dict) -> str:
 - `segments[]`: 每段的情绪曲线、节奏点名、对白（含表演提示）
 - `shots[]`: 每个镜头的核心视觉描述和镜头建议
 - `cta_moment`: CTA 如何作为剧情的自然终点出现
-
-记住: 你的首要任务是讲一个让人看完的小故事。招聘信息是故事的副产品。
 """
 
 
