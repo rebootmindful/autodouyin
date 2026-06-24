@@ -76,10 +76,53 @@ python scripts/compile_pipeline.py --brief <brief.json> --output-dir <dir> --cre
 
 如果不想用 `--creative` 生成模板，可以直接按 schema 手写 `creative_content.json` 放入产物目录。编译器检测到已填充内容后自动启用创作路径。
 
+## Identity & Product Consistency（身份与产品一致性）
+
+纯 T2V 每次从随机噪声出发，同一段 text 生成三个 block，产品形态必然不同。解决：**锚图驱动 I2V**。
+
+### 自动判断逻辑
+
+```
+检查 asset-manifest.json → C01 是否有 resolved_path 指向存在的文件？
+  ├── 有 → 直接注入为 first_frame 锚点，所有 prompt block 共享
+  └── 无 → AI 闭环生成产品定妆照 → 注册 C01 → 注入锚点
+```
+
+### AI 闭环工作流（无实物图时自动触发）
+
+```
+检测无产品锚图（默认情况）
+  → Step A: 调用图片生成 API 生成产品定妆照
+      - 白底/干净背景, ghost mannequin 或平坦展示
+      - 9:16 比例, 2K 分辨率
+      - 存入 assets/C01-product-anchor.png
+  → Step B: 更新 asset-manifest.json
+      - C01.resolved_path = "assets/C01-product-anchor.png"
+      - C01.type = "character"（触发 character_reference→first_frame 路由）
+  → Step C: 所有 prompt block 的 prompt 开头注入 [Image1] 锚点引用
+      - "以参考图[Image1]中的产品为视觉锚点, 保持面料/剪裁/颜色完全一致。"
+  → Step D: 重编译 pipeline
+  → Step E: execute_official_video.py 检测 [Image1]
+      → 自动将 C01 图编码为 base64, 以 first_frame role 注入 Ark API content
+      → I2V 模式: 所有 block 从同一锚图出发 → 产品形态一致
+```
+
+### [Image1] 机制
+
+`execute_official_video.py:125-136` 检测 prompt 中的 `[Image1]` 标记，自动从 `image_content_items()` 取 C01 图以 `first_frame` role 注入 Ark API payload。`compile_from_prompts.py` 负责在 shot_prompts 编译为 prompt_blocks 时保留或注入 `[Image1]` 前缀。
+
+### 锚图质量要求
+
+- 白底/干净背景产品照
+- ghost mannequin 或平坦展示, 不出现真人面部
+- 9:16 比例（与视频 aspect_ratio 一致）
+- 分辨率 ≥ 2K, 纹理细节清晰可辨
+
 ## Runtime Rule
 
-当前最小主链只有 5 步：
+当前最小主链只有 6 步：
 
+0. 无产品图时 AI 自动生成锚图（见上方 Identity 章节）
 1. 生成审核包
 2. 用户批准
 3. 执行 Seedance
@@ -263,6 +306,7 @@ python scripts/validate_artifacts.py --dir <dir>
 - [references/seedance/platform-specs.md](references/seedance/platform-specs.md)
 - [references/seedance/duration-boundaries.md](references/seedance/duration-boundaries.md)
 - [references/content-patterns/seedance-templates.md](references/content-patterns/seedance-templates.md)
+- [references/content-patterns/anchor-image-strategy.md](references/content-patterns/anchor-image-strategy.md)（产品身份一致性）
 
 ### 用户要做抖音发布
 
@@ -409,6 +453,12 @@ python scripts/validate_artifacts.py --dir <dir>
 - **症状：** 用户要求把 vendored adapter（AGPL-3.0）的代码逻辑写进核心 Skill 推理
 - **动作：** 告知许可证边界，保持 adapter 独立调用，引用 NOTICE.md
 - **不做什么：** 不把 AGPL 代码吸收进核心 Skill 叙述
+
+### F7: 产品身份漂移
+- **症状：** 多 block 生成后，各镜中产品面料/剪裁/颜色不一致（如 pb-01 蕾丝边、pb-02 光滑边、pb-03 不同颜色）
+- **根因：** 纯 T2V 每次从随机噪声出发，无视觉锚点约束同一产品形态
+- **动作：** 自动判断 `asset-manifest.json` C01 是否有 `resolved_path` → 无则走 AI 闭环（生成产品定妆照 → 注册 C01 → prompt 注入 `[Image1]` → I2V 重跑）
+- **不做什么：** 不假装三个不同产品是同一个，不跳过锚图生成继续裸 T2V
 
 ## Example
 

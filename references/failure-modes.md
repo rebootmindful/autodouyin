@@ -33,6 +33,7 @@
 | 登录态过期 | douyin_check_login 返回未登录 | cookie 过期 | 提示用户重新扫码登录 |
 | SMS 验证超时 | 抖音要求短信验证但用户未及时输入 | 多因素认证 | 给用户 120 秒窗口，超时则保存当前状态退出 |
 | 平台风控拦截 | 视频上传后状态为"审核不通过" | 内容触发平台审核 | 检查 must_avoid 清单，给出修改建议 |
+| 产品身份漂移 | 多 block 生成后各镜产品形态不一致（面料/剪裁/颜色互不相同） | 纯 T2V 每次从随机噪声出发, 无视觉锚点锁定产品一致性 | 见 [anchor-image-strategy.md](content-patterns/anchor-image-strategy.md): 自动检测 C01 resolved_path → 无则 AI 闭环生成产品定妆照 → 注册锚点 → prompt 注入 [Image1] → I2V 重跑 |
 
 ## 预防原则
 

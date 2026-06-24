@@ -39,13 +39,14 @@
   - `op7418/Seedance-Product-Video` (美学预设系统)
 - 美学预设：Apple Cupertino / Microsoft Fluent / Bauhaus Zen / Vercel Dark
 - Dreamina CLI 首选集成路径：`seedance` npm 包 (MIT, Rust, Ark API)
+- 身份一致性：锚图自动检测 + AI 闭环 (见 `references/content-patterns/anchor-image-strategy.md`)。无产品图时自动调用图片生成 API 生成定妆照 → 注册 C01 → [Image1] I2V 锚定
 
 ## Planned Deliverable Shape
 
 当前实现和后续目标均以以下结构为准：
 
 - Skill 主体：`SKILL.md`（含三层架构指令）、`agents/openai.yaml`
-- 主链脚本：`scripts/`（`compile_pipeline.py` / `run_pipeline.py` / `validate_artifacts.py` / `execute_seedance.py` / `assemble_video.py`）
+- 主链脚本：`scripts/`（`compile_pipeline.py` / `run_pipeline.py` / `validate_artifacts.py` / `execute_seedance.py` / `execute_official_video.py` / `compile_from_prompts.py` / `assemble_video.py`）
 - 知识层：`references/`（含 content-patterns/ + aesthetic-presets.json）
 - 结构化契约：`schemas/`（8 份 JSON Schema）
 - 样例：`examples/`（brief + skeleton + 完整产物）

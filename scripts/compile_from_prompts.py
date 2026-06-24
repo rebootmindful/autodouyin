@@ -237,29 +237,43 @@ def build_script(brief: dict, shot_prompts: dict) -> dict:
 # ──────────────────────────────────────────────
 
 def build_assets(brief: dict, shot_prompts: dict) -> dict:
-    """构建 asset-manifest.json — 基础占位，LLM 直出模式不需要详细 asset 描述."""
+    """构建 asset-manifest.json。传播 brief 中的 source_material_files 绑定."""
+    # 从 brief 读取素材绑定
+    bindings = {}
+    for item in brief.get("source_material_files", []):
+        role = item.get("role", "")
+        if role == "character":
+            bindings["C01"] = item
+        elif role == "scene":
+            bindings["S01"] = item
+        elif role == "prop":
+            bindings["P01"] = item
+
+    def _asset(asset_id, atype, name, desc, prompt, priority):
+        entry = {
+            "asset_id": asset_id, "type": atype, "name": name,
+            "description": desc, "prompt": prompt,
+            "required": True, "continuity_priority": priority,
+        }
+        bound = bindings.get(asset_id)
+        if bound:
+            entry["source_ref"] = bound.get("id", "")
+            entry["source_label"] = bound.get("label", "")
+            resolved = bound.get("path", "")
+            if resolved:
+                entry["resolved_path"] = resolved
+        return entry
+
     return {
         "id": f"assets-{brief['id']}",
         "storyboard_id": f"storyboard-{brief['id']}",
         "items": [
-            {
-                "asset_id": "C01",
-                "type": "character",
-                "name": "视频主体",
-                "description": brief["goal"][:60],
-                "prompt": f"围绕“{brief['goal']}”的视频主体设计。",
-                "required": True,
-                "continuity_priority": "high",
-            },
-            {
-                "asset_id": "S01",
-                "type": "scene",
-                "name": "视频场景",
-                "description": brief["goal"][:60],
-                "prompt": f"围绕“{brief['goal']}”的场景设计。",
-                "required": True,
-                "continuity_priority": "medium",
-            },
+            _asset("C01", "character", "男女主角",
+                    brief["goal"][:60],
+                    f"根据参考图保持人物外观一致。{brief['goal'][:40]}", "high"),
+            _asset("S01", "scene", "分别场景",
+                    brief["goal"][:60],
+                    f"围绕“{brief['goal']}”的场景设计。", "medium"),
         ],
     }
 

@@ -98,6 +98,8 @@ def image_content_items(output_dir: Path) -> list[dict]:
                 image_entry = {"type": "image_url", "image_url": {"url": resolved}}
             else:
                 p = Path(resolved)
+                if not p.is_absolute():
+                    p = output_dir / p
                 if p.exists():
                     image_entry = {"type": "image_url", "image_url": {"url": data_url(p)}}
             if image_entry:
@@ -120,8 +122,18 @@ def payload_for_block(job: dict, block: dict, output_dir: Path) -> dict:
         directives += f" --rt {ratio}"
     prompt_text = f"{block['prompt']} {directives}"
     content: list[dict] = [{"type": "text", "text": prompt_text}]
-    # NOTE: image refs disabled for now — the API only accepts max 1 first_frame image.
-    # Anchor images from derived/ will be used once the first block completes successfully.
+    # I2V: 如果 prompt 引用了 [Image1]，注入参考图作为 first_frame
+    if "[Image1]" in block.get("prompt", ""):
+        imgs = image_content_items(output_dir)
+        # 只取第一张 character 图片，API 限制最多 1 张 first_frame
+        char_imgs = [img for img in imgs if img.get("role") == "character_reference"]
+        if char_imgs:
+            # 改为 first_frame role，Ark API 需要这个 role
+            char_imgs[0]["role"] = "first_frame"
+            content.append(char_imgs[0])
+        elif imgs:
+            imgs[0]["role"] = "first_frame"
+            content.append(imgs[0])
     return {
         "model": MODEL_ID,
         "content": content,
@@ -156,8 +168,17 @@ def wait_until_done(task_id: str, token: str, root: str, timeout_seconds: int = 
     return {"id": task_id, "status": "timeout"}
 
 
-def download_video(url: str, target: Path) -> None:
-    urllib.request.urlretrieve(url, target)
+def download_video(url: str, target: Path, retries: int = 3) -> None:
+    for attempt in range(retries):
+        try:
+            urllib.request.urlretrieve(url, target)
+            return
+        except (urllib.error.URLError, urllib.error.ContentTooShortError, OSError) as e:
+            if attempt == retries - 1:
+                raise
+            wait_s = (attempt + 1) * 3
+            print(f"  download retry {attempt+1}/{retries}: {e} — waiting {wait_s}s...")
+            time.sleep(wait_s)
 
 
 def dry_run(job: dict, output_dir: Path) -> dict:

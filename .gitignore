@@ -17,6 +17,7 @@ adapters/douyin-upload-vendor/temp/
 
 # Runtime
 output/
+outputs/
 *.log
 *.tmp
 *.bak

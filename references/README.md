@@ -23,6 +23,7 @@ Agent 填充骨架时，按 SKILL.md Enrichment Workflow 读取：
 - `content-patterns/camera-presets.md` -- purpose -> codec 默认映射
 - `content-patterns/purpose-guide.md` -- 每个叙事目的的视觉/动作/音频指导
 - `content-patterns/seedance-templates.md` -- prompt 组装公式与长视频续拍模式
+- `content-patterns/anchor-image-strategy.md` -- 产品身份一致性：锚图自动检测 + AI 闭环生成
 
 ## Imported Source Files
 

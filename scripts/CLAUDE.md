@@ -26,6 +26,9 @@
 - `compile_pipeline.py`：直接产出完整 review package
 - `validate_artifacts.py`：schema + 内容 + 平台规则校验
 - `execute_seedance.py`：Seedance dry-run / execute
+- `execute_official_video.py`：Ark API 官方路径，含 [Image1] 锚图检测与 I2V first_frame 注入
+- `compile_from_prompts.py`：从 shot_prompts.json 编译完整审核包，保留/注入 [Image1] 锚点前缀
+- `creative_writer.py`：LLM 创作层入口，含 --direct 导演引擎模式
 - `assemble_video.py`：多段视频本地组装
 - `run_pipeline.py`：统一入口，收敛 compile / approve / generate / assemble
 
